@@ -31,7 +31,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulário Login -->
-                        <form action="action">    
+                        <form action="action" method="POST">    
                             <div class="mb-4">
                                 <input type="text" class="form-control cpf" name="cpf" placeholder="CPF" required>
                             </div>
