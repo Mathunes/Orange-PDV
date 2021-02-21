@@ -15,6 +15,19 @@
             </div>
         </nav>
         
+        <!-- Mensagens -->
+            
+            <div class="toast align-items-center m-3" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <span id="mensagem">
+                            <%= request.getAttribute("mensagem") %>
+                        </span>
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        
         <!-- Exibir produtos -->
         
         
@@ -31,7 +44,8 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulário Login -->
-                        <form action="action" method="POST">    
+                        <form action="UsuariosController" method="POST">
+                            <input type="hidden" name="acao" value="login" required>
                             <div class="mb-4">
                                 <input type="text" class="form-control cpf" name="cpf" placeholder="CPF" required>
                             </div>
@@ -50,5 +64,13 @@
         
         <%@include file="scripts.html" %>
         <script src="js/cpf-mask.js"></script>
+        
+        <script>
+            $( document ).ready(function() {
+                if ($('#mensagem').text().trim() != "null") {
+                    $('.toast').toast('show');
+                }
+            });
+        </script>
     </body>
 </html>

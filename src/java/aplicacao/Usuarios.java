@@ -16,6 +16,11 @@ public class Usuarios {
         this.tipo = tipo;
     }
 
+    public Usuarios(String cpf, String senha) {
+        this.cpf = cpf;
+        this.senha = senha;
+    }
+    
     public int getId() {
         return id;
     }
