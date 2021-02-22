@@ -1,8 +1,4 @@
-<%-- 
-    Document   : aevendas
-    Created on : 21/02/2021, 12:31:09
-    Author     : Felip
---%>
+<%@include file="verificasessao.jsp" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

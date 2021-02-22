@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "UsuariosController", urlPatterns = {"/UsuariosController"})
 public class UsuariosController extends HttpServlet {
@@ -23,26 +24,32 @@ public class UsuariosController extends HttpServlet {
         
         //Identificador da acao no método POST
         String acao = request.getParameter("acao");
-        String cpf = request.getParameter("cpf");
-        String senha = request.getParameter("senha");
+        String cpf = "";
+        String senha = "";
         
-        //Verificando se há campos vazios
-        if (acao.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
-        
-            request.setAttribute("mensagem", "Preencha todos os campos para efetuar o login");
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-            rd.forward(request, response);
-            
-        } else {
-            //Verificando a ação desejada
-            switch (acao) {
-                case "login":
+        switch (acao) {
+            case "login":
+                cpf = request.getParameter("cpf");
+                senha = request.getParameter("senha");
+                
+                //Verificando se há campos vazios
+                if (acao.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
+
+                    request.setAttribute("mensagem", "Preencha todos os campos para efetuar o login");
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                    rd.forward(request, response);
+
+                } else {
                     usuario = new Usuarios(cpf, senha);
                     login(request, response);
-                    break;
-            }
+                }
+                break;
+                
+            case "logout":
+                logout(request, response);
+                break;
         }
-        
+            
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response)
@@ -52,7 +59,10 @@ public class UsuariosController extends HttpServlet {
         
         if (usuario.getId() > 0) {
             
-            request.setAttribute("usuario", usuario);
+            HttpSession sessao = request.getSession();
+            sessao.setAttribute("logado", "ok");
+            sessao.setAttribute("usuario", usuario);
+
             RequestDispatcher rd = request.getRequestDispatcher("/aeprodutos.jsp");
             rd.forward(request, response);
             
@@ -63,7 +73,15 @@ public class UsuariosController extends HttpServlet {
             rd.forward(request, response);
             
         }
-                
+        
+    }
+
+    private void logout(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("logado", null);
+        response.sendRedirect("index.jsp");
     }
 
 }

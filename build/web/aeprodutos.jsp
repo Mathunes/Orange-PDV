@@ -1,7 +1,4 @@
-<%@page import="aplicacao.Usuarios"%>
-<%
-    Usuarios usuario = (Usuarios)request.getAttribute("usuario");
-%>
+<%@include file="verificasessao.jsp" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +9,7 @@
     <body>
         <%@include file="aenavbar.jsp" %>
         <h1>Hello World!</h1>
-        <%= usuario.getNome() %>
+
         <%@include file="scripts.html" %>
     </body>
 </html>

@@ -20,8 +20,11 @@
                 <a class="nav-link text-dark" href="#">Clientes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <button class="btn btn-danger">Sair</button>
+                <form method="POST" action="UsuariosController">
+                    <input type="hidden" name="acao" value="logout" required>
+                    <button type="submit" class="btn btn-danger">Sair</button>
+                </form>
+                    
                 </a>
             </li>
         </ul>
