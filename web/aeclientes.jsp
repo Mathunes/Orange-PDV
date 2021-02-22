@@ -4,10 +4,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@include file="head.html" %>
     </head>
     <body>
+        <%@include file="aenavbar.jsp" %>
         <h1>Hello World!</h1>
+
+        <%@include file="scripts.html" %>
     </body>
 </html>
