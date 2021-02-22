@@ -21,10 +21,12 @@ public class UsuariosController extends HttpServlet {
         
         request.setCharacterEncoding("UTF-8");
         
+        //Identificador da acao no método POST
         String acao = request.getParameter("acao");
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
         
+        //Verificando se há campos vazios
         if (acao.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
         
             request.setAttribute("mensagem", "Preencha todos os campos para efetuar o login");
@@ -32,7 +34,7 @@ public class UsuariosController extends HttpServlet {
             rd.forward(request, response);
             
         } else {
-            
+            //Verificando a ação desejada
             switch (acao) {
                 case "login":
                     usuario = new Usuarios(cpf, senha);
@@ -49,12 +51,15 @@ public class UsuariosController extends HttpServlet {
         usuario = dao.Login(usuario);
         
         if (usuario.getId() > 0) {
-            //Sucesso
+            
+            request.setAttribute("usuario", usuario);
+            RequestDispatcher rd = request.getRequestDispatcher("/aeprodutos.jsp");
+            rd.forward(request, response);
             
         } else {
             
             request.setAttribute("mensagem", "Usuário não encontrado");
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
             
         }
