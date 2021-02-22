@@ -10,16 +10,16 @@
       
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto d-flex align-items-center mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Produtos</a>
+            <li class="nav-item mx-2">
+                <a class="nav-link text-dark" href="aeprodutos.jsp">Produtos</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Vendas</a>
+            <li class="nav-item mx-2">
+                <a class="nav-link text-dark" href="aevendas.jsp">Vendas</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Clientes</a>
+            <li class="nav-item mx-2">
+                <a class="nav-link text-dark" href="aeclientes.jsp">Clientes</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ms-2">
                 <form method="POST" action="UsuariosController">
                     <input type="hidden" name="acao" value="logout" required>
                     <button type="submit" class="btn btn-danger">Sair</button>

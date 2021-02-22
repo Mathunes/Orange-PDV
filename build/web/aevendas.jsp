@@ -8,7 +8,9 @@
     </head>
     <body>
         <%@include file="aenavbar.jsp" %>
-        <h1>Hello World!</h1>
+        <div class="container">
+            <h1>Hello World!</h1>
+        </div>
 
         <%@include file="scripts.html" %>
     </body>
