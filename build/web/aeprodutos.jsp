@@ -1,12 +1,18 @@
+<%@page import="aplicacao.Usuarios"%>
+<%
+    Usuarios usuario = (Usuarios)request.getAttribute("usuario");
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@include file="head.html" %>
     </head>
     <body>
+        <%@include file="aenavbar.jsp" %>
         <h1>Hello World!</h1>
-        <%= request.getAttribute("usuario") %>
+        <%= usuario.getNome() %>
+        <%@include file="scripts.html" %>
     </body>
 </html>
