@@ -1,3 +1,4 @@
+<!-- Barra de navagação da área restrita - Usuário vendedor -->
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <a class="navbar-brand" href="#">

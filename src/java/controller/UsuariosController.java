@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.UsuariosDAO;
 
 @WebServlet(name = "UsuariosController", urlPatterns = {"/UsuariosController"})
 public class UsuariosController extends HttpServlet {
     
-    private UsuariosDao dao = new UsuariosDao();
+    private UsuariosDAO dao = new UsuariosDAO();
     private Usuarios usuario;
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -59,12 +60,11 @@ public class UsuariosController extends HttpServlet {
         
         if (usuario.getId() > 0) {
             
-            HttpSession sessao = request.getSession();
-            sessao.setAttribute("logado", "ok");
-            sessao.setAttribute("usuario", usuario);
+            HttpSession session = request.getSession();
+            session.setAttribute("logado", "ok");
+            session.setAttribute("usuario", usuario);
 
-            RequestDispatcher rd = request.getRequestDispatcher("/aeprodutos.jsp");
-            rd.forward(request, response);
+            response.sendRedirect("aeprodutos.jsp");
             
         } else {
             
@@ -79,8 +79,8 @@ public class UsuariosController extends HttpServlet {
     private void logout(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        HttpSession sessao = request.getSession();
-        sessao.setAttribute("logado", null);
+        HttpSession session = request.getSession();
+        session.invalidate();
         response.sendRedirect("index.jsp");
     }
 
