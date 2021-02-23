@@ -1,5 +1,5 @@
 <!-- Barra de navagação da área restrita - Usuário vendedor -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg mb-2">
   <div class="container">
     <a class="navbar-brand" href="#">
         <img src="assets/imagens/logo.png" alt="Logo OrangePDV" width="92" class="d-inline-block align-top">

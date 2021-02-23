@@ -15,7 +15,7 @@
     <body>
         <%@include file="aenavbar.jsp" %>
         <div class="container">
-            <h1><%= usuario.getNome() %></h1>
+            <h1>Área restrita - Produtos</h1>
         </div>
 
         <%@include file="scripts.html" %>
