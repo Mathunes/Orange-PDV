@@ -2,7 +2,7 @@
                 
 <div aria-live="polite" aria-atomic="true" class="position-relative">
     <div class="toast-container position-absolute top-0">
-        <div class="toast text-white bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast text-white bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
                     <span id="mensagem">
