@@ -14,7 +14,7 @@
     </head>
     <body>
         <!-- Barra de navegação - Cliente -->
-        <nav class="navbar mb-1">
+        <nav class="navbar mb-4">
             <div class="container">
                 <a class="navbar-brand">
                     <img src="assets/imagens/logo.png" alt="Logo OrangePDV" width="92" class="d-inline-block align-top">
@@ -24,9 +24,21 @@
         </nav>
         
         <div class="container">
+            <!-- Mensagens  -->
             <%@include file="toastmensagem.jsp" %>
             
-            <h1>Produtos</h1>
+            <div class="row">
+                <div class="col">
+                    <h3>Produtos</h3>
+                </div>
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Buscar produto..." >
+                        <button class="btn btn-outline-secondary" type="button">Pesquisar</button>
+                    </div>
+                </div>
+            </div>
+            
             
             
         

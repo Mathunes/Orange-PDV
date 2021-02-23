@@ -17,10 +17,3 @@ body .modal-content {
 .modal-header {
     border-bottom: 0 none;
 }
-
-.toast {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-}
