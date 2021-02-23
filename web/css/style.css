@@ -17,3 +17,9 @@ body .modal-content {
 .modal-header {
     border-bottom: 0 none;
 }
+
+@media (max-width: 576px) { //Concertar
+    .header col-sm h2 {
+        text-align: center;
+    }
+}

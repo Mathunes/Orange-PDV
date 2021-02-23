@@ -27,12 +27,12 @@
             <!-- Mensagens  -->
             <%@include file="toastmensagem.jsp" %>
             
-            <div class="row">
-                <div class="col">
+            <div class="row header">
+                <div class="col-sm">
                     <h2>Produtos</h2>
                 </div>
                 <!-- Input de pesquisa -->
-                <div class="col">
+                <div class="col-sm">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Buscar produto..." >
                         <button class="btn " type="button">
