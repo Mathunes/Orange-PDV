@@ -14,9 +14,24 @@
     </head>
     <body>
         <%@include file="aenavbar.jsp" %>
+        
         <div class="container">
-            <h1>Área restrita - Produtos</h1>
+            <div class="row">
+                <div class="col">
+                    <h2>Área restrita - Produtos</h2>
+                </div>
+                <!-- Input de pesquisa -->
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Buscar produto..." >
+                        <button class="btn " type="button">
+                            <img src="assets/imagens/search.svg" alt="Lupa">
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+        
 
         <%@include file="scripts.html" %>
     </body>
