@@ -1,16 +1,16 @@
 <!-- Barra de navagação da área restrita - Usuário vendedor -->
-<nav class="navbar navbar-expand-lg mb-4">
+<nav class="navbar navbar-expand-lg mb-4 navbar-light">
   <div class="container">
     <a class="navbar-brand" href="#">
         <img src="assets/imagens/logo.png" alt="Logo OrangePDV" width="92" class="d-inline-block align-top">
     </a>
       
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
       
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto d-flex align-items-center mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto d-flex mb-2 mb-lg-0">
             <li class="nav-item mx-2">
                 <a class="nav-link text-dark" href="aeprodutos.jsp">Produtos</a>
             </li>
