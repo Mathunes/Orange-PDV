@@ -18,42 +18,44 @@
         <div class="container">
             <h2>Área restrita - Novo cliente</h2>
             
-            <form class="mt-4">
+            <form class="mt-4" method="POST" action="ClientesController">
+                <input type="hidden" name="acao" value="novocliente">
+                <input type="hidden" name="id" value="0">
                 <div class="row">
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control" placeholder="Nome do cliente" aria-label="Nome do cliente" required>
+                        <input type="text" class="form-control" placeholder="Nome do cliente" aria-label="Nome do cliente" name="nome" required>
                     </div>
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control cpf" placeholder="CPF do cliente" aria-label="CPF do cliente" required>
+                        <input type="text" class="form-control cpf" placeholder="CPF do cliente" aria-label="CPF do cliente" name="cpf" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control" placeholder="Endereço do cliente" aria-label="Nome do cliente" required>
+                        <input type="text" class="form-control" placeholder="Endereço do cliente" aria-label="Endereço do cliente" name="endereco" required>
                     </div>
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control" placeholder="Bairro do cliente" aria-label="CPF do cliente" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md mb-4">
-                        <input type="text" class="form-control" placeholder="Cidade do cliente" aria-label="Nome do cliente" required>
-                    </div>
-                    <div class="col-md mb-4">
-                        <input type="text" class="form-control" placeholder="Estado do cliente" aria-label="CPF do cliente" required>
+                        <input type="text" class="form-control" placeholder="Bairro do cliente" aria-label="Bairro do cliente" name="bairro" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control cep" placeholder="CEP do cliente" aria-label="Nome do cliente" required>
+                        <input type="text" class="form-control" placeholder="Cidade do cliente" aria-label="Cidade do cliente" name="cidade" required>
                     </div>
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control telefone" placeholder="Telefone do cliente" aria-label="CPF do cliente" required>
+                        <input type="text" class="form-control" placeholder="Estado do cliente" aria-label="Estado do cliente" name="uf" maxlength="2" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md mb-4">
+                        <input type="text" class="form-control cep" placeholder="CEP do cliente" aria-label="CEP do cliente" name="cep" maxlength="8" required>
+                    </div>
+                    <div class="col-md mb-4">
+                        <input type="text" class="form-control telefone" placeholder="Telefone do cliente" aria-label="Telefone do cliente"  name="telefone" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-4">
-                        <input type="mail" class="form-control" placeholder="Email do cliente" aria-label="Nome do cliente" required>
+                        <input type="email" class="form-control" placeholder="Email do cliente" aria-label="Email do cliente" name="email" required>
                     </div>
                 </div>
                 <input type="submit" class="btn btn-registrar" value="Registrar cliente">

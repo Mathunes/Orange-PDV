@@ -48,12 +48,44 @@ public class ClientesController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        request.setCharacterEncoding("UTF-8");
         String acao = (String) request.getParameter("acao");
         
+        
         switch (acao) {
-            case "clientes":
+            case "novocliente":
                 
+                String mensagem = gravar(request, response);
+                request.setAttribute("mensagem", mensagem);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/aenovocliente.jsp");
+                rd.forward(request, response);
+                break;
+        
         }
+
     }
 
+    public String gravar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        Clientes cliente = new Clientes();
+        ClientesDAO dao = new ClientesDAO();
+        
+        cliente.setId(Integer.parseInt(request.getParameter("id")));
+        cliente.setNome(request.getParameter("nome"));
+        cliente.setCpf(request.getParameter("cpf"));
+        cliente.setEndereco(request.getParameter("endereco"));
+        cliente.setBairro(request.getParameter("bairro"));
+        cliente.setCidade(request.getParameter("cidade"));
+        cliente.setUf(request.getParameter("uf"));
+        cliente.setCep(request.getParameter("cep"));
+        cliente.setTelefone(request.getParameter("telefone"));
+        cliente.setEmail(request.getParameter("email"));
+
+        if (dao.gravar(cliente)) {
+            return "Contato gravado com sucesso!";
+        } 
+        return "Erro ao gravar contato!";
+
+    }
 }

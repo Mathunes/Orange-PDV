@@ -96,7 +96,7 @@ public class ClientesDAO extends HttpServlet {
             if (cliente.getId() == 0) {
                 sql = "INSERT INTO clientes "
                         + "(nome, cpf, endereco, bairro, cidade, uf, cep, telefone, email)"
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             } else {
                 sql = "UPSATE clientes SET "
                         + "nome=?, cpf=?, endereco=?, bairro=?, cidade=?, uf=?, cep=?, telefone=?, email=?"
