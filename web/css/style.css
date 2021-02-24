@@ -13,7 +13,7 @@ body, .modal-content {
     z-index: 1000;
 }
 
-.navbar .btn-restrito, .modal .modal-content .modal-body div .btn-entrar, div .btn-novo, div .btn-voltar {
+.navbar .btn-restrito, .modal .modal-content .modal-body div .btn-entrar, div .btn-novo, div .btn-voltar, form .btn-registrar {
     background-color: #FE9923;
     color: #FFFFFF;
 }

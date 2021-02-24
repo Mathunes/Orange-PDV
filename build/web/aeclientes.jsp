@@ -34,7 +34,9 @@
             </div>
             
             <div class="container-table">
-                <button class="btn btn-novo">Novo cliente</button>
+                <a href="aenovocliente.jsp">
+                    <button class="btn btn-novo">Novo cliente</button>
+                </a>
                 <table class="table">
                     <thead>
                         <tr>
