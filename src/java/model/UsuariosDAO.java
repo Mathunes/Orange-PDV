@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import model.Conexao;
 
 @WebServlet(name = "CategoriasDAO", urlPatterns = {"/CategoriasDAO"})
 public class UsuariosDAO extends HttpServlet {
