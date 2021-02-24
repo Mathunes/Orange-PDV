@@ -50,12 +50,13 @@
                             ArrayList<Clientes> clientes = (ArrayList<Clientes>) request.getAttribute("clientes");
                             for (int i = 0; i < clientes.size(); i++) {
                                 Clientes aux = clientes.get(i);
+                                String linkExibirCliente = "ClientesController?acao=cliente&id="+aux.getId();
                         %>
                         <tr>
                             <td><%=aux.getNome()%></td>
                             <td><%=aux.getCpf()%></td>
                             <td>
-                                <a href="ClientesController?acao=cliente"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
+                                <a href="<%=linkExibirCliente%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
                             </td>
                             <td>
                                 <a href="#"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>

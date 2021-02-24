@@ -41,7 +41,7 @@ public class ClientesController extends HttpServlet {
                 id = Integer.parseInt(request.getParameter("id"));
                 cliente = dao.getClienteId(id);
                 request.setAttribute("cliente", cliente);
-                RequestDispatcher mostrarCliente = getServletContext().getRequestDispatcher("/aeclientes.jsp");
+                RequestDispatcher mostrarCliente = getServletContext().getRequestDispatcher("/aecliente.jsp");
                 mostrarCliente.forward(request, response);
                 break;
                 

@@ -13,7 +13,7 @@ body, .modal-content {
     z-index: 1000;
 }
 
-.navbar .btn-restrito, .modal .modal-content .modal-body div .btn-entrar, div .btn-novo {
+.navbar .btn-restrito, .modal .modal-content .modal-body div .btn-entrar, div .btn-novo, div .btn-voltar {
     background-color: #FE9923;
     color: #FFFFFF;
 }
@@ -22,7 +22,7 @@ body, .modal-content {
     border-bottom: 0 none;
 }
 
-.container-table {
+.container-table, .container-table {
     background-color: #FFFFFF;
     padding: 20px;
     border: 1px solid #ced4da;
