@@ -21,7 +21,7 @@
             <h2>Área restrita - Visualizar cliente</h2>
             
             <div class="container-info">
-                <a href="ClientesController?acao=clientes">
+                <a href="ClientesController?acao=mostrar_clientes">
                     <button class="btn btn-voltar">Voltar</button>
                 </a>
                     <table class="table mt-2">

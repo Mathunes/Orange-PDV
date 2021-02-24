@@ -52,7 +52,7 @@
                             ArrayList<Clientes> clientes = (ArrayList<Clientes>) request.getAttribute("clientes");
                             for (int i = 0; i < clientes.size(); i++) {
                                 Clientes aux = clientes.get(i);
-                                String linkExibirCliente = "ClientesController?acao=cliente&id="+aux.getId();
+                                String linkExibirCliente = "ClientesController?acao=mostrar_cliente&id="+aux.getId();
                         %>
                         <tr>
                             <td><%=aux.getNome()%></td>

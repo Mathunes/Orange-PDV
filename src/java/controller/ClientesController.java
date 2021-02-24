@@ -25,14 +25,14 @@ public class ClientesController extends HttpServlet {
         Clientes cliente;
         
         switch (acao) {
-            case "clientes":
+            case "mostrar_clientes":
                 clientes = dao.getClientes();
                 request.setAttribute("clientes", clientes);
                 RequestDispatcher mostrarClientes = getServletContext().getRequestDispatcher("/aeclientes.jsp");
                 mostrarClientes.forward(request, response);
                 break;
                 
-            case "cliente":
+            case "mostrar_cliente":
                 id = Integer.parseInt(request.getParameter("id"));
                 cliente = dao.getClienteId(id);
                 request.setAttribute("cliente", cliente);
@@ -49,43 +49,68 @@ public class ClientesController extends HttpServlet {
             throws ServletException, IOException {
         
         request.setCharacterEncoding("UTF-8");
-        String acao = (String) request.getParameter("acao");
-        
-        
-        switch (acao) {
-            case "novocliente":
                 
-                String mensagem = gravar(request, response);
-                request.setAttribute("mensagem", mensagem);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/aenovocliente.jsp");
-                rd.forward(request, response);
-                break;
-        
-        }
-
-    }
-
-    public String gravar(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        String mensagem;
         
         Clientes cliente = new Clientes();
         ClientesDAO dao = new ClientesDAO();
         
-        cliente.setId(Integer.parseInt(request.getParameter("id")));
-        cliente.setNome(request.getParameter("nome"));
-        cliente.setCpf(request.getParameter("cpf"));
-        cliente.setEndereco(request.getParameter("endereco"));
-        cliente.setBairro(request.getParameter("bairro"));
-        cliente.setCidade(request.getParameter("cidade"));
-        cliente.setUf(request.getParameter("uf"));
-        cliente.setCep(request.getParameter("cep"));
-        cliente.setTelefone(request.getParameter("telefone"));
-        cliente.setEmail(request.getParameter("email"));
+        int id = Integer.parseInt(request.getParameter("id"));
+        String nome = request.getParameter("nome");
+        String cpf = request.getParameter("cpf");
+        String endereco = request.getParameter("endereco");
+        String bairro = request.getParameter("bairro");
+        String cidade = request.getParameter("cidade");
+        String uf = request.getParameter("uf");
+        String cep = request.getParameter("cep");
+        String telefone = request.getParameter("telefone");
+        String email = request.getParameter("email");
+        
+        if (nome.isEmpty() || cpf.isEmpty() || endereco.isEmpty() || bairro.isEmpty() || 
+                cidade.isEmpty() || uf.isEmpty() || cep.isEmpty() || telefone.isEmpty() || 
+                email.isEmpty())    
+            mensagem = "Preencha todos os campos";
+        else if (nome.length() > 50)
+            mensagem = "Nome deve conter no máximo 50 caracteres";
+        else if (cpf.length() > 14) 
+            mensagem = "CPF deve conter no máximo 14 caracteres";
+        else if (endereco.length() > 50)
+            mensagem = "Estado deve conter no máximo 50 caracteres";
+        else if (bairro.length() > 50)
+            mensagem = "Bairro deve conter no máximo 50 caracteres";
+        else if (cidade.length() > 50)
+            mensagem = "Cidade deve conter no máximo 50 caracteres";
+        else if (uf.length() > 2)
+            mensagem = "UF deve conter no máximo 2 caracteres";
+        else if (cep.length() > 8)
+            mensagem = "CEP deve conter no máximo 8 caracteres";
+        else if (telefone.length() > 20)
+            mensagem = "Telefone deve conter no máximo 20 caracteres";
+        else if (email.length() > 50)
+            mensagem = "Email deve conter no máximo 50 caracteres";
+        else {
+            
+            cliente.setId(id);
+            cliente.setNome(nome);
+            cliente.setCpf(cpf);
+            cliente.setEndereco(endereco);
+            cliente.setBairro(bairro);
+            cliente.setCidade(cidade);
+            cliente.setUf(uf);
+            cliente.setCep(cep);
+            cliente.setTelefone(telefone);
+            cliente.setEmail(email);
 
-        if (dao.gravar(cliente)) {
-            return "Contato gravado com sucesso!";
-        } 
-        return "Erro ao gravar contato!";
-
+            if (dao.gravar(cliente))
+                mensagem = "Cliente gravado com sucesso";
+            else 
+                mensagem = "Erro ao gravar cliente";
+        }
+        
+        request.setAttribute("mensagem", mensagem);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/aenovocliente.jsp");
+        rd.forward(request, response);
+        
     }
+
 }

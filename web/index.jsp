@@ -85,6 +85,8 @@
             $( document ).ready(function() {
                 if ($('#mensagem').text().trim() != "null") {
                     $('.toast').toast('show');
+                } else {
+                    $('.toast').toast('hide');
                 }
             });
         </script>
