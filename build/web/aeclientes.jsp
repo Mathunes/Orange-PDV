@@ -40,8 +40,6 @@
                         <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">CPF</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">Email</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                             <th scope="col"></th>
@@ -54,10 +52,17 @@
                                 Clientes aux = clientes.get(i);
                         %>
                         <tr>
-                            <td><%=aux.getId()%></td>
-                            <td><%=aux.getCpf()%></td> 
-                            <td><%=aux.getTelefone()%></td> 
-                            <td><%=aux.getEmail()%></td> 
+                            <td><%=aux.getNome()%></td>
+                            <td><%=aux.getCpf()%></td>
+                            <td>
+                                <a href="#"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
+                            </td>
+                            <td>
+                                <a href="#"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>
+                            </td>
+                            <td>
+                                <a href="#"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário"></a>
+                            </td>
                         </tr>
                         <%
                             }
