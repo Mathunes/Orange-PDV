@@ -15,7 +15,8 @@ import javax.servlet.http.HttpSession;
 //Servlet para filtrar a URL e restringir acesso indevido
 
 @WebFilter(filterName = "VerificaSessao", urlPatterns = {"/aeprodutos.jsp", 
-    "/aevendas.jsp", "/aeclientes.jsp", "/aenavbar.jsp", "/ClientesController", "/aecliente.jsp"})
+    "/aevendas.jsp", "/aeclientes.jsp", "/aenavbar.jsp", "/ClientesController", 
+    "/aecliente.jsp", "/aenovocliente.jsp"})
 public class VerificaSessao implements Filter {
     
     public void doFilter(ServletRequest request, ServletResponse response,
