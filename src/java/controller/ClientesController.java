@@ -26,14 +26,25 @@ public class ClientesController extends HttpServlet {
         ClientesDAO dao = new ClientesDAO();
         String acao = (String) request.getParameter("acao");
         ArrayList<Clientes> clientes;
+        int id;
+        Clientes cliente;
         
         switch (acao) {
             case "clientes":
                 clientes = dao.getClientes();
                 request.setAttribute("clientes", clientes);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/aeclientes.jsp");
-                rd.forward(request, response);
+                RequestDispatcher mostrarClientes = getServletContext().getRequestDispatcher("/aeclientes.jsp");
+                mostrarClientes.forward(request, response);
                 break;
+                
+            case "cliente":
+                id = Integer.parseInt(request.getParameter("id"));
+                cliente = dao.getClienteId(id);
+                request.setAttribute("cliente", cliente);
+                RequestDispatcher mostrarCliente = getServletContext().getRequestDispatcher("/aeclientes.jsp");
+                mostrarCliente.forward(request, response);
+                break;
+                
         }
         
     }
