@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="aplicacao.Clientes"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="infousuario.jsp" %>
 <% 
@@ -46,7 +48,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <%
+                            ArrayList<Clientes> clientes = (ArrayList<Clientes>) request.getAttribute("clientes");
+                            for (int i = 0; i < clientes.size(); i++) {
+                                Clientes aux = clientes.get(i);
+                        %>
+                        <tr>
+                            <td><%=aux.getId()%></td>
+                            <td><%=aux.getCpf()%></td> 
+                            <td><%=aux.getTelefone()%></td> 
+                            <td><%=aux.getEmail()%></td> 
+                        </tr>
+                        <%
+                            }
+                        %>
                     </tbody>
                 </table>
             </div>
