@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="aplicacao.Clientes"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="infousuario.jsp" %>
 <% 
@@ -38,15 +40,33 @@
                         <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">CPF</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">Email</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <%
+                            ArrayList<Clientes> clientes = (ArrayList<Clientes>) request.getAttribute("clientes");
+                            for (int i = 0; i < clientes.size(); i++) {
+                                Clientes aux = clientes.get(i);
+                        %>
+                        <tr>
+                            <td><%=aux.getNome()%></td>
+                            <td><%=aux.getCpf()%></td>
+                            <td>
+                                <a href="#"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
+                            </td>
+                            <td>
+                                <a href="#"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>
+                            </td>
+                            <td>
+                                <a href="#"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário"></a>
+                            </td>
+                        </tr>
+                        <%
+                            }
+                        %>
                     </tbody>
                 </table>
             </div>
