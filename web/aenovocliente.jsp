@@ -16,6 +16,7 @@
         <%@include file="aenavbar.jsp" %>
         
         <div class="container">
+            <%@include file="toastmensagem.jsp" %>
             <h2>Área restrita - Novo cliente</h2>
             
             <form class="mt-4" method="POST" action="ClientesController">
@@ -64,5 +65,12 @@
         
         <%@include file="scripts.html" %>
         <script src="js/mascaras.js"></script>
+        <script>
+            $( document ).ready(function() {
+                if ($('#mensagem').text().trim() != "null") {
+                    $('.toast').toast('show');
+                }
+            });
+        </script>
     </body>
 </html>
