@@ -19,7 +19,7 @@ body .modal-content {
 }
 
 @media (max-width: 576px) { 
-    .header col-sm h2 {
+    .container .header .col-sm h2 {
         text-align: center;
     }
 }
