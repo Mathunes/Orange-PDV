@@ -28,7 +28,7 @@ public class ClientesController extends HttpServlet {
         ArrayList<Clientes> clientes;
         
         switch (acao) {
-            case "mostrar":
+            case "clientes":
                 clientes = dao.getClientes();
                 request.setAttribute("clientes", clientes);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/aeclientes.jsp");

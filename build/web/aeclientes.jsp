@@ -55,7 +55,7 @@
                             <td><%=aux.getNome()%></td>
                             <td><%=aux.getCpf()%></td>
                             <td>
-                                <a href="#"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
+                                <a href="ClientesController?acao=cliente"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
                             </td>
                             <td>
                                 <a href="#"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>

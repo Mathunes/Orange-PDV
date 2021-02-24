@@ -18,7 +18,7 @@
                 <a class="nav-link text-dark" href="aevendas.jsp">Vendas</a>
             </li>
             <li class="nav-item mx-2">
-                <a class="nav-link text-dark" href="ClientesController?acao=mostrar">Clientes</a>
+                <a class="nav-link text-dark" href="ClientesController?acao=clientes">Clientes</a>
             </li>
             <li class="nav-item ms-2">
                 <form method="POST" action="UsuariosController">
