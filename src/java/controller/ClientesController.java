@@ -56,7 +56,10 @@ public class ClientesController extends HttpServlet {
                 }
                 
                 break;
-            
+            case "excluir_cliente":
+                
+                break;
+                
             case "cadastrar_cliente":
                 cliente = new Clientes();
                 cliente.setId(0);

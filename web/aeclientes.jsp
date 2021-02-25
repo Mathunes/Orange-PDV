@@ -58,6 +58,7 @@
                                     Clientes aux = clientes.get(i);
                                     String linkExibirCliente = "ClientesController?acao=mostrar_cliente&id="+aux.getId();
                                     String linkEditarCliente = "ClientesController?acao=editar_cliente&id="+aux.getId();
+                                    String linkExcluirCliente = "ClientesController?acao=excluir_cliente&id="+aux.getId();
                         %>
                         <tr>
                             <td><%=aux.getNome()%></td>
@@ -69,7 +70,7 @@
                                 <a href="<%=linkEditarCliente%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>
                             </td>
                             <td>
-                                <a href="#"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário"></a>
+                                <a href="<%=linkExcluirCliente%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário"></a>
                             </td>
                         </tr>
                         <%

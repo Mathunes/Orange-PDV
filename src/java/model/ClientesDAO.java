@@ -88,6 +88,20 @@ public class ClientesDAO extends HttpServlet {
         return cliente;
     }
     
+    public boolean excluir(int id) {
+        try {
+            String sql = "DELETE FROM contato WHERE id = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+            return false;
+        }
+    }
+    
     public boolean gravar(Clientes cliente) {
         
         try {
