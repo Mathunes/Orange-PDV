@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="infousuario.jsp" %>
 <% 
-    //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
+    //Impedir que a página seja armazenada em cache, impedindo a função "voltar" do navegador
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
@@ -24,12 +24,16 @@
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Buscar cliente..." >
-                        <button class="btn " type="button">
-                            <img src="assets/imagens/search.svg" alt="Lupa">
-                        </button>
-                    </div>
+                    <form method="GET" action="ClientesController">
+                        
+                        <input type="hidden" name="acao" value="mostrar_clientes_nome" required>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="nome" placeholder="Buscar cliente..." >
+                            <button class="btn " type="submit">
+                                <img src="assets/imagens/search.svg" alt="Lupa">
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
             

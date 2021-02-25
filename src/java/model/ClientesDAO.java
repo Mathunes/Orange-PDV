@@ -88,6 +88,41 @@ public class ClientesDAO extends HttpServlet {
         return cliente;
     }
     
+    public ArrayList<Clientes> getClienteNome(String nome) {
+        ArrayList<Clientes> clientes = new ArrayList<>();
+        
+        try {
+            String sql = "SELECT * FROM clientes WHERE nome LIKE ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, '%' + nome + '%');
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+                Clientes cliente = new Clientes();
+                
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setBairro(rs.getString("bairro"));
+                cliente.setCidade(rs.getString("cidade"));
+                cliente.setUf(rs.getString("uf"));
+                cliente.setCep(rs.getString("cep"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setEmail(rs.getString("email"));
+                
+                clientes.add(cliente);
+            }
+                    
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+        }
+        
+        return clientes;
+    }
+    
     public boolean excluir(int id) {
         try {
             String sql = "DELETE FROM clientes WHERE id = ?";
