@@ -29,6 +29,7 @@ body, .modal-content {
     border-radius: .25rem;
 }
 
+
 @media (max-width: 576px) { 
     .container .header .col-sm h2 {
         text-align: center;

@@ -1,3 +1,5 @@
+<%@page import = "java.util.ArrayList"%>
+<%@page import = "aplicacao.Produtos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% 
@@ -5,7 +7,12 @@
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
+    
+    
+    
 %>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -77,16 +84,37 @@
                 </div>
             </div>
         </div>
+        <div class = "container">
+            <div class = "row d-flex justify-content-between" >
+                <%
+                    ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
+                    if (produtos == null){
+                        response.sendRedirect("ProdutosController");
+                    }else{
+                        for (int i = 0; i < produtos.size(); i++) {
+                                Produtos aux = produtos.get(i);
+
+                %>
+           
+                <div class = "card mx-1 my-5" style="background-color: Wheat; width: 20rem; font-family: inherit" >
+                    <div class = "card-body">
+                        <h5 class = "card-title mb-4" style="color: black"><%=aux.getNomeProduto()%></h5>
+                        <h6 class = "card-subtitle mb-2" style = "color: OrangeRed">R$<%=aux.getPrecoCompra()%></h6>
+                        <p class = "card-text" style = "color: black"><%=aux.getDescricao()%></p>
+                        
+                    </div>
+                </div>
         
+         
+                <%
+                    }
+                }
+                %>
+            </div>
+        </div>
         <%@include file="scripts.html" %>
         <script src="js/cpf-mask.js"></script>
         
-        <script>
-            $( document ).ready(function() {
-                if ($('#mensagem').text().trim() != "null") {
-                    $('.toast').toast('show');
-                }
-            });
-        </script>
+        
     </body>
 </html>

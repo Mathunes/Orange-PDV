@@ -8,9 +8,9 @@ public class Produtos {
     private double precoCompra;
     private double precoVenda;
     private int quantidadeDisponivel;
-    private char liberadoVenda;
+    private String liberadoVenda;
     private int idCategoria;
-
+    
     public int getId() {
         return id;
     }
@@ -59,11 +59,11 @@ public class Produtos {
         this.quantidadeDisponivel = quantidadeDisponivel;
     }
 
-    public char getLiberadoVenda() {
+    public String getLiberadoVenda() {
         return liberadoVenda;
     }
 
-    public void setLiberadoVenda(char liberadoVenda) {
+    public void setLiberadoVenda(String liberadoVenda) {
         this.liberadoVenda = liberadoVenda;
     }
 
@@ -75,15 +75,6 @@ public class Produtos {
         this.idCategoria = idCategoria;
     }
 
-    public Produtos(int id, String nomeProduto, String descricao, double precoCompra, double precoVenda, int quantidadeDisponivel, char liberadoVenda, int idCategoria) {
-        this.id = id;
-        this.nomeProduto = nomeProduto;
-        this.descricao = descricao;
-        this.precoCompra = precoCompra;
-        this.precoVenda = precoVenda;
-        this.quantidadeDisponivel = quantidadeDisponivel;
-        this.liberadoVenda = liberadoVenda;
-        this.idCategoria = idCategoria;
-    }
+
     
 }
