@@ -60,7 +60,7 @@
                                     String linkEditarCliente = "ClientesController?acao=editar_cliente&id="+aux.getId();
                                     String linkExcluirCliente = "ClientesController?acao=excluir_cliente&id="+aux.getId();
                         %>
-                        <tr>
+                        <tr class="info-usuario">
                             <td><%=aux.getNome()%></td>
                             <td><%=aux.getCpf()%></td>
                             <td>
@@ -70,7 +70,7 @@
                                 <a href="<%=linkEditarCliente%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>
                             </td>
                             <td>
-                                <a href="<%=linkExcluirCliente%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário"></a>
+                                <button class="btn-excluir" name="<%=aux.getNome()%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
                             </td>
                         </tr>
                         <%
@@ -82,6 +82,37 @@
             
         </div>
 
+        <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Excluir cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modal-mensagem"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                        <a href="" id="link-delete">
+                            <button type="button" class="btn btn-primary">Sim</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>            
+                    
         <%@include file="scripts.html" %>
+        <script>            
+            $(document).ready(function(){
+                $(".info-usuario").find("button[class='btn-excluir']").click(function(){
+                    var nome = $(this).attr("name");
+                    var id = $(this).attr("value");
+                    
+                    $('#modal-mensagem').text("Deseja realmente excluir o(a) cliente " + nome + "?");
+                    $('#link-delete').attr("href", "ClientesController?acao=excluir_cliente&id=" + id);
+                });
+            });
+        </script>
     </body>
 </html>

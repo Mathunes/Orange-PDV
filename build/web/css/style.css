@@ -22,6 +22,17 @@ body, .modal-content {
     border-bottom: 0 none;
 }
 
+.modal-footer {
+    border-top: 0 none;
+}
+
+.btn-excluir {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+
 .container-table, .container-table {
     background-color: #FFFFFF;
     padding: 20px;
