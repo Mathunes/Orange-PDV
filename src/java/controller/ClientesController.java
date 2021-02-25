@@ -40,6 +40,41 @@ public class ClientesController extends HttpServlet {
                 mostrarCliente.forward(request, response);
                 break;
                 
+            case "editar_cliente":
+                id = Integer.parseInt(request.getParameter("id"));
+                cliente = dao.getClienteId(id);
+                
+                if (cliente.getId() > 0) {
+                    request.setAttribute("cliente", cliente);
+                    RequestDispatcher editarCliente = request.getRequestDispatcher("/formcliente.jsp");
+                    editarCliente.forward(request, response);
+                } else {
+                    String mensagem = "Erro ao gravar usuário";
+                    request.setAttribute("mensagem", mensagem);
+                    RequestDispatcher editarCliente = getServletContext().getRequestDispatcher("/formcliente.jsp");
+                    editarCliente.forward(request, response);
+                }
+                
+                break;
+            
+            case "cadastrar_cliente":
+                cliente = new Clientes();
+                cliente.setId(0);
+                cliente.setNome("");
+                cliente.setCpf("");
+                cliente.setEndereco("");
+                cliente.setBairro("");
+                cliente.setCidade("");
+                cliente.setUf("");
+                cliente.setCep("");
+                cliente.setTelefone("");
+                cliente.setEmail("");
+                
+                request.setAttribute("cliente", cliente);
+                
+                RequestDispatcher cadastrarCliente = getServletContext().getRequestDispatcher("/formcliente.jsp");
+                cadastrarCliente.forward(request, response);
+                break;
         }
         
     }
@@ -106,9 +141,10 @@ public class ClientesController extends HttpServlet {
             else 
                 mensagem = "Erro ao gravar cliente";
         }
+        System.out.println(mensagem);
         
         request.setAttribute("mensagem", mensagem);
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/aenovocliente.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("aeclientes.jsp");
         rd.forward(request, response);
         
     }

@@ -34,7 +34,7 @@
             </div>
             
             <div class="container-table">
-                <a href="aenovocliente.jsp">
+                <a href="ClientesController?acao=cadastrar_cliente">
                     <button class="btn btn-novo">Novo cliente</button>
                 </a>
                 <table class="table">
@@ -50,9 +50,14 @@
                     <tbody>
                         <%
                             ArrayList<Clientes> clientes = (ArrayList<Clientes>) request.getAttribute("clientes");
-                            for (int i = 0; i < clientes.size(); i++) {
-                                Clientes aux = clientes.get(i);
-                                String linkExibirCliente = "ClientesController?acao=mostrar_cliente&id="+aux.getId();
+                            //Se não houver clientes, pedir para o servidor enviar
+                            if (clientes == null)
+                                response.sendRedirect("ClientesController?acao=mostrar_clientes");
+                            else
+                                for (int i = 0; i < clientes.size(); i++) {
+                                    Clientes aux = clientes.get(i);
+                                    String linkExibirCliente = "ClientesController?acao=mostrar_cliente&id="+aux.getId();
+                                    String linkEditarCliente = "ClientesController?acao=editar_cliente&id="+aux.getId();
                         %>
                         <tr>
                             <td><%=aux.getNome()%></td>
@@ -61,7 +66,7 @@
                                 <a href="<%=linkExibirCliente%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
                             </td>
                             <td>
-                                <a href="#"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>
+                                <a href="<%=linkEditarCliente%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>
                             </td>
                             <td>
                                 <a href="#"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário"></a>

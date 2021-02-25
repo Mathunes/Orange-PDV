@@ -98,7 +98,7 @@ public class ClientesDAO extends HttpServlet {
                         + "(nome, cpf, endereco, bairro, cidade, uf, cep, telefone, email)"
                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             } else {
-                sql = "UPSATE clientes SET "
+                sql = "UPDATE clientes SET "
                         + "nome=?, cpf=?, endereco=?, bairro=?, cidade=?, uf=?, cep=?, telefone=?, email=?"
                         + "WHERE id=?";
             }
