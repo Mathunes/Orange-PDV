@@ -49,7 +49,7 @@ public class ClientesController extends HttpServlet {
                     RequestDispatcher editarCliente = request.getRequestDispatcher("/formcliente.jsp");
                     editarCliente.forward(request, response);
                 } else {
-                    String mensagem = "Erro ao gravar usuário";
+                    String mensagem = "Erro ao gravar cliente";
                     request.setAttribute("mensagem", mensagem);
                     RequestDispatcher editarCliente = getServletContext().getRequestDispatcher("/formcliente.jsp");
                     editarCliente.forward(request, response);
@@ -57,7 +57,14 @@ public class ClientesController extends HttpServlet {
                 
                 break;
             case "excluir_cliente":
-                
+                id = Integer.parseInt(request.getParameter("id"));
+                if (dao.excluir(id))
+                    request.setAttribute("mensagem", "Cliente excluído");
+                else
+                    request.setAttribute("mensagem", "Erro ao excluir cliente");
+                    
+                RequestDispatcher excluirCliente = getServletContext().getRequestDispatcher("/aeclientes.jsp");
+                excluirCliente.forward(request, response);
                 break;
                 
             case "cadastrar_cliente":
@@ -144,10 +151,9 @@ public class ClientesController extends HttpServlet {
             else 
                 mensagem = "Erro ao gravar cliente";
         }
-        System.out.println(mensagem);
         
         request.setAttribute("mensagem", mensagem);
-        RequestDispatcher rd = request.getRequestDispatcher("aeclientes.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/aeclientes.jsp");
         rd.forward(request, response);
         
     }

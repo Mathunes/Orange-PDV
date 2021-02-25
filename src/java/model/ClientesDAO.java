@@ -90,7 +90,7 @@ public class ClientesDAO extends HttpServlet {
     
     public boolean excluir(int id) {
         try {
-            String sql = "DELETE FROM contato WHERE id = ?";
+            String sql = "DELETE FROM clientes WHERE id = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, id);
             ps.execute();
