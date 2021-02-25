@@ -25,7 +25,7 @@
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Buscar produto..." >
+                        <input type="text" class="form-control" placeholder="Buscar cliente..." >
                         <button class="btn " type="button">
                             <img src="assets/imagens/search.svg" alt="Lupa">
                         </button>
@@ -58,8 +58,9 @@
                                     Clientes aux = clientes.get(i);
                                     String linkExibirCliente = "ClientesController?acao=mostrar_cliente&id="+aux.getId();
                                     String linkEditarCliente = "ClientesController?acao=editar_cliente&id="+aux.getId();
-                                    String linkExcluirCliente = "ClientesController?acao=excluir_cliente&id="+aux.getId();
+                                    
                         %>
+                        
                         <tr class="info-usuario">
                             <td><%=aux.getNome()%></td>
                             <td><%=aux.getCpf()%></td>
