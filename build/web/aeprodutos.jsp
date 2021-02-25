@@ -51,7 +51,7 @@
                         <h5 class = "card-title mb-4" style="color: black"><%=aux.getNomeProduto()%></h5>
                         <h6 class = "card-subtitle mb-2" style = "color: OrangeRed">R$<%=aux.getPrecoCompra()%></h6>
                         <p class = "card-text" style = "color: black"><%=aux.getDescricao()%></p>
-                        <button class="btn" style="background-color: OrangeRed; color: Wheat">Vender</button>                        
+                        <a href="aevendas.jsp"><button class="btn" style="background-color: OrangeRed; color: Wheat">Vender</button></a>                     
                     </div>
                 </div>
         
