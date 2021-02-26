@@ -32,7 +32,8 @@ public class ProdutosController extends HttpServlet {
         System.out.println(produtos.size());
         
         
-        if("pv".equals(request.getParameter("produtosVendedor"))){
+        if("pv".equals(request.getParameter("pro"
+                + "dutosVendedor"))){
             RequestDispatcher rd = request.getRequestDispatcher("/aeprodutos.jsp");
             rd.forward(request, response);
         }else{
