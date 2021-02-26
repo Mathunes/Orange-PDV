@@ -31,7 +31,7 @@ public class ClientesDAO extends HttpServlet {
         try {
             Statement stmt = conexao.createStatement();
             
-            ResultSet rs = stmt.executeQuery("SELECT * FROM clientes");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM clientes ORDER BY nome");
             
             while (rs.next()) {
                 
@@ -92,7 +92,7 @@ public class ClientesDAO extends HttpServlet {
         ArrayList<Clientes> clientes = new ArrayList<>();
         
         try {
-            String sql = "SELECT * FROM clientes WHERE nome LIKE ?";
+            String sql = "SELECT * FROM clientes WHERE nome LIKE ? ORDER BY nome";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setString(1, '%' + nome + '%');
             

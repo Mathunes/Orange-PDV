@@ -40,7 +40,7 @@
                 </div>
             </div>
             
-            <div class="container-table">
+            <div class="container-table mb-4">
                 <a href="ClientesController?acao=cadastrar_cliente">
                     <button class="btn btn-novo">Novo cliente</button>
                 </a>
