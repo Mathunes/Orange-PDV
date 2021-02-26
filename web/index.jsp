@@ -40,12 +40,15 @@
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Buscar produto..." >
-                        <button class="btn " type="button">
-                            <img src="assets/imagens/search.svg" alt="Lupa">
-                        </button>
-                    </div>
+                    <form method = "GET" action = "ProdutosController"> 
+                        <input type = "hidden" name = "acao" value = "pesquisar_produtos" required>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name = "nomeProduto" placeholder="Buscar produto..." >
+                            <button class="btn" type="submit">
+                                <img src="assets/imagens/search.svg" alt="Lupa">
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
             
@@ -89,7 +92,7 @@
                 <%
                     ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
                     if (produtos == null){
-                        response.sendRedirect("ProdutosController");
+                        response.sendRedirect("ProdutosController?acao=mostrar_produtos");
                     }else{
                         for (int i = 0; i < produtos.size(); i++) {
                                 Produtos aux = produtos.get(i);

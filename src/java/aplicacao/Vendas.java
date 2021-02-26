@@ -9,6 +9,7 @@ public class Vendas {
     private int idCliente;
     private int idProduto;
     private int idVendedor;
+    
 
     public int getId() {
         return id;
@@ -66,14 +67,6 @@ public class Vendas {
         this.idVendedor = idVendedor;
     }
 
-    public Vendas(int id, int quantidadeVenda, String dataVenda, double valorVenda, int idCliente, int idProduto, int idVendedor) {
-        this.id = id;
-        this.quantidadeVenda = quantidadeVenda;
-        this.dataVenda = dataVenda;
-        this.valorVenda = valorVenda;
-        this.idCliente = idCliente;
-        this.idProduto = idProduto;
-        this.idVendedor = idVendedor;
-    }
+    
     
 }

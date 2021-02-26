@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navmenu">
         <ul class="navbar-nav ms-auto d-flex mb-2 mb-lg-0">
             <li class="nav-item mx-2">
-                <a class="nav-link text-dark" href="ProdutosController?produtosVendedor=pv">Produtos</a>
+                <a class="nav-link text-dark" href="ProdutosController?acao=mostrar_produtos_restrito">Produtos</a>
             </li>
             <li class="nav-item mx-2">
                 <a class="nav-link text-dark" href="aevendas.jsp">Vendas</a>
