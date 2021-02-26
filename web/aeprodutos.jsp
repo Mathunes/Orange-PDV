@@ -24,8 +24,8 @@
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
-                    <form method = "GET" action = "ProdutosController"> 
-                        <input type = "hidden" name = "acao" value = "pesquisar_produtos" required>
+                    <form method = "GET" action = "ProdutosVendedorController"> 
+                        <input type = "hidden" name = "acaoRestrito" value = "pesquisar_produtos_restrito" required>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name = "nomeProduto" placeholder="Buscar produto..." >
                             <button class="btn" type="submit">
@@ -42,7 +42,7 @@
                 <%
                     ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
                     if (produtos == null){
-                        response.sendRedirect("ProdutosController?acao=mostrar_produtos_restrito");
+                        response.sendRedirect("ProdutosVendedorController?acaoRestrito=mostrar_produtos_restrito");
                     }else{
                         for (int i = 0; i < produtos.size(); i++) {
                             Produtos aux = produtos.get(i);
