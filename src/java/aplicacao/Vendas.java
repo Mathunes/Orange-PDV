@@ -65,15 +65,5 @@ public class Vendas {
     public void setIdVendedor(int idVendedor) {
         this.idVendedor = idVendedor;
     }
-
-    public Vendas(int id, int quantidadeVenda, String dataVenda, double valorVenda, int idCliente, int idProduto, int idVendedor) {
-        this.id = id;
-        this.quantidadeVenda = quantidadeVenda;
-        this.dataVenda = dataVenda;
-        this.valorVenda = valorVenda;
-        this.idCliente = idCliente;
-        this.idProduto = idProduto;
-        this.idVendedor = idVendedor;
-    }
     
 }
