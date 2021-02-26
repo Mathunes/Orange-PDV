@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 @WebFilter(filterName = "VerificaSessao", urlPatterns = {"/aeprodutos.jsp", 
     "/aevendas.jsp", "/aeclientes.jsp", "/aenavbar.jsp", "/ClientesController", 
-    "/aecliente.jsp", "/formcliente.jsp"})
+    "/aecliente.jsp", "/formcliente.jsp", "/aevenda.jsp", "/formvenda.jsp"})
 public class VerificaSessao implements Filter {
     
     public void doFilter(ServletRequest request, ServletResponse response,
