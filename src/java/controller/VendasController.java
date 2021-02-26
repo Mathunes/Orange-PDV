@@ -21,6 +21,8 @@ public class VendasController extends HttpServlet {
         VendasDAO dao = new VendasDAO();
         String acao = (String) request.getParameter("acao");
         ArrayList<Vendas> vendas;
+        int id;
+        Vendas venda;
         
         switch(acao) {
             
@@ -29,6 +31,13 @@ public class VendasController extends HttpServlet {
                 request.setAttribute("vendas", vendas);
                 RequestDispatcher mostrarVendas = getServletContext().getRequestDispatcher("/aevendas.jsp");
                 mostrarVendas.forward(request, response);
+                break;
+                
+            case "mostrar_venda":
+                id = Integer.parseInt(request.getParameter("id"));
+                venda = dao.getVendaId(id);
+                request.setAttribute("venda", venda);
+                RequestDispatcher mostrarVenda = getServletContext().getRequestDispatcher("/aevenda.jsp");
                 break;
             
         }
