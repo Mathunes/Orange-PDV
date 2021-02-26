@@ -52,7 +52,7 @@ public class VendasDAO extends HttpServlet {
                 venda.setIdVendedor(rs.getInt("v.id_vendedor"));
                 venda.setNomeCliente(rs.getString("c.nome"));
                 venda.setNomeProduto(rs.getString("p.nome_produto"));
-                venda.setNomeVendedor(rs.getString("v.nome"));
+                venda.setNomeVendedor(rs.getString("u.nome"));
                 venda.setQuantidadeVenda(rs.getInt("v.quantidade_venda"));
                 venda.setValorVenda(rs.getDouble("v.valor_venda"));
                 

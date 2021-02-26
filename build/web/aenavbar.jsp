@@ -15,7 +15,7 @@
                 <a class="nav-link text-dark" href="aeprodutos.jsp">Produtos</a>
             </li>
             <li class="nav-item mx-2">
-                <a class="nav-link text-dark" href="aevendas.jsp">Vendas</a>
+                <a class="nav-link text-dark" href="VendasController?acao=mostrar_vendas">Vendas</a>
             </li>
             <li class="nav-item mx-2">
                 <a class="nav-link text-dark" href="ClientesController?acao=mostrar_clientes">Clientes</a>
