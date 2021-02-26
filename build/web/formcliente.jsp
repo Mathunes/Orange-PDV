@@ -22,7 +22,7 @@
             
             <h2>Área restrita - Novo cliente</h2>
             
-            <form class="mt-4" method="POST" action="ClientesController">
+            <form class="mt-4" id="form-cliente" method="POST" action="ClientesController">
                 <input type="hidden" name="id" value="<%=cliente.getId()%>" required="">
                 <div class="row">
                     <div class="col-md mb-4">
@@ -72,6 +72,17 @@
                 if ($('#mensagem').text().trim() != "null") {
                     $('.toast').toast('show');
                 }
+                
+                $('#form-cliente').submit(() => {
+                    event.preventDefault();
+                    if (validaCPF($('.cpf').val())) {
+                        $('#form-cliente').unbind('submit').submit();
+                    } else {
+                        alert("Informe o cpf correto");
+                    }
+                       
+                });
+                
             });
         </script>
     </body>
