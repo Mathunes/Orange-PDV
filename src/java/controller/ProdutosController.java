@@ -1,3 +1,4 @@
+
 package controller;
 
 import aplicacao.Produtos;
@@ -13,42 +14,39 @@ import model.ProdutosDAO;
 
 @WebServlet(name = "ProdutosController", urlPatterns = {"/ProdutosController"})
 public class ProdutosController extends HttpServlet {
-    
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-    
+        //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setHeader("Expires", "0"); // Proxies.
         
         ProdutosDAO dao = new ProdutosDAO();
         ArrayList<Produtos> produtos = dao.getProdutos();
         request.setAttribute("produtos", produtos);
+        
+        
+        String acaoRestrito = (String)request.getParameter("acaoRestrito");
+        
+        switch(acaoRestrito){
             
-        
-        
-        String acao = (String)request.getParameter("acao");
-        
-        switch(acao){
-            
-            case "mostrar_produtos":
-                
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-                rd.forward(request, response);
-                
-                break;
+            case "mostrar_produtos_restrito":
 
-            case "pesquisar_produtos":
-                String nomeProduto = request.getParameter("nomeProduto");
-                produtos = dao.getNomeProduto(nomeProduto);
-                request.setAttribute("produtos", produtos);
-                RequestDispatcher mostrarNomeProduto = getServletContext().getRequestDispatcher("/index.jsp");
-                mostrarNomeProduto.forward(request, response);
-                break;
-        }
-  
-        
-  
+                    RequestDispatcher rdRestrito = request.getRequestDispatcher("/aeprodutos.jsp");
+                    rdRestrito.forward(request, response);
+                    break;
+
+                case "pesquisar_produtos_restrito":
+                    String nomeProduto = request.getParameter("nomeProduto");
+                    produtos = dao.getNomeProduto(nomeProduto);
+                    request.setAttribute("produtos", produtos);
+                    RequestDispatcher mostrarNomeProduto = getServletContext().getRequestDispatcher("/aeprodutos.jsp");
+                    mostrarNomeProduto.forward(request, response);
+                    break;
+            }
     }
 
     @Override

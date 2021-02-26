@@ -64,7 +64,7 @@ public class UsuariosController extends HttpServlet {
             session.setAttribute("logado", "ok");
             session.setAttribute("usuario", usuario);
 
-            response.sendRedirect("ProdutosVendedorController?acaoRestrito=mostrar_produtos_restrito");
+            response.sendRedirect("ProdutosController?acaoRestrito=mostrar_produtos_restrito");
             
         } else {
             
