@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="aplicacao.Vendas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="infousuario.jsp" %>
 <% 
@@ -38,30 +40,45 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">#</th>
                             <th scope="col">Nome cliente</th>
                             <th scope="col">Nome produto</th>
-                            <th scope="col">Valor</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                            ArrayList<Vendas> vendas = (ArrayList<Vendas>) request.getAttribute("vendas");
+                            //Se não houver vendas, pedir para o servidor enviar
+                            if (vendas == null)
+                                response.sendRedirect("VendasController?acao=mostrar_vendas");
+                            else
+                                for (int i = 0; i < vendas.size(); i++) {
+                                    Vendas venda = vendas.get(i);
+                                    String linkExibirVenda = "VendasController?acao=mostrar_vendas&id="+venda.getId();
+                                    String linkEditarVenda = "VendasController?acao=editar_vendas&id="+venda.getId();
+                            
+                        %>                        
+                        
                         <tr class="info-usuario">
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><%=venda.getId()%></td>
+                            <td><%=venda.getNomeCliente()%></td>
+                            <td><%=venda.getNomeProduto()%></td>
                             <td>
-                                <a href="aevenda.jsp"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
+                                <a href="<%=linkExibirVenda%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
                             </td>
                             <td>
-                                <a href="formvenda.jsp"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>
+                                <a href="<%=linkEditarVenda%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>
                             </td>
                             <td>
-                                <button class="btn-excluir" name="" value=""><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                                <button class="btn-excluir" name="<%=venda.getId()%>" value="<%=venda.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
                             </td>
                         </tr>
-                        
+                        <%
+                            }
+                        %>
                     </tbody>
                 </table>
             </div>
