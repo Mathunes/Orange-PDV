@@ -20,6 +20,21 @@
         
         <div class="container">
             
+            <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center w-100 position-absolute top-0 end-0 mt-2">
+                <div class="toast-container">
+                    <div class="toast text-white bg-info" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                <span id="mensagem">
+                                    Informe um CPF válido
+                                </span>
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                
             <h2>Área restrita - Clientes</h2>
             
             <form class="mt-4" id="form-cliente" method="POST" action="ClientesController">
@@ -70,16 +85,13 @@
         <script src="js/valida-cpf.js"></script>
         <script>
             $( document ).ready(function() {
-                if ($('#mensagem').text().trim() != "null") {
-                    $('.toast').toast('show');
-                }
                 
                 $('#form-cliente').submit(() => {
                     event.preventDefault();
                     if (validaCPF($('.cpf').val())) {
                         $('#form-cliente').unbind('submit').submit();
                     } else {
-                        alert("Informe o cpf correto");
+                        $('.toast').toast('show');
                     }
                        
                 });
