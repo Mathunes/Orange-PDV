@@ -68,17 +68,17 @@
                                     
                         %>
                         
-                        <tr class="info-usuario">
+                        <tr class="info-cliente">
                             <td><%=aux.getNome()%></td>
                             <td><%=aux.getCpf()%></td>
                             <td>
-                                <a href="<%=linkExibirCliente%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuário"></a>
+                                <a href="<%=linkExibirCliente%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir cliente"></a>
                             </td>
                             <td>
-                                <a href="<%=linkEditarCliente%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuário"></a>
+                                <a href="<%=linkEditarCliente%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar cliente"></a>
                             </td>
                             <td>
-                                <button class="btn-excluir" name="<%=aux.getNome()%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuário" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                                <button class="btn-excluir" name="<%=aux.getNome()%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir cliente" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
                             </td>
                         </tr>
                         <%
@@ -113,7 +113,7 @@
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
-                $(".info-usuario").find("button[class='btn-excluir']").click(function(){
+                $(".info-cliente").find("button[class='btn-excluir']").click(function(){
                     var nome = $(this).attr("name");
                     var id = $(this).attr("value");
                     
