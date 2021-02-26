@@ -7,8 +7,35 @@ public class Vendas {
     private String dataVenda;
     private double valorVenda;
     private int idCliente;
+    private String nomeCliente;
     private int idProduto;
+    private String nomeProduto;
     private int idVendedor;
+    private String nomeVendedor;
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+    
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public String getNomeVendedor() {
+        return nomeVendedor;
+    }
+
+    public void setNomeVendedor(String nomeVendedor) {
+        this.nomeVendedor = nomeVendedor;
+    }
 
     public int getId() {
         return id;

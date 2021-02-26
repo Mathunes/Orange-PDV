@@ -32,16 +32,35 @@ public class VendasDAO extends HttpServlet {
             Statement stmt = conexao.createStatement();
             
             //PARA FAZER: RECUPERAR DADOS DE FORMA ORDENADA
-            ResultSet rs = stmt.executeQuery("SELECT * FROM vendas as v, clientes as c WHERE v.id_cliente = c.id");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM "
+                    + "vendas as v, "
+                    + "clientes as c, "
+                    + "produtos as p, "
+                    + "usuarios as u"
+                + " WHERE "
+                    + "v.id_cliente = c.id AND "
+                    + "v.id_produto = p.id AND "
+                    + "v.id_vendedor = u.id");
             
             while (rs.next()) {
                 Vendas venda = new Vendas();
                 
-                venda.setId(rs.getInt("id"));
+                venda.setDataVenda(rs.getString("v.data_venda"));
+                venda.setId(rs.getInt("v.id"));
+                venda.setIdCliente(rs.getInt("v.id_cliente"));
+                venda.setIdProduto(rs.getInt("v.id_produto"));
+                venda.setIdVendedor(rs.getInt("v.id_vendedor"));
+                venda.setNomeCliente(rs.getString("c.nome"));
+                venda.setNomeProduto(rs.getString("p.nome_produto"));
+                venda.setNomeVendedor(rs.getString("v.nome"));
+                venda.setQuantidadeVenda(rs.getInt("v.quantidade_venda"));
+                venda.setValorVenda(rs.getDouble("v.valor_venda"));
+                
+                vendas.add(venda);
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(VendasDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro de SQL: " + ex.getMessage());
         }
         
         return vendas;
