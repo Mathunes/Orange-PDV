@@ -79,7 +79,7 @@ public class VendasDAO extends HttpServlet {
                 + " WHERE "
                     + "v.id_cliente = c.id AND "
                     + "v.id_produto = p.id AND "
-                    + "v.id_vendedor = u.id AND"
+                    + "v.id_vendedor = u.id AND "
                     + "v.id = ?";
             
             PreparedStatement ps = conexao.prepareStatement(sql);

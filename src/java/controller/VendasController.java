@@ -38,6 +38,7 @@ public class VendasController extends HttpServlet {
                 venda = dao.getVendaId(id);
                 request.setAttribute("venda", venda);
                 RequestDispatcher mostrarVenda = getServletContext().getRequestDispatcher("/aevenda.jsp");
+                mostrarVenda.forward(request, response);
                 break;
             
         }

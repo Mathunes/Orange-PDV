@@ -57,7 +57,7 @@
                             else
                                 for (int i = 0; i < vendas.size(); i++) {
                                     Vendas venda = vendas.get(i);
-                                    String linkExibirVenda = "VendasController?acao=mostrar_vendas&id="+venda.getId();
+                                    String linkExibirVenda = "VendasController?acao=mostrar_venda&id="+venda.getId();
                                     String linkEditarVenda = "VendasController?acao=editar_vendas&id="+venda.getId();
                             
                         %>                        

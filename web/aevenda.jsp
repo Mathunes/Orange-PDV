@@ -1,9 +1,11 @@
+<%@page import="aplicacao.Vendas"%>
 <%@include file="infousuario.jsp" %>
 <% 
     //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
+    Vendas venda = (Vendas)request.getAttribute("venda");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,44 +26,44 @@
                     <table class="table mt-2">
                         <tbody>
                             <tr>
-                                <td><b>Id</b></td>
-                                <td></td>
+                                <td><b>Id da venda</b></td>
+                                <td><%=venda.getId()%></td>
                             </tr>
                             <tr>
-                                <td><b>Quantidade venda</b></td>
-                                <td></td>
+                                <td><b>Quant. de produtos</b></td>
+                                <td><%=venda.getQuantidadeVenda()%></td>
                             </tr>
                             <tr>
-                                <td><b>Data venda</b></td>
-                                <td></td>
+                                <td><b>Data da venda</b></td>
+                                <td><%=venda.getDataVenda()%></td>
                             </tr>
                             <tr>
-                                <td><b>Valor venda</b></td>
-                                <td></td>
+                                <td><b>Valor da venda</b></td>
+                                <td>R$ <%=Double.toString(venda.getValorVenda()).replace(".", ",")%></td>
                             </tr>
                             <tr>
-                                <td><b>ID cliente</b></td>
-                                <td></td>
+                                <td><b>ID do cliente</b></td>
+                                <td><%=venda.getIdCliente()%></td>
                             </tr>
                             <tr>
-                                <td><b>Nome cliente</b></td>
-                                <td></td>
+                                <td><b>Nome do cliente</b></td>
+                                <td><%=venda.getNomeCliente()%></td>
                             </tr>
                             <tr>
-                                <td><b>ID produto</b></td>
-                                <td></td>
+                                <td><b>ID do produto</b></td>
+                                <td><%=venda.getIdProduto()%></td>
                             </tr>
                             <tr>
-                                <td><b>Nome produto</b></td>
-                                <td></td>
+                                <td><b>Nome do produto</b></td>
+                                <td><%=venda.getNomeProduto()%></td>
                             </tr>
                             <tr>
-                                <td><b>ID vendedor</b></td>
-                                <td></td>
+                                <td><b>ID do vendedor</b></td>
+                                <td><%=venda.getIdVendedor()%></td>
                             </tr>
                             <tr>
-                                <td><b>Nome vendedor</b></td>
-                                <td></td>
+                                <td><b>Nome do vendedor</b></td>
+                                <td><%=venda.getNomeVendedor()%></td>
                             </tr>
                         </tbody>
                     </table>
