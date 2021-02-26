@@ -159,7 +159,10 @@ public class ClientesController extends HttpServlet {
             else 
                 mensagem = "Erro ao gravar cliente";
         }
-        
+        //Enviando relação de clientes para aeclientes.jsp
+        ArrayList<Clientes> clientes;       
+        clientes = dao.getClientes();
+        request.setAttribute("clientes", clientes);
         request.setAttribute("mensagem", mensagem);
         RequestDispatcher rd = request.getRequestDispatcher("/aeclientes.jsp");
         rd.forward(request, response);

@@ -10,7 +10,7 @@
     </button>
       
     <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto d-flex mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto d-flex mb-2 mb-lg-0" style="z-index: 1000">
             <li class="nav-item mx-2">
                 <a class="nav-link text-dark" href="aeprodutos.jsp">Produtos</a>
             </li>

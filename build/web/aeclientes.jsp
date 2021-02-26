@@ -18,6 +18,9 @@
         <%@include file="aenavbar.jsp" %>
         
         <div class="container">
+            <!-- Mensagens  -->
+            <%@include file="toastmensagem.jsp" %>
+            
             <div class="row header">
                 <div class="col-sm">
                     <h2>Área restrita - Clientes</h2>
@@ -117,6 +120,16 @@
                     $('#modal-mensagem').text("Deseja realmente excluir o(a) cliente " + nome + "?");
                     $('#link-delete').attr("href", "ClientesController?acao=excluir_cliente&id=" + id);
                 });
+            });
+        </script>
+        
+        <script>
+            $( document ).ready(function() {
+                if ($('#mensagem').text().trim() != "null") {
+                    $('.toast').toast('show');
+                } else {
+                    $('.toast').toast('hide');
+                }
             });
         </script>
     </body>

@@ -40,6 +40,10 @@ body, .modal-content {
     border-radius: .25rem;
 }
 
+ul {
+    z-index: 10000;
+}
+    
 @media (max-width: 576px) { 
     .container .header .col-sm h2 {
         text-align: center;

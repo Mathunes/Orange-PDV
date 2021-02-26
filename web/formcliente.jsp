@@ -20,7 +20,7 @@
         
         <div class="container">
             
-            <h2>Área restrita - Novo cliente</h2>
+            <h2>Área restrita - Clientes</h2>
             
             <form class="mt-4" id="form-cliente" method="POST" action="ClientesController">
                 <input type="hidden" name="id" value="<%=cliente.getId()%>" required="">
@@ -67,6 +67,7 @@
         
         <%@include file="scripts.html" %>
         <script src="js/mascaras.js"></script>
+        <script src="js/valida-cpf.js"></script>
         <script>
             $( document ).ready(function() {
                 if ($('#mensagem').text().trim() != "null") {
