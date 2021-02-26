@@ -34,7 +34,7 @@
             </div>
 
             <div class="container-table mb-4">
-                <a href="formvenda.jsp">
+                <a href="VendasController?acao=cadastrar_venda">
                     <button class="btn btn-novo">Nova venda</button>
                 </a>
                 <table class="table">

@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="aplicacao.Clientes"%>
+<%@page import="aplicacao.Vendas"%>
 <%@include file="infousuario.jsp" %>
 <% 
     //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
@@ -5,6 +8,9 @@
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
     
+    Vendas venda = (Vendas)request.getAttribute("venda");
+    ArrayList<Clientes> clientes = (ArrayList<Clientes>)request.getAttribute("clientes");
+    //ArrayList<Produtos> produtos = (ArrayList<Produtos>)request.getAttribute("produtos");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,13 +37,20 @@
                     <div class="col-md mb-4">
                         <select class="form-select" aria-label="Nome cliente" name="Nome do cliente" required="">
                             <option selected>Cliente</option>
-                            <option value="1">One</option>
+                            <%
+                                for (int i = 0; i < clientes.size(); i++) {
+                                    Clientes cliente = clientes.get(i);
+                            %>
+                                    <option value="<%=cliente.getId() %>"><%=cliente.getNome() %></option>
+                            <%
+                                }
+                            %>                                
                         </select>
                     </div>
                 <div class="row">
                     <div class="col-md mb-4">
                         <label for="quantidade" class="form-label">Quantidade</label>
-                        <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" name="quantidade" value="" id="quantidade" min="1" required>
+                        <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" name="quantidade" value="<%=venda.getQuantidadeVenda() %>" id="quantidade" min="1" required>
                     </div>
                     <div class="col-md mb-4">
                         <label for="desconto" class="form-label">Desconto</label>
