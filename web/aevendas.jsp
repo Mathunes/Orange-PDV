@@ -25,7 +25,7 @@
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Buscar vendas..." >
+                        <input type="text" class="form-control" placeholder="Buscar venda..." >
                         <button class="btn " type="button">
                             <img src="assets/imagens/search.svg" alt="Lupa">
                         </button>
