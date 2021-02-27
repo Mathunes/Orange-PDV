@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/css/style.css</file>
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/src/java/model/ClientesDAO.java</file>
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/src/java/controller/ClientesController.java</file>
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/toastmensagem.jsp</file>
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/src/java/controller/VerificaSessao.java</file>
             <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/aenavbar.jsp</file>
             <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/index.jsp</file>
-            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/src/java/controller/UsuariosController.java</file>
-            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/verificasessao.jsp</file>
             <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/aeclientes.jsp</file>
-            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/aeprodutos.jsp</file>
-            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/aevendas.jsp</file>
-            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/head.html</file>
         </group>
     </open-files>
 </project-private>

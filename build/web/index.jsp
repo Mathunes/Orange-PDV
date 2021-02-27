@@ -79,12 +79,14 @@
         </div>
         
         <%@include file="scripts.html" %>
-        <script src="js/cpf-mask.js"></script>
+        <script src="js/mascaras.js"></script>
         
         <script>
             $( document ).ready(function() {
                 if ($('#mensagem').text().trim() != "null") {
                     $('.toast').toast('show');
+                } else {
+                    $('.toast').toast('hide');
                 }
             });
         </script>

@@ -10,7 +10,7 @@
     </button>
       
     <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto d-flex mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto d-flex mb-2 mb-lg-0" style="z-index: 1000">
             <li class="nav-item mx-2">
                 <a class="nav-link text-dark" href="aeprodutos.jsp">Produtos</a>
             </li>
@@ -18,7 +18,7 @@
                 <a class="nav-link text-dark" href="aevendas.jsp">Vendas</a>
             </li>
             <li class="nav-item mx-2">
-                <a class="nav-link text-dark" href="ClientesController?acao=mostrar">Clientes</a>
+                <a class="nav-link text-dark" href="ClientesController?acao=mostrar_clientes">Clientes</a>
             </li>
             <li class="nav-item ms-2">
                 <form method="POST" action="UsuariosController">
