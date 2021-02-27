@@ -1,11 +1,11 @@
-<%@page import="aplicacao.Clientes"%>
+<%@page import="aplicacao.Vendas"%>
 <%@include file="infousuario.jsp" %>
 <% 
     //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
-    Clientes cliente = (Clientes)request.getAttribute("cliente");
+    Vendas venda = (Vendas)request.getAttribute("venda");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,59 +16,59 @@
     </head>
     <body>
         <%@include file="aenavbar.jsp" %>
-        
         <div class="container">
-            <h2>Área restrita - Visualizar cliente</h2>
+            <h2>Área restrita - Visualizar venda</h2>
             
             <div class="container-info">
-                <a href="ClientesController?acao=mostrar_clientes">
+                <a href="aevendas.jsp">
                     <button class="btn btn-voltar">Voltar</button>
                 </a>
                     <table class="table mt-2">
                         <tbody>
                             <tr>
-                                <td><b>Id</b></td>
-                                <td><%= cliente.getId() %></td>
+                                <td><b>Id da venda</b></td>
+                                <td><%=venda.getId()%></td>
                             </tr>
                             <tr>
-                                <td><b>Nome</b></td>
-                                <td><%= cliente.getNome() %></td>
+                                <td><b>Quant. de produtos</b></td>
+                                <td><%=venda.getQuantidadeVenda()%></td>
                             </tr>
                             <tr>
-                                <td><b>CPF</b></td>
-                                <td><%= cliente.getCpf() %></td>
+                                <td><b>Data da venda</b></td>
+                                <td><%=venda.getDataVenda()%></td>
                             </tr>
                             <tr>
-                                <td><b>Endereço</b></td>
-                                <td><%= cliente.getEndereco() %></td>
+                                <td><b>Valor da venda</b></td>
+                                <td>R$ <%=Double.toString(venda.getValorVenda()).replace(".", ",")%></td>
                             </tr>
                             <tr>
-                                <td><b>Bairro</b></td>
-                                <td><%= cliente.getBairro() %></td>
+                                <td><b>ID do cliente</b></td>
+                                <td><%=venda.getIdCliente()%></td>
                             </tr>
                             <tr>
-                                <td><b>Cidade</b></td>
-                                <td><%= cliente.getCidade() %></td>
+                                <td><b>Nome do cliente</b></td>
+                                <td><%=venda.getNomeCliente()%></td>
                             </tr>
                             <tr>
-                                <td><b>UF</b></td>
-                                <td><%= cliente.getUf() %></td>
+                                <td><b>ID do produto</b></td>
+                                <td><%=venda.getIdProduto()%></td>
                             </tr>
                             <tr>
-                                <td><b>CEP</b></td>
-                                <td><%= cliente.getCep() %></td>
+                                <td><b>Nome do produto</b></td>
+                                <td><%=venda.getNomeProduto()%></td>
                             </tr>
                             <tr>
-                                <td><b>Telefone</b></td>
-                                <td><%= cliente.getTelefone() %></td>
+                                <td><b>ID do vendedor</b></td>
+                                <td><%=venda.getIdVendedor()%></td>
                             </tr>
                             <tr>
-                                <td><b>Email</b></td>
-                                <td><%= cliente.getEmail() %></td>
+                                <td><b>Nome do vendedor</b></td>
+                                <td><%=venda.getNomeVendedor()%></td>
                             </tr>
                         </tbody>
                     </table>
             </div>
+            
         </div>
         
         <%@include file="scripts.html" %>
