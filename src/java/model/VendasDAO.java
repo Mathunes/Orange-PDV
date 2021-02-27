@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
@@ -66,7 +64,7 @@ public class VendasDAO extends HttpServlet {
         
         return vendas;
     }
-
+    
     public Vendas getVendaId(int id) {
         Vendas venda = new Vendas();
         
