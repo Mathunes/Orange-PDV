@@ -1,3 +1,4 @@
+<%@page import="java.util.Arrays"%>
 <%@page import = "java.util.ArrayList"%>
 <%@page import = "aplicacao.Produtos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -93,9 +94,10 @@
                     ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
                     if (produtos == null){
                         response.sendRedirect("ProdutosControllerClientes?acao=mostrar_produtos");
-                    }else{
+                    }else{                    
                         for (int i = 0; i < produtos.size(); i++) {
-                                Produtos aux = produtos.get(i);
+                            Produtos aux = produtos.get(i);
+                            if(aux.getLiberadoVenda().equals("S") && aux.getQuantidadeDisponivel() > 0){
 
                 %>
            
@@ -104,12 +106,14 @@
                         <h5 class = "card-title mb-4" style="color: black"><%=aux.getNomeProduto()%></h5>
                         <h6 class = "card-subtitle mb-2" style = "color: OrangeRed">R$<%=aux.getPrecoCompra()%></h6>
                         <p class = "card-text" style = "color: black"><%=aux.getDescricao()%></p>
+                        <p class = "card-text" style = "color: black; float:right">Quantidade: <%=aux.getQuantidadeDisponivel()%></p>
                         
                     </div>
                 </div>
         
          
                 <%
+                        }
                     }
                 }
                 %>

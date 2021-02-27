@@ -1,3 +1,4 @@
+<%@page import="java.util.Arrays"%>
 <%@page import = "java.util.ArrayList"%>
 <%@page import = "aplicacao.Produtos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -41,13 +42,14 @@
             <div class = "row d-flex justify-content-between" >
                 <%
                     ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
+                    
                     if (produtos == null){
                         response.sendRedirect("ProdutosController?acaoRestrito=mostrar_produtos_restrito");
                     }else{
                         for (int i = 0; i < produtos.size(); i++) {
                             Produtos aux = produtos.get(i);
                             if(aux.getLiberadoVenda().equals("S") && aux.getQuantidadeDisponivel() > 0){                               
-%>
+                %>
            
                 <div class = "card mx-1 my-5" style="background-color: Wheat; width: 20rem; font-family: inherit" >
                     <div class = "card-body" id = "cardsProd" >

@@ -4,6 +4,7 @@ package controller;
 import aplicacao.Produtos;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +28,7 @@ public class ProdutosController extends HttpServlet {
         ProdutosDAO dao = new ProdutosDAO();
         ArrayList<Produtos> produtos = dao.getProdutos();
         request.setAttribute("produtos", produtos);
-        
+
         
         String acaoRestrito = (String)request.getParameter("acaoRestrito");
         

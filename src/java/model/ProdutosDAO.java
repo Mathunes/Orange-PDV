@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +35,7 @@ public class ProdutosDAO extends HttpServlet {
             try {
                 Statement stmt = conexao.createStatement();
 
-                ResultSet rs = stmt.executeQuery("SELECT * FROM produtos");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM produtos ORDER BY nome_produto");
 
                 while (rs.next()) {
 
@@ -59,7 +60,8 @@ public class ProdutosDAO extends HttpServlet {
             } catch (SQLException ex) {
                 System.out.println("Erro de SQL: " + ex.getMessage());
             }
-
+            
+            
             return produtos;
         }
         
@@ -67,7 +69,7 @@ public class ProdutosDAO extends HttpServlet {
         ArrayList<Produtos> produtos = new ArrayList<>();
         
             try {
-                String sql = "SELECT * FROM produtos WHERE nome_produto LIKE ?";
+                String sql = "SELECT * FROM produtos WHERE nome_produto LIKE ? ORDER BY nome_produto";
                 PreparedStatement ps = conexao.prepareStatement(sql);
                 ps.setString(1, '%' + nomeProduto + '%');
         
