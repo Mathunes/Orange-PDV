@@ -29,28 +29,30 @@
             
             <h2>Área restrita - Venda</h2>
             
-            <form class="mt-4" id="form-cliente" method="POST" action="">
+            <form class="mt-4" id="form-cliente" method="POST" action="VendasController">
+                
                 <input type="hidden" name="idProduto" value="<%=produto.getId() %>" required="">
+                <input type="hidden" name="idVendedor" value="<%=usuario.getId() %>" required="">
+                <input type="hidden" name="dataVenda" id="dataVenda" value="" required="">
+                <div class="col-md mb-4">
                     <div class="col-md mb-4">
-                        <div class="col-md mb-4">
-                            <label for="nomeProduto" class="form-label">Nome produto</label>
-                            <input type="text" class="form-control" placeholder="Nome produto" aria-label="Nome produto" name="nomeProduto" value="<%=produto.getNomeProduto() %>" id="nomeProduto" required disabled>
-                        </div>
+                        <label for="nomeProduto" class="form-label">Nome produto</label>
+                        <input type="text" class="form-control" placeholder="Nome produto" aria-label="Nome produto" name="nomeProduto" value="<%=produto.getNomeProduto() %>" id="nomeProduto" required disabled>
                     </div>
-                    <div class="col-md mb-4">
-                        <label for="nomeCliente" class="form-label">Nome cliente</label>
-                        <select class="form-select" aria-label="Nome cliente" name="Nome do cliente" id="nomeCliente" required="">
-                            <option selected>Cliente</option>
-                            <%
-                                for (int i = 0; i < clientes.size(); i++) {
-                                    Clientes cliente = clientes.get(i);
-                            %>
-                                    <option value="<%=cliente.getId() %>"><%=cliente.getNome() %> - <%=cliente.getCpf() %></option>
-                            <%
-                                }
-                            %>
-                        </select>
-                    </div>
+                </div>
+                <div class="col-md mb-4">
+                    <label for="nomeCliente" class="form-label">Nome cliente</label>
+                    <select class="form-select" aria-label="Nome cliente" name="idCliente" id="nomeCliente" required="">
+                        <%
+                            for (int i = 0; i < clientes.size(); i++) {
+                                Clientes cliente = clientes.get(i);
+                        %>
+                                <option value="<%=cliente.getId() %>"><%=cliente.getNome() %> - <%=cliente.getCpf() %></option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </div>
                 <div class="row">
                     <div class="col-md mb-4">
                         <label for="quantidade" class="form-label">Quantidade</label>
@@ -68,7 +70,7 @@
                     </div>
                     <div class="col-md mb-4">
                         <label for="valorTotal" class="form-label">Valor total</label>
-                        <input type="number" class="form-control" placeholder="Valor total" aria-label="Valor total" name="valorTotal" value="" id="valorTotal" disabled="" required>
+                        <input type="number" class="form-control" placeholder="Valor total" aria-label="Valor total" name="valorVenda" value="" id="valorTotal" disabled="" required>
                     </div>
                 </div>
                 
@@ -80,6 +82,8 @@
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
+                $('#dataVenda').val(new Date().toISOString().slice(0, 10));
+                
                 $('#quantidade').change(() => {
                     $('#desconto').val("0");
                     $('#valorTotal').val("");
