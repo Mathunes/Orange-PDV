@@ -102,6 +102,33 @@ public class ProdutosDAO extends HttpServlet {
 
             return produtos;
         }
-
+        
+    public Produtos getProdutoID(int id) {
+        Produtos produto = new Produtos();
+        
+        try {
+            String sql = "SELECT * FROM produtos WHERE id = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                produto.setId(rs.getInt("id"));
+                produto.setNomeProduto(rs.getString("nome_produto"));
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setPrecoCompra(rs.getDouble("preco_compra"));
+                produto.setPrecoVenda(rs.getDouble("preco_venda"));
+                produto.setQuantidadeDisponivel(rs.getInt("quantidade_disponível"));
+                produto.setLiberadoVenda(rs.getString("liberado_venda"));
+                produto.setIdCategoria(rs.getInt("id_categoria"));
+            }
+                    
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+        }
+        
+        return produto;
+    }
 
 }

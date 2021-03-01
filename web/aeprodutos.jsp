@@ -57,7 +57,9 @@
                         <h6 class = "card-subtitle mb-2" style = "color: OrangeRed">R$<%=aux.getPrecoCompra()%></h6>
                         <p class = "card-text" style = "color: black"><%=aux.getDescricao()%></p>
                         <p class = "card-text" style = "color: black; float:right">Quantidade: <%=aux.getQuantidadeDisponivel()%></p>
-                        <a href="aevendas.jsp"><button class="btn" style="background-color: OrangeRed; color: Wheat">Vender</button></a>                     
+                        <a href="VendasController?acao=cadastrar_venda&produto=<%=aux.getId() %>">
+                            <button class="btn" style="background-color: OrangeRed; color: Wheat">Vender</button>
+                        </a>                     
                     </div>
                 </div>
         

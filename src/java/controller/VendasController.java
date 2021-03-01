@@ -1,6 +1,7 @@
 package controller;
 
 import aplicacao.Clientes;
+import aplicacao.Produtos;
 import aplicacao.Vendas;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.ClientesDAO;
 import model.VendasDAO;
+import model.ProdutosDAO;
 
 @WebServlet(name = "VendasController", urlPatterns = {"/VendasController"})
 public class VendasController extends HttpServlet {
@@ -22,12 +24,15 @@ public class VendasController extends HttpServlet {
              
         VendasDAO daoVendas = new VendasDAO();
         ClientesDAO daoClientes = new ClientesDAO();
+        ProdutosDAO daoProdutos = new ProdutosDAO();
+        
         String acao = (String) request.getParameter("acao");
         ArrayList<Vendas> vendas;
         int id;
         Vendas venda;
         
         ArrayList<Clientes> clientes;
+        ArrayList<Produtos> produtos;
         
         switch(acao) {
             
@@ -47,11 +52,17 @@ public class VendasController extends HttpServlet {
                 break;
                 
             case "cadastrar_venda":
+                int idProduto = Integer.parseInt(request.getParameter("produto"));
+                if (!(idProduto > 0))
+                    idProduto = 0;
+                
+                Produtos produto = daoProdutos.getProdutoID(idProduto);
+                
                 venda = new Vendas();
                 
                 venda.setId(0);
                 venda.setIdCliente(0);
-                venda.setIdProduto(0);
+                venda.setIdProduto(idProduto);
                 venda.setIdVendedor(0);
                 venda.setNomeCliente("");
                 venda.setNomeProduto("");
@@ -61,10 +72,9 @@ public class VendasController extends HttpServlet {
                 venda.setDataVenda("");
                 
                 clientes = daoClientes.getClientes();
-                request.setAttribute("clientes", clientes);
                 
                 request.setAttribute("venda", venda);
-                //request.setAttribute("produtos", produtos);
+                request.setAttribute("produto", produto);
                 request.setAttribute("clientes", clientes);
                 
                 RequestDispatcher cadastrarVenda = getServletContext().getRequestDispatcher("/formvenda.jsp");
