@@ -104,4 +104,43 @@ public class VendasDAO extends HttpServlet {
         
         return venda;
     }
+
+    public boolean gravar(Vendas venda) {
+        
+        try {
+            String sql;
+            
+            if (venda.getId() == 0) {
+                sql = "INSERT INTO vendas "
+                        + "(quantidade_venda, data_venda, valor_venda, id_cliente, id_produto, id_vendedor) "
+                        + "VALUES (?, ?, ?, ?, ?, ?)";
+            } else {
+                sql = "UPDATE clientes SET "
+                        + "nome=?, cpf=?, endereco=?, bairro=?, cidade=?, uf=?, cep=?, telefone=?, email=?"
+                        + "WHERE id=?";
+            }
+            
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, venda.getQuantidadeVenda());
+            ps.setString(2, venda.getDataVenda());
+            ps.setDouble(3, venda.getValorVenda());
+            ps.setInt(4, venda.getIdCliente());
+            ps.setInt(5, venda.getIdProduto());
+            ps.setInt(6, venda.getIdVendedor());
+            
+            if (venda.getId() > 0)
+                ps.setInt(10, venda.getId());
+            
+            ps.execute();
+            
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+            
+            return false;
+        }
+        
+    }
+    
 }

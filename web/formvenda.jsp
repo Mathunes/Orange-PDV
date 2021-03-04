@@ -30,7 +30,7 @@
             <h2>Área restrita - Venda</h2>
             
             <form class="mt-4" id="form-cliente" method="POST" action="VendasController">
-                
+                <input type="hidden" name="id" value="0" required="">
                 <input type="hidden" name="idProduto" value="<%=produto.getId() %>" required="">
                 <input type="hidden" name="idVendedor" value="<%=usuario.getId() %>" required="">
                 <input type="hidden" name="dataVenda" id="dataVenda" value="" required="">
@@ -70,7 +70,7 @@
                     </div>
                     <div class="col-md mb-4">
                         <label for="valorTotal" class="form-label">Valor total</label>
-                        <input type="number" class="form-control" placeholder="Valor total" aria-label="Valor total" name="valorVenda" value="" id="valorTotal" disabled="" required>
+                        <input type="number" class="form-control" placeholder="Valor total" aria-label="Valor total" name="valorTotal" value="" id="valorTotal" required readonly>
                     </div>
                 </div>
                 
@@ -89,11 +89,14 @@
                     $('#valorTotal').val("");
                     
                     $('#valorTotal').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());
+                    $('#valorTotal').attr("value", ($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());
+                    
                     $('#desconto').attr("max", $('#valorTotal').val() - ((<%= produto.getPrecoCompra() + (produto.getPrecoCompra() * 0.1)%>) * $('#quantidade').val()));
                 });
                 
                 $('#desconto').change(() => {
                     $('#valorTotal').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());
+                    $('#valorTotal').attr("value", ($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());
                 });
             });
         </script>                    
