@@ -5,7 +5,6 @@ import aplicacao.Produtos;
 import aplicacao.Vendas;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,6 +51,17 @@ public class VendasController extends HttpServlet {
                 mostrarVenda.forward(request, response);
                 break;
                 
+            case "excluir_venda":
+                id = Integer.parseInt(request.getParameter("id"));
+                if (daoVendas.excluir(id))
+                    request.setAttribute("mensagem", "Venda excluída");
+                else
+                    request.setAttribute("mensagem", "Erro ao excluir venda");
+                    
+                RequestDispatcher excluirCliente = getServletContext().getRequestDispatcher("/aevendas.jsp");
+                excluirCliente.forward(request, response);
+                break;
+                
             case "cadastrar_venda":
                 int idProduto = Integer.parseInt(request.getParameter("produto"));
                 if (!(idProduto > 0))
@@ -78,7 +88,7 @@ public class VendasController extends HttpServlet {
                 request.setAttribute("produto", produto);
                 request.setAttribute("clientes", clientes);
                 
-                RequestDispatcher cadastrarVenda = request.getRequestDispatcher("/formvenda.jsp");
+                RequestDispatcher cadastrarVenda = getServletContext().getRequestDispatcher("/formvenda.jsp");
                 cadastrarVenda.forward(request, response);
                 break;
             

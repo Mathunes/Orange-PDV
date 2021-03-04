@@ -34,9 +34,6 @@
             </div>
 
             <div class="container-table mb-4">
-                <a href="VendasController?acao=cadastrar_venda&produto=0">
-                    <button class="btn btn-novo">Nova venda</button>
-                </a>
                 <table class="table">
                     <thead>
                         <tr>
