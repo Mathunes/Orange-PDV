@@ -103,31 +103,18 @@ public class VendasController extends HttpServlet {
         int idCliente = Integer.parseInt(request.getParameter("idCliente"));
         String dataVenda = request.getParameter("dataVenda");
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+        Double desconto = Double.parseDouble(request.getParameter("desconto"));
+        Double valorProduto = Double.parseDouble(request.getParameter("valorProduto"));
         Double valorVenda = Double.parseDouble(request.getParameter("valorTotal"));
         
-//        if (nome.isEmpty() || cpf.isEmpty() || endereco.isEmpty() || bairro.isEmpty() || 
-//                cidade.isEmpty() || uf.isEmpty() || cep.isEmpty() || telefone.isEmpty() || 
-//                email.isEmpty())    
-//            mensagem = "Preencha todos os campos";
-//        else if (nome.length() > 50)
-//            mensagem = "Nome deve conter no máximo 50 caracteres";
-//        else if (cpf.length() > 14) 
-//            mensagem = "CPF deve conter no máximo 14 caracteres";
-//        else if (endereco.length() > 50)
-//            mensagem = "Estado deve conter no máximo 50 caracteres";
-//        else if (bairro.length() > 50)
-//            mensagem = "Bairro deve conter no máximo 50 caracteres";
-//        else if (cidade.length() > 50)
-//            mensagem = "Cidade deve conter no máximo 50 caracteres";
-//        else if (uf.length() > 2)
-//            mensagem = "UF deve conter no máximo 2 caracteres";
-//        else if (cep.length() > 8)
-//            mensagem = "CEP deve conter no máximo 8 caracteres";
-//        else if (telefone.length() > 20)
-//            mensagem = "Telefone deve conter no máximo 20 caracteres";
-//        else if (email.length() > 50)
-//            mensagem = "Email deve conter no máximo 50 caracteres";
-//        else {
+        if (idProduto == 0 || idVendedor == 0 || idCliente == 0 || 
+                dataVenda.isEmpty() || quantidade == 0 || valorVenda == 0)    
+            mensagem = "Preencha todos os campos";
+        else if (quantidade < 1)
+            mensagem = "Deve haver pelo menos uma quantidade do produto escolhido";
+        else if (valorVenda != ((valorProduto * quantidade) - desconto)) 
+            mensagem = "Valor total inválido";
+        else {
             
             venda.setId(id);
             venda.setDataVenda(dataVenda);
@@ -141,7 +128,8 @@ public class VendasController extends HttpServlet {
                 mensagem = "Venda gravada com sucesso";
             else 
                 mensagem = "Erro ao gravar venda";
-        //}
+        }
+        
         //Enviando relação de clientes para aeclientes.jsp
         ArrayList<Vendas> vendas;
         vendas = dao.getVendas();

@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md mb-4">
                         <label for="valorProduto" class="form-label">Valor unitário</label>
-                        <input type="number" class="form-control" placeholder="Valor unitário" aria-label="Valor unitário" name="valorProduto" value="<%=produto.getPrecoVenda() %>" id="valorProduto" disabled="" required>
+                        <input type="number" class="form-control" placeholder="Valor unitário" aria-label="Valor unitário" name="valorProduto" value="<%=produto.getPrecoVenda() %>" id="valorProduto" required readonly>
                     </div>
                     <div class="col-md mb-4">
                         <label for="valorTotal" class="form-label">Valor total</label>
