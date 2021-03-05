@@ -1,3 +1,4 @@
+<%@page import="aplicacao.Categorias"%>
 <%@page import="java.util.Arrays"%>
 <%@page import = "java.util.ArrayList"%>
 <%@page import = "aplicacao.Produtos"%>
@@ -42,31 +43,53 @@
             <div class = "row d-flex justify-content-between" >
                 <%
                     ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
+                    ArrayList<Categorias> categorias = (ArrayList<Categorias>) request.getAttribute("categorias");
                     
                     if (produtos == null){
                         response.sendRedirect("ProdutosController?acaoRestrito=mostrar_produtos_restrito");
                     }else{
-                        for (int i = 0; i < produtos.size(); i++) {
-                            Produtos aux = produtos.get(i);
-                            if(aux.getLiberadoVenda().equals("S") && aux.getQuantidadeDisponivel() > 0){                               
+                        for(int j = 0; j < categorias.size(); j++){
+                            Categorias auxC = categorias.get(j);
+                            System.out.println(auxC.getNomeCategoria());
+                %>
+                            <fieldset class="row justify-content-evenly mb-5 border rounded border-light" style="font-family:Goudy Bookletter 1911, sans-serif">
+                                <legend class="mt-3" style="color: #FF4F17"> <%=auxC.getNomeCategoria()%></legend>
+                
+                <%  
+                                for (int i = 0; i < produtos.size(); i++) {                                              
+                                    Produtos aux = produtos.get(i);
+                                    if(aux.getLiberadoVenda().equals("S") && aux.getQuantidadeDisponivel() > 0 && aux.getIdCategoria() == auxC.getId()){
+                                              
+
                 %>
            
-                <div class = "card mx-1 my-5" style="background-color: Wheat; width: 20rem; font-family: inherit" >
-                    <div class = "card-body" id = "cardsProd" >
-                        <h5 class = "card-title mb-4" style="color: black"><%=aux.getNomeProduto()%></h5>
-                        <h6 class = "card-subtitle mb-2" style = "color: OrangeRed">R$<%=aux.getPrecoCompra()%></h6>
-                        <p class = "card-text" style = "color: black"><%=aux.getDescricao()%></p>
-                        <p class = "card-text" style = "color: black; float:right">Quantidade: <%=aux.getQuantidadeDisponivel()%></p>
-                        <a href="aevendas.jsp"><button class="btn" style="background-color: OrangeRed; color: Wheat">Vender</button></a>                     
-                    </div>
-                </div>
-        
+                                <div class = "card mx-1 my-5" style="background-color: #FFBC70; width: 20rem; font-family:Goudy Bookletter 1911, sans-serif" >
+                                    <div class = "card-body">
+                                        <h5 class = "card-title mb-4 text-center" style="color: #402609"><%=aux.getNomeProduto()%></h5>
+                                        <p class = "card-text" style = "color: #402609"><%=aux.getDescricao()%></p>
+                                        <div class="row" >
+                                            <div class = "col-md-6">
+                                                <h6 class = "card-subtitle mb-2" style = "color: #FF4F17; font-weight: bolder; font-size:18px">R$<%=aux.getPrecoVenda()%></h6>                    
+                                            </div>
+                                            <div class = "col-md-4 offset-md-10">
+                                                <p class = "card-text" style = "color:#007EB3">Qt: <%=aux.getQuantidadeDisponivel()%></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>              
          
                 <%
+                                
+                            
+                            }
                         }
+                %>
+                            </fieldset>
+                <%
                     }
                 }
                 %>
+
             </div>
         </div>
 
