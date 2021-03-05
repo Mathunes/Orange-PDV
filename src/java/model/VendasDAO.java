@@ -105,8 +105,8 @@ public class VendasDAO extends HttpServlet {
         
         return venda;
     }
-    //CONCLUIR
-    public ArrayList<Vendas> getVendaPesquisa(String busca) {
+
+    public ArrayList<Vendas> getVendaPesquisa(String nomeCliente) {
         ArrayList<Vendas> vendas = new ArrayList<>();
         
         try {
@@ -119,10 +119,10 @@ public class VendasDAO extends HttpServlet {
                     + "v.id_cliente = c.id AND "
                     + "v.id_produto = p.id AND "
                     + "v.id_vendedor = u.id AND "
-                    + "c.nome = ?";
+                    + "c.nome LIKE ?";
             
             PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setString(1, '%' + busca + '%');
+            ps.setString(1, '%' + nomeCliente + '%');
             
             ResultSet rs = ps.executeQuery();
             

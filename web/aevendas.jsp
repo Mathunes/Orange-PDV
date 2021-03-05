@@ -28,7 +28,7 @@
                     
                         <input type="hidden" name="acao" value="mostrar_venda_busca" required>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="busca" placeholder="Buscar venda..." >
+                            <input type="text" class="form-control" name="busca" placeholder="Buscar venda pelo nome do cliente..." >
                             <button class="btn " type="submit">
                                 <img src="assets/imagens/search.svg" alt="Lupa">
                             </button>
