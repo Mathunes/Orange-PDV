@@ -52,16 +52,9 @@ public class ClientesController extends HttpServlet {
                 id = Integer.parseInt(request.getParameter("id"));
                 cliente = dao.getClienteId(id);
                 
-                if (cliente.getId() > 0) {
-                    request.setAttribute("cliente", cliente);
-                    RequestDispatcher editarCliente = request.getRequestDispatcher("/formcliente.jsp");
-                    editarCliente.forward(request, response);
-                } else {
-                    String mensagem = "Erro ao gravar cliente";
-                    request.setAttribute("mensagem", mensagem);
-                    RequestDispatcher editarCliente = getServletContext().getRequestDispatcher("/formcliente.jsp");
-                    editarCliente.forward(request, response);
-                }
+                request.setAttribute("cliente", cliente);
+                RequestDispatcher editarCliente = request.getRequestDispatcher("/formcliente.jsp");
+                editarCliente.forward(request, response);
                 
                 break;
             case "excluir_cliente":

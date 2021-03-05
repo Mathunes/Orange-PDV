@@ -11,7 +11,6 @@
     
     Vendas venda = (Vendas)request.getAttribute("venda");
     ArrayList<Clientes> clientes = (ArrayList<Clientes>)request.getAttribute("clientes");
-    
     Produtos produto = (Produtos)request.getAttribute("produto");
     
 %>
@@ -30,7 +29,7 @@
             <h2>Área restrita - Venda</h2>
             
             <form class="mt-4" id="form-cliente" method="POST" action="VendasController">
-                <input type="hidden" name="id" value="0" required="">
+                <input type="hidden" name="id" value="<%=venda.getId() %>" required="">
                 <input type="hidden" name="idProduto" value="<%=produto.getId() %>" required="">
                 <input type="hidden" name="idVendedor" value="<%=usuario.getId() %>" required="">
                 <input type="hidden" name="dataVenda" id="dataVenda" value="" required="">
@@ -46,9 +45,15 @@
                         <%
                             for (int i = 0; i < clientes.size(); i++) {
                                 Clientes cliente = clientes.get(i);
+                                if (venda.getIdCliente() == cliente.getId()) {
                         %>
-                                <option value="<%=cliente.getId() %>"><%=cliente.getNome() %> - <%=cliente.getCpf() %></option>
+                                    <option value="<%=cliente.getId() %>" selected><%=cliente.getNome() %> - <%=cliente.getCpf() %></option>
                         <%
+                                } else {
+                        %>
+                                    <option value="<%=cliente.getId() %>"><%=cliente.getNome() %> - <%=cliente.getCpf() %></option>
+                        <% 
+                                }
                             }
                         %>
                     </select>
@@ -70,7 +75,7 @@
                     </div>
                     <div class="col-md mb-4">
                         <label for="valorTotal" class="form-label">Valor total</label>
-                        <input type="number" class="form-control" placeholder="Valor total" aria-label="Valor total" name="valorTotal" value="" id="valorTotal" required readonly>
+                        <input type="number" class="form-control" placeholder="Valor total" aria-label="Valor total" name="valorTotal" value="<%=venda.getValorVenda() %>" id="valorTotal" required readonly>
                     </div>
                 </div>
                 
@@ -82,6 +87,12 @@
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
+                if ($('#valorTotal').val() > 0) {
+                    $('#desconto').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#valorTotal').val());
+                    
+                    $('#desconto').attr("max", ($('#quantidade').val() * $('#valorProduto').val()) - ((<%= produto.getPrecoCompra() + (produto.getPrecoCompra() * 0.1)%>) * $('#quantidade').val()));
+                }
+                
                 $('#dataVenda').val(new Date().toISOString().slice(0, 10));
                 
                 $('#quantidade').change(() => {

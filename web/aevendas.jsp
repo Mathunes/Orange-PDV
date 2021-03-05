@@ -24,12 +24,16 @@
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Buscar venda..." >
-                        <button class="btn " type="button">
-                            <img src="assets/imagens/search.svg" alt="Lupa">
-                        </button>
-                    </div>
+                    <form method="GET" action="VendasController">
+                    
+                        <input type="hidden" name="acao" value="mostrar_venda_busca" required>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="busca" placeholder="Buscar venda..." >
+                            <button class="btn " type="submit">
+                                <img src="assets/imagens/search.svg" alt="Lupa">
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -55,7 +59,7 @@
                                 for (int i = 0; i < vendas.size(); i++) {
                                     Vendas venda = vendas.get(i);
                                     String linkExibirVenda = "VendasController?acao=mostrar_venda&id="+venda.getId();
-                                    String linkEditarVenda = "VendasController?acao=editar_vendas&id="+venda.getId();
+                                    String linkEditarVenda = "VendasController?acao=editar_venda&id="+venda.getId();
                             
                         %>                        
                         

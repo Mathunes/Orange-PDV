@@ -51,6 +51,28 @@ public class VendasController extends HttpServlet {
                 mostrarVenda.forward(request, response);
                 break;
                 
+            case "mostrar_venda_busca":
+                String busca = request.getParameter("busca");
+                vendas = daoVendas.getVendaPesquisa(busca);
+                request.setAttribute("vendas", vendas);
+                RequestDispatcher mostrarVendasBusca = getServletContext().getRequestDispatcher("/aevendas.jsp");
+                mostrarVendasBusca.forward(request, response);
+                break;
+                
+            case "editar_venda":
+                id = Integer.parseInt(request.getParameter("id"));
+                venda = daoVendas.getVendaId(id);
+                
+                Produtos produtoComprado = daoProdutos.getProdutoID(venda.getIdProduto());;
+                clientes = daoClientes.getClientes();
+
+                request.setAttribute("venda", venda);
+                request.setAttribute("produto", produtoComprado);
+                request.setAttribute("clientes", clientes);
+                RequestDispatcher editarVenda = getServletContext().getRequestDispatcher("/formvenda.jsp");
+                editarVenda.forward(request, response);
+                break;
+                
             case "excluir_venda":
                 id = Integer.parseInt(request.getParameter("id"));
                 if (daoVendas.excluir(id))
@@ -58,8 +80,8 @@ public class VendasController extends HttpServlet {
                 else
                     request.setAttribute("mensagem", "Erro ao excluir venda");
                     
-                RequestDispatcher excluirCliente = getServletContext().getRequestDispatcher("/aevendas.jsp");
-                excluirCliente.forward(request, response);
+                RequestDispatcher excluirVenda = getServletContext().getRequestDispatcher("/aevendas.jsp");
+                excluirVenda.forward(request, response);
                 break;
                 
             case "cadastrar_venda":
