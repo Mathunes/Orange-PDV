@@ -19,7 +19,9 @@
         
         <div class="container">
             <!-- Mensagens  -->
-            <%@include file="toastmensagem.jsp" %>
+            <div id="container-alert">
+                <p hidden id="mensagem"><%= request.getAttribute("mensagem")%></p>
+            </div>
             
             <div class="row header">
                 <div class="col-sm">
@@ -124,9 +126,7 @@
                 
                 //Exibir mensagem
                 if ($('#mensagem').text().trim() != "null") {
-                    $('.toast').toast('show');
-                } else {
-                    $('.toast').toast('hide');
+                    $('#container-alert').append("<%@include file="mensagem.jsp" %>");
                 }
             });
         </script>

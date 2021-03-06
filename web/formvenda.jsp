@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-md mb-4">
                         <label for="desconto" class="form-label">Desconto (R$)</label>
-                        <input type="number" class="form-control" placeholder="Desconto (R$)" aria-label="Desconto" name="desconto" value="0" min="0" max="" id="desconto" required>
+                        <input type="number" class="form-control" placeholder="Desconto (R$)" aria-label="Desconto" name="desconto" value="0" min="0" max="" step=".01" id="desconto" required>
                     </div>
                 </div>
                 <div class="row">
@@ -108,6 +108,9 @@
                 $('#desconto').change(() => {
                     $('#valorTotal').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());
                     $('#valorTotal').attr("value", ($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());
+                    
+                    if ($('#desconto').val() == "") 
+                        $('#desconto').val("0");
                 });
             });
         </script>                    

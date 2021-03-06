@@ -19,7 +19,9 @@
         
         <div class="container">
             <!-- Mensagens  -->
-            <%@include file="modalmensagem.jsp" %>
+            <div id="container-alert">
+                <p hidden id="mensagem"><%= request.getAttribute("mensagem")%></p>
+            </div>
             
             <div class="row header">
                 <div class="col-sm">
@@ -124,9 +126,7 @@
                 
                 //Exibir mensagem
                 if ($('#mensagem').text().trim() != "null") {
-                    $('#modal-mensagem').show();
-                } else {
-                    $('#modal-mensagem').hide();
+                    $('#container-alert').append("<%@include file="mensagem.jsp" %>");
                 }
             });
         </script>
