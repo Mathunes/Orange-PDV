@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="infousuario.jsp" %>
 <% 
-    //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
+    //Impedir que a página seja armazenada em cache, impedindo a função "voltar" do navegador
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
@@ -18,6 +18,9 @@
         <%@include file="aenavbar.jsp" %>
         
         <div class="container">
+            <!-- Mensagens  -->
+            <%@include file="modalmensagem.jsp" %>
+            
             <div class="row header">
                 <div class="col-sm">
                     <h2>Área restrita - Vendas</h2>
@@ -58,8 +61,9 @@
                             else
                                 for (int i = 0; i < vendas.size(); i++) {
                                     Vendas venda = vendas.get(i);
-                                    String linkExibirVenda = "VendasController?acao=mostrar_venda&id="+venda.getId();
-                                    String linkEditarVenda = "VendasController?acao=editar_venda&id="+venda.getId();
+                                    if (venda.getIdVendedor() == usuario.getId()) {
+                                        String linkExibirVenda = "VendasController?acao=mostrar_venda&id="+venda.getId();
+                                        String linkEditarVenda = "VendasController?acao=editar_venda&id="+venda.getId();
                             
                         %>                        
                         
@@ -78,7 +82,8 @@
                             </td>
                         </tr>
                         <%
-                            }
+                                    }
+                                }
                         %>
                     </tbody>
                 </table>
@@ -109,12 +114,20 @@
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
+                //Excluir venda
                 $(".info-venda").find("button[class='btn-excluir']").click(function(){
                     var id = $(this).attr("value");
                     
                     $('#modal-mensagem').text("Deseja realmente excluir a venda " + id + "?");
                     $('#link-delete').attr("href", "VendasController?acao=excluir_venda&id=" + id);
                 });
+                
+                //Exibir mensagem
+                if ($('#mensagem').text().trim() != "null") {
+                    $('#modal-mensagem').show();
+                } else {
+                    $('#modal-mensagem').hide();
+                }
             });
         </script>
     </body>

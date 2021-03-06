@@ -127,7 +127,6 @@ public class VendasDAO extends HttpServlet {
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
-                System.out.println(rs.getInt("v.id"));
                 Vendas venda = new Vendas();
                 
                 venda.setDataVenda(rs.getString("v.data_venda"));

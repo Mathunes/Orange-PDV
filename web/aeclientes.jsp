@@ -113,6 +113,7 @@
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
+                //Excluir cliente
                 $(".info-cliente").find("button[class='btn-excluir']").click(function(){
                     var nome = $(this).attr("name");
                     var id = $(this).attr("value");
@@ -120,11 +121,8 @@
                     $('#modal-mensagem').text("Deseja realmente excluir o(a) cliente " + nome + "?");
                     $('#link-delete').attr("href", "ClientesController?acao=excluir_cliente&id=" + id);
                 });
-            });
-        </script>
-        
-        <script>
-            $( document ).ready(function() {
+                
+                //Exibir mensagem
                 if ($('#mensagem').text().trim() != "null") {
                     $('.toast').toast('show');
                 } else {
