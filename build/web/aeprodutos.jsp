@@ -75,6 +75,9 @@
                                                 <p class = "card-text" style = "color:#007EB3">Qt: <%=aux.getQuantidadeDisponivel()%></p>
                                             </div>
                                         </div>
+                                        <a href="VendasController?acao=cadastrar_venda&produto=<%=aux.getId() %>">
+                                            <button class="btn" style="background-color: OrangeRed; color: Wheat">Vender</button>
+                                        </a>   
                                     </div>
                                 </div>              
          
