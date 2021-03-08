@@ -1,5 +1,6 @@
 package controller;
 
+import aplicacao.Categorias;
 import aplicacao.Produtos;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CategoriasDAO;
 import model.ProdutosDAO;
 
 @WebServlet(name = "ProdutosControllerClientes", urlPatterns = {"/ProdutosControllerClientes"})
@@ -25,7 +27,9 @@ public class ProdutosControllerClientes extends HttpServlet {
         ArrayList<Produtos> produtos = dao.getProdutos();
         request.setAttribute("produtos", produtos);
             
-        
+        CategoriasDAO daoCategorias = new CategoriasDAO();
+        ArrayList<Categorias> categorias = daoCategorias.getCategorias();
+        request.setAttribute("categorias", categorias);
         
         String acao = (String)request.getParameter("acao");
         

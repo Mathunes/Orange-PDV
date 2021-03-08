@@ -53,9 +53,7 @@ public class ProdutosDAO extends HttpServlet {
 
                     produtos.add(produto);   
                 }
-
-
-                System.out.println(produtos);
+                
 
             } catch (SQLException ex) {
                 System.out.println("Erro de SQL: " + ex.getMessage());

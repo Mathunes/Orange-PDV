@@ -1,5 +1,6 @@
 package model;
 
+
 import aplicacao.Vendas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -168,14 +169,19 @@ public class VendasDAO extends HttpServlet {
         
         try {
             String sql;
+            String sqlQuantidade;
             if (venda.getId() == 0) {
                 sql = "INSERT INTO vendas "
                         + "(quantidade_venda, data_venda, valor_venda, id_cliente, id_produto, id_vendedor) "
                         + "VALUES (?, ?, ?, ?, ?, ?)";
+                sqlQuantidade = "UPDATE produtos SET "
+                        +"quantidade_disponível=? "
+                        +"WHERE id=?";
             } else {
                 sql = "UPDATE vendas SET "
                         + "quantidade_venda=?, data_venda=?, valor_venda=?, id_cliente=?, id_produto=?, id_vendedor=? "
                         + "WHERE id=?";
+                sqlQuantidade = "";
             }
             
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -190,6 +196,19 @@ public class VendasDAO extends HttpServlet {
                 ps.setInt(7, venda.getId());
             
             ps.execute();
+            
+            String sqlQuantidadeDisponivel = "SELECT quantidade_disponível FROM produtos WHERE id=?";
+            PreparedStatement psQuantidade = conexao.prepareStatement(sqlQuantidadeDisponivel);  
+            psQuantidade.setInt(1, venda.getIdProduto());
+            ResultSet rs = psQuantidade.executeQuery();
+            
+            if(rs.next()){
+                int quantidadeDisponivel = rs.getInt("quantidade_disponível");
+                PreparedStatement psQ = conexao.prepareStatement(sqlQuantidade);  
+                psQ.setInt(1, quantidadeDisponivel - venda.getQuantidadeVenda());
+                psQ.setInt(2, venda.getIdProduto());
+                psQ.execute();
+            }
             
             return true;
             

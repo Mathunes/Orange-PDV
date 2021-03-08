@@ -37,7 +37,7 @@ public class UsuariosController extends HttpServlet {
                 if (acao.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
 
                     request.setAttribute("mensagem", "Preencha todos os campos para efetuar o login");
-                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                     rd.forward(request, response);
 
                 } else {
@@ -56,6 +56,7 @@ public class UsuariosController extends HttpServlet {
     private void login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+  
         usuario = dao.Login(usuario);
         
         if (usuario.getId() > 0) {
@@ -67,12 +68,14 @@ public class UsuariosController extends HttpServlet {
             response.sendRedirect("ProdutosController?acaoRestrito=mostrar_produtos_restrito");
             
         } else {
-            
             request.setAttribute("mensagem", "Usuário não encontrado");
-            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");        
             rd.forward(request, response);
             
+            
         }
+        
+        
         
     }
 
