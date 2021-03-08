@@ -20,7 +20,6 @@
 <html>
     <head>
         <%@include file="head.html"%>
-        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <!-- Barra de navegação - Cliente -->
@@ -98,7 +97,6 @@
                     
                     if (produtos == null){
                         response.sendRedirect("ProdutosControllerClientes?acao=mostrar_produtos");
-
                     }else{
                         for(int j = 0; j < categorias.size(); j++){
                             Categorias auxC = categorias.get(j);
