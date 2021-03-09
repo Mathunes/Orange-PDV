@@ -82,6 +82,7 @@
                 </div>
             </div>
         </div>
+        
         <div class = "container">
             <%
                 ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
@@ -114,7 +115,7 @@
                                             <p class = "card-text" style = "color: #FF4F17; font-weight: bolder; font-size:18px">R$<%=aux.getPrecoVenda()%></p>
                                         </div>
                                         <div class = "col-6">
-                                            <p class = "card-text text-end">Qt: <%=aux.getQuantidadeDisponivel()%></p>
+                                            <p class = "card-text text-end">Quantidade: <%=aux.getQuantidadeDisponivel()%></p>
                                         </div>
                                     </div>
                                 </div>
