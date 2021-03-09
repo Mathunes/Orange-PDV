@@ -1,4 +1,4 @@
-<%@page import="java.util.Arrays"%>
+<%@page import = "java.util.Arrays"%>
 <%@page import = "java.util.ArrayList"%>
 <%@page import = "aplicacao.Produtos"%>
 <%@page import = "aplicacao.Categorias"%>
@@ -10,11 +10,7 @@
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
     
-    
-    
 %>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -53,9 +49,6 @@
                     </form>
                 </div>
             </div>
-            
-            
-            
         
             <!-- Exibir produtos -->
             
@@ -90,62 +83,57 @@
             </div>
         </div>
         <div class = "container">
-            <div class="mb-5 mt-5">
-                <%
-                    ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
-                    ArrayList<Categorias> categorias = (ArrayList<Categorias>) request.getAttribute("categorias");
-                    
-                    if (produtos == null){
-                        response.sendRedirect("ProdutosControllerClientes?acao=mostrar_produtos");
-                    }else{
-                        for(int j = 0; j < categorias.size(); j++){
-                            Categorias auxC = categorias.get(j);
-                            System.out.println(auxC.getNomeCategoria());
-                %>
-                            <fieldset class="row justify-content-evenly mb-5 border rounded border-light" style="font-family:Goudy Bookletter 1911, sans-serif">
-                                <legend class="mt-3" style="color: #FF4F17"> <%=auxC.getNomeCategoria()%></legend>
-                
-                <%  
-                                for (int i = 0; i < produtos.size(); i++) {                                              
-                                    Produtos aux = produtos.get(i);
-                                    if(aux.getLiberadoVenda().equals("S") && aux.getQuantidadeDisponivel() > 0 && aux.getIdCategoria() == auxC.getId()){
-                                              
+            <%
+                ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
+                ArrayList<Categorias> categorias = (ArrayList<Categorias>) request.getAttribute("categorias");
 
-                %>
-           
-                                <div class = "card mx-1 my-5" style="background-color: #FFBC70; width: 20rem; font-family:Goudy Bookletter 1911, sans-serif" >
-                                    <div class = "card-body">
-                                        <h5 class = "card-title mb-4 text-center" style="color: #402609"><%=aux.getNomeProduto()%></h5>
-                                        <p class = "card-text" style = "color: #402609"><%=aux.getDescricao()%></p>
-                                        <div class="row" >
-                                            <div class = "col-md-6">
-                                                <h6 class = "card-subtitle mb-2" style = "color: #FF4F17; font-weight: bolder; font-size:18px">R$<%=aux.getPrecoVenda()%></h6>                    
-                                            </div>
-                                            <div class = "col-md-4 offset-md-10">
-                                                <p class = "card-text" style = "color:#007EB3">Qt: <%=aux.getQuantidadeDisponivel()%></p>
-                                            </div>
+                if (produtos == null){
+                    response.sendRedirect("ProdutosControllerClientes?acao=mostrar_produtos");
+                }else{
+                    for(int j = 0; j < categorias.size(); j++){
+                        Categorias auxC = categorias.get(j);
+                        System.out.println(auxC.getNomeCategoria());
+            %>
+                        <fieldset class="row justify-content-evenly mb-3 border rounded border-light" style="font-family:Goudy Bookletter 1911, sans-serif">
+                            <legend class="mt-3" style="color: #FF4F17"> <%=auxC.getNomeCategoria()%></legend>
+
+            <%  
+                            for (int i = 0; i < produtos.size(); i++) {                                              
+                                Produtos aux = produtos.get(i);
+                                if(aux.getLiberadoVenda().equals("S") && aux.getQuantidadeDisponivel() > 0 && aux.getIdCategoria() == auxC.getId()){
+
+
+            %>
+
+                            <div class = "card mx-1 my-3" style="background-color: #FFBC70; width: 20rem; font-family:Goudy Bookletter 1911, sans-serif" >
+                                <div class = "card-body">
+                                    <h5 class = "card-title mb-4 text-center" style="color: #402609"><%=aux.getNomeProduto()%></h5>
+                                    <p class = "card-text" style = "color: #402609"><%=aux.getDescricao()%></p>
+                                    <div class="row">
+                                        <div class = "col-6">
+                                            <p class = "card-text" style = "color: #FF4F17; font-weight: bolder; font-size:18px">R$<%=aux.getPrecoVenda()%></p>
+                                        </div>
+                                        <div class = "col-6">
+                                            <p class = "card-text text-end">Qt: <%=aux.getQuantidadeDisponivel()%></p>
                                         </div>
                                     </div>
-                                </div>              
-         
-                <%
-                                
-                            
-                            }
-                        }
-                %>
-                            </fieldset>
-                <%
-                    }
-                }
-                %>
+                                </div>
+                            </div>
+            <%
 
-            </div>
+                        }
+                    }
+            %>
+                        </fieldset>
+            <%
+                }
+            }
+            %>
+
         </div>
         <%@include file="scripts.html" %>
         <script src="js/mascaras.js"></script>
         
-
         <script>
             
             $( document ).ready(function() {
