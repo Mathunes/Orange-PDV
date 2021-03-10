@@ -1,4 +1,4 @@
-<!-- Barra de navagação da área restrita - Usuário vendedor -->
+<!-- Barra de navagação da área restrita - Usuário administrador -->
 <nav class="navbar navbar-expand-lg mb-4 navbar-light">
     <div class="container">
         <a class="navbar-brand" href="#">
