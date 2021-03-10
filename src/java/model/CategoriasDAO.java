@@ -46,7 +46,6 @@ public class CategoriasDAO extends HttpServlet {
                 categorias.add(categoria);
             }
             
-            System.out.println(categorias);
         }catch(SQLException ex){
             System.out.println("Erro de SQL: " + ex.getMessage());
         }

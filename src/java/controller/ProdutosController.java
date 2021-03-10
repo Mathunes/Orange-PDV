@@ -41,7 +41,7 @@ public class ProdutosController extends HttpServlet {
         switch(acaoRestrito){
             
             case "mostrar_produtos_restrito":
-                RequestDispatcher rdRestrito = request.getRequestDispatcher("/aeprodutos.jsp");
+                RequestDispatcher rdRestrito = request.getRequestDispatcher("/produtos.jsp");
                 rdRestrito.forward(request, response);
                 break;
 
@@ -49,7 +49,7 @@ public class ProdutosController extends HttpServlet {
                 String nomeProduto = request.getParameter("nomeProduto");
                 produtos = dao.getNomeProduto(nomeProduto);
                 request.setAttribute("produtos", produtos);
-                RequestDispatcher mostrarNomeProduto = getServletContext().getRequestDispatcher("/aeprodutos.jsp");
+                RequestDispatcher mostrarNomeProduto = getServletContext().getRequestDispatcher("/produtos.jsp");
                 mostrarNomeProduto.forward(request, response);
                 break;
             }

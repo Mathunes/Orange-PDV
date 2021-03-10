@@ -20,9 +20,7 @@ public class ProdutosControllerClientes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-    
-        
+                
         ProdutosDAO dao = new ProdutosDAO();
         ArrayList<Produtos> produtos = dao.getProdutos();
         request.setAttribute("produtos", produtos);
@@ -51,14 +49,6 @@ public class ProdutosControllerClientes extends HttpServlet {
                 break;
         }
   
-        
-  
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
     }
 
 }

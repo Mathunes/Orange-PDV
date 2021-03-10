@@ -39,7 +39,7 @@ public class VendasController extends HttpServlet {
             case "mostrar_vendas":
                 vendas = daoVendas.getVendas();
                 request.setAttribute("vendas", vendas);
-                RequestDispatcher mostrarVendas = getServletContext().getRequestDispatcher("/aevendas.jsp");
+                RequestDispatcher mostrarVendas = getServletContext().getRequestDispatcher("/vendas.jsp");
                 mostrarVendas.forward(request, response);
                 break;
                 
@@ -47,7 +47,7 @@ public class VendasController extends HttpServlet {
                 id = Integer.parseInt(request.getParameter("id"));
                 venda = daoVendas.getVendaId(id);
                 request.setAttribute("venda", venda);
-                RequestDispatcher mostrarVenda = getServletContext().getRequestDispatcher("/aevenda.jsp");
+                RequestDispatcher mostrarVenda = getServletContext().getRequestDispatcher("/venda.jsp");
                 mostrarVenda.forward(request, response);
                 break;
                 
@@ -55,7 +55,7 @@ public class VendasController extends HttpServlet {
                 String busca = request.getParameter("busca");
                 vendas = daoVendas.getVendaPesquisa(busca);
                 request.setAttribute("vendas", vendas);
-                RequestDispatcher mostrarVendasBusca = getServletContext().getRequestDispatcher("/aevendas.jsp");
+                RequestDispatcher mostrarVendasBusca = getServletContext().getRequestDispatcher("/vendas.jsp");
                 mostrarVendasBusca.forward(request, response);
                 break;
                 
@@ -80,7 +80,7 @@ public class VendasController extends HttpServlet {
                 else
                     request.setAttribute("mensagem", "Erro ao excluir venda");
                     
-                RequestDispatcher excluirVenda = getServletContext().getRequestDispatcher("/aevendas.jsp");
+                RequestDispatcher excluirVenda = getServletContext().getRequestDispatcher("/vendas.jsp");
                 excluirVenda.forward(request, response);
                 break;
                 
@@ -162,12 +162,12 @@ public class VendasController extends HttpServlet {
                 mensagem = "Erro ao gravar venda";
         }
         
-        //Enviando relação de clientes para aeclientes.jsp
+        //Enviando relação de vendas para vendas.jsp
         ArrayList<Vendas> vendas;
         vendas = dao.getVendas();
         request.setAttribute("vendas", vendas);
         request.setAttribute("mensagem", mensagem);
-        RequestDispatcher rd = request.getRequestDispatcher("/aevendas.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/vendas.jsp");
         rd.forward(request, response);
         
     }

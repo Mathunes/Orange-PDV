@@ -28,7 +28,7 @@ public class ClientesController extends HttpServlet {
             case "mostrar_clientes":
                 clientes = dao.getClientes();
                 request.setAttribute("clientes", clientes);
-                RequestDispatcher mostrarClientes = getServletContext().getRequestDispatcher("/aeclientes.jsp");
+                RequestDispatcher mostrarClientes = getServletContext().getRequestDispatcher("/clientes.jsp");
                 mostrarClientes.forward(request, response);
                 break;
                 
@@ -36,7 +36,7 @@ public class ClientesController extends HttpServlet {
                 id = Integer.parseInt(request.getParameter("id"));
                 cliente = dao.getClienteId(id);
                 request.setAttribute("cliente", cliente);
-                RequestDispatcher mostrarCliente = getServletContext().getRequestDispatcher("/aecliente.jsp");
+                RequestDispatcher mostrarCliente = getServletContext().getRequestDispatcher("/cliente.jsp");
                 mostrarCliente.forward(request, response);
                 break;
                 
@@ -44,7 +44,7 @@ public class ClientesController extends HttpServlet {
                 String nome = request.getParameter("nome");
                 clientes = dao.getClienteNome(nome);
                 request.setAttribute("clientes", clientes);
-                RequestDispatcher mostrarClientesNome = getServletContext().getRequestDispatcher("/aeclientes.jsp");
+                RequestDispatcher mostrarClientesNome = getServletContext().getRequestDispatcher("/clientes.jsp");
                 mostrarClientesNome.forward(request, response);
                 break;
                 
@@ -64,7 +64,7 @@ public class ClientesController extends HttpServlet {
                 else
                     request.setAttribute("mensagem", "Erro ao excluir cliente");
                     
-                RequestDispatcher excluirCliente = getServletContext().getRequestDispatcher("/aeclientes.jsp");
+                RequestDispatcher excluirCliente = getServletContext().getRequestDispatcher("/clientes.jsp");
                 excluirCliente.forward(request, response);
                 break;
                 
@@ -152,12 +152,12 @@ public class ClientesController extends HttpServlet {
             else 
                 mensagem = "Erro ao gravar cliente";
         }
-        //Enviando relação de clientes para aeclientes.jsp
+        //Enviando relação de clientes para clientes.jsp
         ArrayList<Clientes> clientes;       
         clientes = dao.getClientes();
         request.setAttribute("clientes", clientes);
         request.setAttribute("mensagem", mensagem);
-        RequestDispatcher rd = request.getRequestDispatcher("/aeclientes.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/clientes.jsp");
         rd.forward(request, response);
         
     }
