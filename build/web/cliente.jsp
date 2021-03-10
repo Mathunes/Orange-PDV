@@ -15,7 +15,7 @@
         <%@include file="head.html" %>
     </head>
     <body>
-        <%@include file="aenavbar.jsp" %>
+        <%@include file="navbar.jsp" %>
         
         <div class="container">
             <h2>Área restrita - Visualizar cliente</h2>

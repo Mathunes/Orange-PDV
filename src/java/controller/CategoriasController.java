@@ -33,7 +33,7 @@ public class CategoriasController extends HttpServlet {
         
         switch(acaoRestrito){
                 case "mostrar_categorias_restrito":
-                RequestDispatcher rdRestrito = request.getRequestDispatcher("/aeprodutos.jsp");
+                RequestDispatcher rdRestrito = request.getRequestDispatcher("/produtos.jsp");
                 rdRestrito.forward(request, response);
                 break;
                 

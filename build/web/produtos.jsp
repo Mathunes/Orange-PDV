@@ -17,7 +17,7 @@
         <%@include file="head.html" %>
     </head>
     <body>
-        <%@include file="aenavbar.jsp" %>
+        <%@include file="navbar.jsp" %>
         
         <div class="container">
             <div class="row header">

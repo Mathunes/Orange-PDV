@@ -92,11 +92,8 @@ public class UsuariosController extends HttpServlet {
             request.setAttribute("mensagem", "Usuário não encontrado");
             RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");        
             rd.forward(request, response);
-            
-            
+                
         }
-        
-        
         
     }
 
