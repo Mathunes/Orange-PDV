@@ -168,22 +168,21 @@ public class VendasDAO extends HttpServlet {
     public boolean gravar(Vendas venda) {
         
         try {
-            String sql;
-            String sqlQuantidade;
+            String sql, sqlAtualizarQuantidade;
+            
             if (venda.getId() == 0) {
+                //String para inserir venda
                 sql = "INSERT INTO vendas "
                         + "(quantidade_venda, data_venda, valor_venda, id_cliente, id_produto, id_vendedor) "
                         + "VALUES (?, ?, ?, ?, ?, ?)";
-                sqlQuantidade = "UPDATE produtos SET "
-                        +"quantidade_disponível=? "
-                        +"WHERE id=?";
             } else {
+                //String para atualizar venda
                 sql = "UPDATE vendas SET "
                         + "quantidade_venda=?, data_venda=?, valor_venda=?, id_cliente=?, id_produto=?, id_vendedor=? "
                         + "WHERE id=?";
-                sqlQuantidade = "";
             }
             
+            //Preparando string de inserção/atualização
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, venda.getQuantidadeVenda());
             ps.setString(2, venda.getDataVenda());
@@ -192,22 +191,35 @@ public class VendasDAO extends HttpServlet {
             ps.setInt(5, venda.getIdProduto());
             ps.setInt(6, venda.getIdVendedor());
             
+            //Se for atualização, inserir o sétimo parâmetro
             if (venda.getId() > 0)
                 ps.setInt(7, venda.getId());
             
+            //Executando inserção/atualização
             ps.execute();
             
-            String sqlQuantidadeDisponivel = "SELECT quantidade_disponível FROM produtos WHERE id=?";
-            PreparedStatement psQuantidade = conexao.prepareStatement(sqlQuantidadeDisponivel);  
-            psQuantidade.setInt(1, venda.getIdProduto());
-            ResultSet rs = psQuantidade.executeQuery();
-            
-            if(rs.next()){
-                int quantidadeDisponivel = rs.getInt("quantidade_disponível");
-                PreparedStatement psQ = conexao.prepareStatement(sqlQuantidade);  
-                psQ.setInt(1, quantidadeDisponivel - venda.getQuantidadeVenda());
-                psQ.setInt(2, venda.getIdProduto());
-                psQ.execute();
+            //Condicional para atualizar a quantidade do produto apenas na inserção
+            if (venda.getId() == 0) {
+                //String para pegar quantidade disponível do produto
+                String sqlQuantidadeDisponivel = "SELECT quantidade_disponível FROM produtos WHERE id=?";
+                PreparedStatement psQuantidadeDisponivel = conexao.prepareStatement(sqlQuantidadeDisponivel);  
+                psQuantidadeDisponivel.setInt(1, venda.getIdProduto());
+                ResultSet rs = psQuantidadeDisponivel.executeQuery();
+
+                //String para atualizar quantidade disponível do produto
+                sqlAtualizarQuantidade = "UPDATE produtos SET "
+                        +"quantidade_disponível=? "
+                        +"WHERE id=?";
+
+                if(rs.next()){
+                    int quantidadeDisponivel = rs.getInt("quantidade_disponível");
+                    PreparedStatement psAtualizarQuantidade = conexao.prepareStatement(sqlAtualizarQuantidade);
+
+                    //Atualizando quantidade disponivel com a quantidade disponivel atual menos a quantidade vendida
+                    psAtualizarQuantidade.setInt(1, quantidadeDisponivel - venda.getQuantidadeVenda());
+                    psAtualizarQuantidade.setInt(2, venda.getIdProduto());
+                    psAtualizarQuantidade.execute();
+                }
             }
             
             return true;
