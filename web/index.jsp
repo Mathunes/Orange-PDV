@@ -9,7 +9,7 @@
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
-    
+
 %>
 
 <!DOCTYPE html>
@@ -30,7 +30,9 @@
         
         <div class="container">
             <!-- Mensagens  -->
-            <%@include file="toastmensagem.jsp" %>
+            <div id="container-alert">
+                <p hidden id="mensagem"><%= request.getAttribute("mensagem")%></p>
+            </div>
             
             <div class="row header">
                 <div class="col-sm">
@@ -90,10 +92,12 @@
 
                 if (produtos == null){
                     response.sendRedirect("ProdutosControllerClientes?acao=mostrar_produtos");
-                }else{
+//                    RequestDispatcher rd = request.getRequestDispatcher("/ProdutosControllerClientes?acao=mostrar_produtos");
+//                    rd.forward(request, response);
+                    
+                } else {
                     for(int j = 0; j < categorias.size(); j++){
                         Categorias auxC = categorias.get(j);
-                        System.out.println(auxC.getNomeCategoria());
             %>
                         <fieldset class="row justify-content-evenly mb-3 border rounded border-light" style="font-family:Goudy Bookletter 1911, sans-serif">
                             <legend class="mt-3" style="color: #FF4F17"> <%=auxC.getNomeCategoria()%></legend>
@@ -142,6 +146,11 @@
                     $('.toast').toast('show');
                 } else {
                     $('.toast').toast('hide');
+                }
+                
+                //Exibir mensagem
+                if ($('#mensagem').text().trim() != "null") {
+                    $('#container-alert').append("<%@include file="mensagem.jsp" %>");
                 }
             });
         </script>

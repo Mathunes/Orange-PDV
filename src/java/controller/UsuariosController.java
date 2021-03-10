@@ -1,7 +1,10 @@
 package controller;
 
+import aplicacao.Categorias;
+import aplicacao.Produtos;
 import aplicacao.Usuarios;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.CategoriasDAO;
+import model.ProdutosDAO;
 import model.UsuariosDAO;
 
 @WebServlet(name = "UsuariosController", urlPatterns = {"/UsuariosController"})
@@ -34,8 +39,16 @@ public class UsuariosController extends HttpServlet {
                 senha = request.getParameter("senha");
                 
                 //Verificando se há campos vazios
-                if (acao.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
+                if (cpf.isEmpty() || senha.isEmpty()) {
 
+                    //Enviando produtos/categorias para o index.jsp para evitar reload e perder mensagem de erro
+                    ProdutosDAO dao = new ProdutosDAO();
+                    ArrayList<Produtos> produtos = dao.getProdutos();
+                    request.setAttribute("produtos", produtos);
+                    CategoriasDAO daoCategorias = new CategoriasDAO();
+                    ArrayList<Categorias> categorias = daoCategorias.getCategorias();
+                    request.setAttribute("categorias", categorias);
+            
                     request.setAttribute("mensagem", "Preencha todos os campos para efetuar o login");
                     RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                     rd.forward(request, response);
@@ -68,6 +81,14 @@ public class UsuariosController extends HttpServlet {
             response.sendRedirect("ProdutosController?acaoRestrito=mostrar_produtos_restrito");
             
         } else {
+            //Enviando produtos/categorias para o index.jsp para evitar reload e perder mensagem de erro
+            ProdutosDAO dao = new ProdutosDAO();
+            ArrayList<Produtos> produtos = dao.getProdutos();
+            request.setAttribute("produtos", produtos);
+            CategoriasDAO daoCategorias = new CategoriasDAO();
+            ArrayList<Categorias> categorias = daoCategorias.getCategorias();
+            request.setAttribute("categorias", categorias);
+            
             request.setAttribute("mensagem", "Usuário não encontrado");
             RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");        
             rd.forward(request, response);
