@@ -6,6 +6,16 @@
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
     Vendas venda = (Vendas)request.getAttribute("venda");
+    
+    //Verificação do tipo de usuário logado
+    switch (usuario.getTipo()) {
+        case '0':
+            response.sendRedirect("administrador.jsp");
+            break;
+        case '2':
+            response.sendRedirect("comprador.jsp");
+            break;
+    }
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,7 +25,7 @@
         <%@include file="head.html" %>
     </head>
     <body>
-        <%@include file="navbar.jsp" %>
+        <%@include file="navbarvendedor.jsp" %>
         <div class="container">
             <h2>Área restrita - Visualizar venda</h2>
             

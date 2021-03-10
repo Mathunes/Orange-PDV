@@ -9,6 +9,16 @@
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
+    
+    //Verificação do tipo de usuário logado
+    switch (usuario.getTipo()) {
+        case '0':
+            response.sendRedirect("administrador.jsp");
+            break;
+        case '2':
+            response.sendRedirect("comprador.jsp");
+            break;
+    }
 %>
 
 <!DOCTYPE html>
@@ -17,7 +27,7 @@
         <%@include file="head.html" %>
     </head>
     <body>
-        <%@include file="navbar.jsp" %>
+        <%@include file="navbarvendedor.jsp" %>
         
         <div class="container">
             <div class="row header">

@@ -13,6 +13,16 @@
     ArrayList<Clientes> clientes = (ArrayList<Clientes>)request.getAttribute("clientes");
     Produtos produto = (Produtos)request.getAttribute("produto");
     
+    //Verificação do tipo de usuário logado
+    switch (usuario.getTipo()) {
+        case '0':
+            response.sendRedirect("administrador.jsp");
+            break;
+        case '2':
+            response.sendRedirect("comprador.jsp");
+            break;
+    }
+    
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,7 +32,7 @@
         <%@include file="head.html" %>
     </head>
     <body>
-        <%@include file="navbar.jsp" %>
+        <%@include file="navbarvendedor.jsp" %>
         
         <div class="container">
             
