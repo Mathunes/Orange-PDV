@@ -25,13 +25,15 @@ public class ClientesController extends HttpServlet {
         Clientes cliente;
         
         switch (acao) {
+            //Requisição para exibir todos os clientes
             case "mostrar_clientes":
                 clientes = dao.getClientes();
                 request.setAttribute("clientes", clientes);
                 RequestDispatcher mostrarClientes = getServletContext().getRequestDispatcher("/clientes.jsp");
                 mostrarClientes.forward(request, response);
                 break;
-                
+            
+            //Requisição para exibir o cliente pelo id
             case "mostrar_cliente":
                 id = Integer.parseInt(request.getParameter("id"));
                 cliente = dao.getClienteId(id);
@@ -39,7 +41,8 @@ public class ClientesController extends HttpServlet {
                 RequestDispatcher mostrarCliente = getServletContext().getRequestDispatcher("/cliente.jsp");
                 mostrarCliente.forward(request, response);
                 break;
-                
+            
+            //Requisição para exibir o cliente pelo nome - usado no campo de busca
             case "mostrar_clientes_nome":
                 String nome = request.getParameter("nome");
                 clientes = dao.getClienteNome(nome);
@@ -48,6 +51,7 @@ public class ClientesController extends HttpServlet {
                 mostrarClientesNome.forward(request, response);
                 break;
                 
+            //Requisição para editar o cliente pelo id
             case "editar_cliente":
                 id = Integer.parseInt(request.getParameter("id"));
                 cliente = dao.getClienteId(id);
@@ -57,17 +61,24 @@ public class ClientesController extends HttpServlet {
                 editarCliente.forward(request, response);
                 
                 break;
+                
+            //Requisição para excluir o cliente pelo id
             case "excluir_cliente":
                 id = Integer.parseInt(request.getParameter("id"));
                 if (dao.excluir(id))
                     request.setAttribute("mensagem", "Cliente excluído");
                 else
                     request.setAttribute("mensagem", "Erro ao excluir cliente");
-                    
+                
+                //Enviando relação de clientes para evitar o reload e perder a mensagem
+                clientes = dao.getClientes();
+                request.setAttribute("clientes", clientes);
+                
                 RequestDispatcher excluirCliente = getServletContext().getRequestDispatcher("/clientes.jsp");
                 excluirCliente.forward(request, response);
                 break;
                 
+            //Requisição para cadastrar o cliente
             case "cadastrar_cliente":
                 cliente = new Clientes();
                 cliente.setId(0);
