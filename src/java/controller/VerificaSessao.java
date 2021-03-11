@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//Servlet para filtrar a URL e restringir acesso indevido
-
+//Servlet para filtrar a URL e restringir acessos indevidos
 @WebFilter(filterName = "VerificaSessao", urlPatterns = {"/produtos.jsp", 
     "/vendas.jsp", "/clientes.jsp", "/navbarvendedor.jsp", "/navbarcomprador.jsp",
     "/navbaradministrador.jsp", "/ClientesController", "/cliente.jsp",
@@ -39,7 +38,7 @@ public class VerificaSessao implements Filter {
                 chain.doFilter(request, response);
                 
             }
-
+        //Se o usuário não estiver logado, redirecionar para index.jsp
         } else {
             res.sendRedirect("index.jsp");
         }

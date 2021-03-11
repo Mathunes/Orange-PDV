@@ -1,6 +1,5 @@
 package model;
 
-
 import aplicacao.Vendas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +18,6 @@ public class VendasDAO extends HttpServlet {
     public VendasDAO() {
         try {
             conexao = Conexao.criaConexao();
-            
         } catch (SQLException ex) {
             System.out.println("Erro na criação da conexao DAO: " + ex.getMessage());
         } 
@@ -31,7 +29,6 @@ public class VendasDAO extends HttpServlet {
         try {
             Statement stmt = conexao.createStatement();
             
-            //PARA FAZER: RECUPERAR DADOS DE FORMA ORDENADA
             ResultSet rs = stmt.executeQuery("SELECT * FROM "
                     + "vendas as v, "
                     + "clientes as c, "

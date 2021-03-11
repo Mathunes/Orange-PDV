@@ -32,7 +32,6 @@ public class VendasController extends HttpServlet {
         Vendas venda;
         
         ArrayList<Clientes> clientes;
-        ArrayList<Produtos> produtos;
         
         switch(acao) {
             //Requisição para exibir todas as vendas

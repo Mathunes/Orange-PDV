@@ -5,7 +5,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="infousuario.jsp" %>
 <% 
-    //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
+    //Impedir que a página seja armazenada em cache, impedindo a função "voltar" do navegador
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
@@ -22,6 +22,7 @@
 %>
 
 <!DOCTYPE html>
+<!--Página de exibição dos produtos-->
 <html>
     <head>
         <%@include file="head.html" %>
@@ -53,13 +54,15 @@
             <%
                 ArrayList<Produtos> produtos = (ArrayList<Produtos>) request.getAttribute("produtos");
                 ArrayList<Categorias> categorias = (ArrayList<Categorias>) request.getAttribute("categorias");
-
+                
+                //Se não houver produtos, pedir para o servidor enviar
                 if (produtos == null){
                     response.sendRedirect("ProdutosController?acaoRestrito=mostrar_produtos_restrito");
                 }else{
                     for(int j = 0; j < categorias.size(); j++){
                         Categorias auxC = categorias.get(j);
             %>
+                      
                         <fieldset class="row justify-content-evenly mb-3 border rounded border-light" style="font-family:Goudy Bookletter 1911, sans-serif">
                             <legend class="mt-3" style="color: #FF4F17"> <%=auxC.getNomeCategoria()%></legend>
 

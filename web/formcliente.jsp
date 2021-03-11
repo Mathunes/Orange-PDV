@@ -1,7 +1,7 @@
 <%@page import="aplicacao.Clientes"%>
 <%@include file="infousuario.jsp" %>
 <% 
-    //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
+    //Impedir que a página seja armazenada em cache, impedindo a função "voltar" do navegador
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
@@ -20,6 +20,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--Página cadastro do cliente-->
 <html>
     <head>
         <%@include file="head.html" %>
@@ -28,10 +29,10 @@
         <%@include file="navbarvendedor.jsp" %>
         
         <div class="container">
-            
+            <!--Toast para ser exibido caso o CPF informado seja inválido-->
             <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center w-100 position-absolute top-0 end-0 mt-2">
                 <div class="toast-container">
-                    <div class="toast text-white bg-info" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast text-white bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="d-flex">
                             <div class="toast-body">
                                 <span id="mensagem">
@@ -94,12 +95,16 @@
         <script src="js/valida-cpf.js"></script>
         <script>
             $( document ).ready(function() {
-                
+                //Ouvindo evento de envio do formulário
                 $('#form-cliente').submit(() => {
+                    //Interrompendo o envio
                     event.preventDefault();
+                    //Verificando se o CPF é válido
                     if (validaCPF($('.cpf').val())) {
+                        //Enviando o formulário
                         $('#form-cliente').unbind('submit').submit();
                     } else {
+                        //Exibindo a mensagem de erro
                         $('.toast').toast('show');
                     }
                        

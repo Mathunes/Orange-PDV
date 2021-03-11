@@ -17,9 +17,7 @@ public class ClientesDAO extends HttpServlet {
     
     public ClientesDAO() {
         try {
-            
             conexao = Conexao.criaConexao();
-            
         } catch (SQLException ex) {
             System.out.println("Erro na criação da conexao DAO: " + ex.getMessage());
         }

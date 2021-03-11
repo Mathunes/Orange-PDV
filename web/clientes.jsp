@@ -20,6 +20,7 @@
 %>
 
 <!DOCTYPE html>
+<!--Página de exibição dos clientes-->
 <html>
     <head>
         <%@include file="head.html" %>
@@ -101,7 +102,7 @@
             </div>
             
         </div>
-
+        <!--Modal para confirmar exclusão do cliente-->
         <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

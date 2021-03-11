@@ -4,7 +4,7 @@
 <%@page import="aplicacao.Vendas"%>
 <%@include file="infousuario.jsp" %>
 <% 
-    //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
+    //Impedir que a página seja armazenada em cache, impedindo a função "voltar" do navegador
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
@@ -27,6 +27,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--Página cadastro da venda-->
 <html>
     <head>
         <%@include file="head.html" %>
@@ -55,6 +56,7 @@
                         <%
                             for (int i = 0; i < clientes.size(); i++) {
                                 Clientes cliente = clientes.get(i);
+                                //Se for atualização, exibir opção do cliente
                                 if (venda.getIdCliente() == cliente.getId()) {
                         %>
                                     <option value="<%=cliente.getId() %>" selected><%=cliente.getNome() %> - <%=cliente.getCpf() %></option>
@@ -97,7 +99,9 @@
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
+                //Ao carregar a página, e o valor total for maior do que zero, é atualização de uma venda
                 if ($('#valorTotal').val() > 0) {
+                    //O desconto não é armazenado no banco, o cálculo a seguir é feito para descobrir o desconto da venda
                     $('#desconto').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#valorTotal').val());
                     
                     $('#desconto').attr("max", ($('#quantidade').val() * $('#valorProduto').val()) - ((<%= produto.getPrecoCompra() + (produto.getPrecoCompra() * 0.1)%>) * $('#quantidade').val()));
@@ -105,7 +109,9 @@
                 
                 $('#dataVenda').val(new Date().toISOString().slice(0, 10));
                 
+                //Se houver mudança no campo de quantidade, atualizar seus campos dependentes
                 $('#quantidade').change(() => {
+                    //Limpando-os
                     $('#desconto').val("0");
                     $('#valorTotal').val("");
                     
@@ -115,6 +121,7 @@
                     $('#desconto').attr("max", $('#valorTotal').val() - ((<%= produto.getPrecoCompra() + (produto.getPrecoCompra() * 0.1)%>) * $('#quantidade').val()));
                 });
                 
+                //Se houver mudança no campo de desconto, atualizar seus campos dependentes
                 $('#desconto').change(() => {
                     $('#valorTotal').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());
                     $('#valorTotal').attr("value", ($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());

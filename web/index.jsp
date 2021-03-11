@@ -5,7 +5,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% 
-    //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
+    //Impedir que a página seja armazenada em cache, impedindo a função "voltar" do navegador
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
@@ -13,6 +13,7 @@
 %>
 
 <!DOCTYPE html>
+<!--Página inicial-->
 <html>
     <head>
         <%@include file="head.html"%>
@@ -142,12 +143,6 @@
         <script>
             
             $( document ).ready(function() {
-                if ($('#mensagem').text().trim() != "null") {
-                    $('.toast').toast('show');
-                } else {
-                    $('.toast').toast('hide');
-                }
-                
                 //Exibir mensagem
                 if ($('#mensagem').text().trim() != "null") {
                     $('#container-alert').append("<%@include file="mensagem.jsp" %>");
