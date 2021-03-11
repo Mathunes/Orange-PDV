@@ -35,7 +35,7 @@ public class VendasController extends HttpServlet {
         ArrayList<Produtos> produtos;
         
         switch(acao) {
-            
+            //Requisição para exibir todas as vendas
             case "mostrar_vendas":
                 vendas = daoVendas.getVendas();
                 request.setAttribute("vendas", vendas);
@@ -43,6 +43,7 @@ public class VendasController extends HttpServlet {
                 mostrarVendas.forward(request, response);
                 break;
                 
+            //Requisição para exibir a venda pelo id
             case "mostrar_venda":
                 id = Integer.parseInt(request.getParameter("id"));
                 venda = daoVendas.getVendaId(id);
@@ -51,6 +52,7 @@ public class VendasController extends HttpServlet {
                 mostrarVenda.forward(request, response);
                 break;
                 
+            //Requisição para exibir a venda pelo nome do cliente - usado no campo de busca
             case "mostrar_venda_busca":
                 String busca = request.getParameter("busca");
                 vendas = daoVendas.getVendaPesquisa(busca);
@@ -59,6 +61,7 @@ public class VendasController extends HttpServlet {
                 mostrarVendasBusca.forward(request, response);
                 break;
                 
+            //Requisição para editar a venda pelo id
             case "editar_venda":
                 id = Integer.parseInt(request.getParameter("id"));
                 venda = daoVendas.getVendaId(id);
@@ -73,17 +76,23 @@ public class VendasController extends HttpServlet {
                 editarVenda.forward(request, response);
                 break;
                 
+            //Requisição para excluir a venda pelo id
             case "excluir_venda":
                 id = Integer.parseInt(request.getParameter("id"));
                 if (daoVendas.excluir(id))
                     request.setAttribute("mensagem", "Venda excluída");
                 else
                     request.setAttribute("mensagem", "Erro ao excluir venda");
+                
+                //Enviando relação de vendas para evitar o reload e perder a mensagem
+                vendas = daoVendas.getVendas();
+                request.setAttribute("vendas", vendas);
                     
                 RequestDispatcher excluirVenda = getServletContext().getRequestDispatcher("/vendas.jsp");
                 excluirVenda.forward(request, response);
                 break;
                 
+            //Requisição para cadastrar a venda
             case "cadastrar_venda":
                 int idProduto = Integer.parseInt(request.getParameter("produto"));
                 if (!(idProduto > 0))
