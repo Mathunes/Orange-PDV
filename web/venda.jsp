@@ -30,7 +30,7 @@
             <h2>Área restrita - Visualizar venda</h2>
             
             <div class="container-info">
-                <a href="aevendas.jsp">
+                <a href="vendas.jsp">
                     <button class="btn btn-voltar">Voltar</button>
                 </a>
                     <table class="table mt-2">
