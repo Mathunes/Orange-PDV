@@ -4,7 +4,7 @@
 <%@page import="aplicacao.Vendas"%>
 <%@include file="infousuario.jsp" %>
 <% 
-    //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
+    //Impedir que a página seja armazenada em cache, impedindo a função "voltar" do navegador
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setHeader("Expires", "0"); // Proxies.
@@ -27,6 +27,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--Página cadastro da venda-->
 <html>
     <head>
         <%@include file="head.html" %>
@@ -53,9 +54,12 @@
                     <label for="nomeCliente" class="form-label">Nome cliente</label>
                     <select class="form-select" aria-label="Nome cliente" name="idCliente" id="nomeCliente" required="">
                         <%
+                            Boolean atualizacao = false;
                             for (int i = 0; i < clientes.size(); i++) {
                                 Clientes cliente = clientes.get(i);
+                                //Se for atualização, exibir opção do cliente
                                 if (venda.getIdCliente() == cliente.getId()) {
+                                    atualizacao = true;
                         %>
                                     <option value="<%=cliente.getId() %>" selected><%=cliente.getNome() %> - <%=cliente.getCpf() %></option>
                         <%
@@ -71,7 +75,7 @@
                 <div class="row">
                     <div class="col-md mb-4">
                         <label for="quantidade" class="form-label">Quantidade</label>
-                        <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" name="quantidade" value="<%=venda.getQuantidadeVenda() %>" id="quantidade" min="1" max="<%=produto.getQuantidadeDisponivel() %>" required>
+                        <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" name="quantidade" value="<%=venda.getQuantidadeVenda() %>" id="quantidade" min="1" max="<%=produto.getQuantidadeDisponivel() %>" required <%= (atualizacao) ? "readonly" : ""%> >
                     </div>
                     <div class="col-md mb-4">
                         <label for="desconto" class="form-label">Desconto (R$)</label>
@@ -97,15 +101,19 @@
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
+                //Ao carregar a página, e o valor total for maior do que zero, é atualização de uma venda
                 if ($('#valorTotal').val() > 0) {
-                    $('#desconto').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#valorTotal').val());
+                    //O desconto não é armazenado no banco, o cálculo a seguir é feito para descobrir o desconto da venda
+                     $('#desconto').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#valorTotal').val());
                     
                     $('#desconto').attr("max", ($('#quantidade').val() * $('#valorProduto').val()) - ((<%= produto.getPrecoCompra() + (produto.getPrecoCompra() * 0.1)%>) * $('#quantidade').val()));
                 }
                 
                 $('#dataVenda').val(new Date().toISOString().slice(0, 10));
                 
+                //Se houver mudança no campo de quantidade, atualizar seus campos dependentes
                 $('#quantidade').change(() => {
+                    //Limpando-os
                     $('#desconto').val("0");
                     $('#valorTotal').val("");
                     
@@ -115,6 +123,7 @@
                     $('#desconto').attr("max", $('#valorTotal').val() - ((<%= produto.getPrecoCompra() + (produto.getPrecoCompra() * 0.1)%>) * $('#quantidade').val()));
                 });
                 
+                //Se houver mudança no campo de desconto, atualizar seus campos dependentes
                 $('#desconto').change(() => {
                     $('#valorTotal').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());
                     $('#valorTotal').attr("value", ($('#quantidade').val() * $('#valorProduto').val()) - $('#desconto').val());

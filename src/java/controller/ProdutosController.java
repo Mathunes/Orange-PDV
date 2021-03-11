@@ -1,11 +1,9 @@
-
 package controller;
 
 import aplicacao.Categorias;
 import aplicacao.Produtos;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,17 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import model.CategoriasDAO;
 import model.ProdutosDAO;
 
+//Tratamento dos produtos para área restrita
 @WebServlet(name = "ProdutosController", urlPatterns = {"/ProdutosController"})
 public class ProdutosController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        //Impedir que a página seja armazena em cache, impedindo a função "voltar" do navegador
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-        response.setHeader("Expires", "0"); // Proxies.
         
         ProdutosDAO dao = new ProdutosDAO();
         ArrayList<Produtos> produtos = dao.getProdutos();

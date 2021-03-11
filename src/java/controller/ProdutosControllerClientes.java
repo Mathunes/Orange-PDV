@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import model.CategoriasDAO;
 import model.ProdutosDAO;
 
+
+//Tratamento dos produtos para área do cliente
 @WebServlet(name = "ProdutosControllerClientes", urlPatterns = {"/ProdutosControllerClientes"})
 public class ProdutosControllerClientes extends HttpServlet {
-    
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

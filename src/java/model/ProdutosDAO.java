@@ -7,12 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 
 @WebServlet(name = "ProdutosDAO", urlPatterns = {"/ProdutosDAO"})
 public class ProdutosDAO extends HttpServlet {
@@ -21,9 +17,7 @@ public class ProdutosDAO extends HttpServlet {
     
     public ProdutosDAO(){
         try {
-            
             conexao = Conexao.criaConexao();
-            
         } catch (SQLException ex) {
             System.out.println("Erro na criação da conexao DAO: " + ex.getMessage());
         }
@@ -50,7 +44,6 @@ public class ProdutosDAO extends HttpServlet {
                     produto.setLiberadoVenda(rs.getString("liberado_venda"));
                     produto.setIdCategoria(rs.getInt("id_categoria"));
 
-
                     produtos.add(produto);   
                 }
                 
@@ -58,7 +51,6 @@ public class ProdutosDAO extends HttpServlet {
             } catch (SQLException ex) {
                 System.out.println("Erro de SQL: " + ex.getMessage());
             }
-            
             
             return produtos;
         }
@@ -72,7 +64,6 @@ public class ProdutosDAO extends HttpServlet {
                 ps.setString(1, '%' + nomeProduto + '%');
         
                 ResultSet rs = ps.executeQuery();
-
                
                 while (rs.next()) {
 
@@ -86,7 +77,6 @@ public class ProdutosDAO extends HttpServlet {
                     produto.setQuantidadeDisponivel(rs.getInt("quantidade_disponível"));
                     produto.setLiberadoVenda(rs.getString("liberado_venda"));
                     produto.setIdCategoria(rs.getInt("id_categoria"));
-
 
                     produtos.add(produto);   
                 }
