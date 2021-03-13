@@ -104,7 +104,7 @@
                 //Ao carregar a página, e o valor total for maior do que zero, é atualização de uma venda
                 if ($('#valorTotal').val() > 0) {
                     //O desconto não é armazenado no banco, o cálculo a seguir é feito para descobrir o desconto da venda
-                     $('#desconto').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#valorTotal').val());
+                    $('#desconto').val(Math.round(($('#quantidade').val() * $('#valorProduto').val()) - $('#valorTotal').val()));
                     
                     $('#desconto').attr("max", ($('#quantidade').val() * $('#valorProduto').val()) - ((<%= produto.getPrecoCompra() + (produto.getPrecoCompra() * 0.1)%>) * $('#quantidade').val()));
                 }
