@@ -16,7 +16,7 @@
             response.sendRedirect("produtos.jsp");
             break;
         case '2':
-            response.sendRedirect("comprador.jsp");
+            response.sendRedirect("compras.jsp");
             break;
     }
 %>

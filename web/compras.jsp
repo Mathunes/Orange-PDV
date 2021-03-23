@@ -29,7 +29,25 @@
         <%@include file="navbarcomprador.jsp" %>
         
         <div class="container">
-            <h2>Área do comprador - em construção</h2>
+            <div class="row header">
+                <div class="col-sm">
+                    <h2>Área restrita - Compras</h2>
+                </div>
+                <!-- Input de pesquisa -->
+                <div class="col-sm">
+                    <form method="GET" action="">
+                    
+                        <input type="hidden" name="acao" value="" required>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="busca" placeholder="Buscar compra pelo nome do fornecedor..." >
+                            <button class="btn" type="submit">
+                                <img src="assets/imagens/search.svg" alt="Lupa">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
         </div>
         
         <%@include file="scripts.html" %>
