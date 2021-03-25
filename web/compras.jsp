@@ -1,3 +1,4 @@
+<%@page import="aplicacao.Compras"%>
 <%@page import="aplicacao.Categorias"%>
 <%@page import="java.util.Arrays"%>
 <%@page import = "java.util.ArrayList"%>
@@ -29,6 +30,7 @@
         <%@include file="navbarcomprador.jsp" %>
         
         <div class="container">
+            
             <div class="row header">
                 <div class="col-sm">
                     <h2>Área restrita - Compras</h2>
@@ -46,6 +48,57 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            
+            <div class="container-table mb-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Fornecedor</th>
+                            <th scope="col">Nome produto</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <%
+                            ArrayList<Compras> compras = (ArrayList<Compras>) request.getAttribute("compras");
+                            //Se não houver vendas, pedir para o servidor enviar
+                            if (compras == null)
+                                response.sendRedirect("ComprasController?acao=mostrar_compras");
+                            else
+                                for (int i = 0; i < compras.size(); i++) {
+                                    Compras compra = compras.get(i);
+                                    if (compra.getIdComprador() == usuario.getId()) {
+                                        String linkExibirCompra = "ComprasController?acao=mostrar_compra&id="+compra.getId();
+                                        String linkEditarCompra = "VendasController?acao=editar_venda&id="+compra.getId();
+                            
+                        %>                        
+                        
+                        <tr class="info-venda">
+                            <td><%=compra.getId()%></td>
+                            <td><%=compra.getRazaoSocialFornecedor()%></td>
+                            <td><%=compra.getNomeProduto()%></td>
+                            <td>
+                                <a href="<%=linkExibirCompra%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir venda"></a>
+                            </td>
+                            <td>
+                                <a href="<%=linkEditarCompra%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar venda"></a>
+                            </td>
+                            <td>
+                                <button class="btn-excluir" name="<%=compra.getId()%>" value="<%=compra.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir venda" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                            </td>
+                        </tr>
+                        <%
+                                    }
+                                }
+                        %>
+                        
+                    </tbody>
+                </table>
             </div>
             
         </div>
