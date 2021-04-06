@@ -39,7 +39,7 @@
             
             <h2>Área restrita - Venda</h2>
             
-            <form class="mt-4" id="form-cliente" method="POST" action="VendasController">
+            <form class="mt-4" id="form-venda" method="POST" action="VendasController">
                 <input type="hidden" name="id" value="<%=venda.getId() %>" required="">
                 <input type="hidden" name="idProduto" value="<%=produto.getId() %>" required="">
                 <input type="hidden" name="idVendedor" value="<%=usuario.getId() %>" required="">

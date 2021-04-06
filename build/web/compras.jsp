@@ -51,6 +51,9 @@
             </div>
             
             <div class="container-table mb-4">
+                <a href="ComprasController?acao=cadastrar_compra&produto=0">
+                    <button class="btn btn-novo">Nova compra</button>
+                </a>
                 <table class="table">
                     <thead>
                         <tr>
@@ -66,7 +69,7 @@
                         
                         <%
                             ArrayList<Compras> compras = (ArrayList<Compras>) request.getAttribute("compras");
-                            //Se não houver vendas, pedir para o servidor enviar
+                            //Se não houver compras, pedir para o servidor enviar
                             if (compras == null)
                                 response.sendRedirect("ComprasController?acao=mostrar_compras");
                             else
@@ -74,22 +77,22 @@
                                     Compras compra = compras.get(i);
                                     if (compra.getIdComprador() == usuario.getId()) {
                                         String linkExibirCompra = "ComprasController?acao=mostrar_compra&id="+compra.getId();
-                                        String linkEditarCompra = "VendasController?acao=editar_venda&id="+compra.getId();
+                                        String linkEditarCompra = "ComprasController?acao=editar_compra&id="+compra.getId();
                             
                         %>                        
                         
-                        <tr class="info-venda">
+                        <tr class="info-compra">
                             <td><%=compra.getId()%></td>
                             <td><%=compra.getRazaoSocialFornecedor()%></td>
                             <td><%=compra.getNomeProduto()%></td>
                             <td>
-                                <a href="<%=linkExibirCompra%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir venda"></a>
+                                <a href="<%=linkExibirCompra%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir compra"></a>
                             </td>
                             <td>
-                                <a href="<%=linkEditarCompra%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar venda"></a>
+                                <a href="<%=linkEditarCompra%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar compra"></a>
                             </td>
                             <td>
-                                <button class="btn-excluir" name="<%=compra.getId()%>" value="<%=compra.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir venda" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                                <button class="btn-excluir" name="<%=compra.getId()%>" value="<%=compra.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir compra" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
                             </td>
                         </tr>
                         <%

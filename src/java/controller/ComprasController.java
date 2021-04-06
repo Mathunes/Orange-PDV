@@ -1,6 +1,8 @@
 package controller;
 
 import aplicacao.Compras;
+import aplicacao.Fornecedores;
+import aplicacao.Produtos;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.ComprasDAO;
+import model.FornecedoresDAO;
+import model.ProdutosDAO;
 
 @WebServlet(name = "ComprasController", urlPatterns = {"/ComprasController"})
 public class ComprasController extends HttpServlet {
@@ -19,11 +23,17 @@ public class ComprasController extends HttpServlet {
             throws ServletException, IOException {
         
         ComprasDAO daoCompras = new ComprasDAO();
+        FornecedoresDAO daoFornecedores = new FornecedoresDAO();
+        ProdutosDAO daoProdutos = new ProdutosDAO();
+        
         
         String acao = (String) request.getParameter("acao");
         ArrayList<Compras> compras;
         int id;
         Compras compra;
+        
+        ArrayList<Fornecedores> fornecedores;
+        ArrayList<Produtos> produtos;
         
         switch(acao) {
             //Requisição para exibir todas as compras
@@ -42,6 +52,39 @@ public class ComprasController extends HttpServlet {
                 RequestDispatcher mostrarCompra = getServletContext().getRequestDispatcher("/compra.jsp");
                 mostrarCompra.forward(request, response);
                 break;
+                
+            case "cadastrar_compra":
+                int idProduto = Integer.parseInt(request.getParameter("produto"));
+                if (!(idProduto > 0))
+                    idProduto = 0;
+                
+                Produtos produto = daoProdutos.getProdutoID(idProduto);
+                
+                compra = new Compras();
+                
+                compra.setId(0);
+                compra.setIdFornecedor(0);
+                compra.setIdProduto(idProduto);
+                compra.setIdComprador(0);
+                compra.setRazaoSocialFornecedor("");
+                compra.setNomeProduto("");
+                compra.setNomeComprador("");
+                compra.setQuantidadeCompra(0);
+                compra.setValorCompra(0);
+                compra.setDataCompra("");
+                
+                fornecedores = daoFornecedores.getFornecedores();
+                produtos = daoProdutos.getProdutos();
+                
+                request.setAttribute("compra", compra);
+                request.setAttribute("produto", produto);
+                request.setAttribute("fornecedores", fornecedores);
+                request.setAttribute("produtos", produtos);
+                
+                RequestDispatcher cadastrarCompra = getServletContext().getRequestDispatcher("/formcompra.jsp");
+                cadastrarCompra.forward(request, response);
+                break;
+                
         }
         
         
