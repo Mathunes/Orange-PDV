@@ -94,6 +94,53 @@ public class ComprasController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        request.setCharacterEncoding("UTF-8");
+        
+        String mensagem;
+        
+        Compras compra = new Compras();
+        ComprasDAO dao = new ComprasDAO();
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        int idProduto = Integer.parseInt(request.getParameter("idProduto"));
+        int idComprador = Integer.parseInt(request.getParameter("idComprador"));
+        int idFornecedor = Integer.parseInt(request.getParameter("idFornecedor"));
+        String dataCompra = request.getParameter("dataCompra");
+        int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+        Double valorProduto = Double.parseDouble(request.getParameter("valorProduto"));
+        Double valorCompra = Double.parseDouble(request.getParameter("valorTotal"));
+        
+        if (idProduto == 0 || idComprador == 0 || idFornecedor == 0 || 
+                dataCompra.isEmpty() || quantidade == 0)    
+            mensagem = "Preencha todos os campos";
+        else if (quantidade < 1)
+            mensagem = "Deve haver pelo menos uma quantidade do produto escolhido";
+        else if (valorCompra != (valorProduto * quantidade)) 
+            mensagem = "Valor total inválido";
+        else {
+            
+            compra.setId(id);
+            compra.setDataCompra(dataCompra);
+            compra.setIdFornecedor(idFornecedor);
+            compra.setIdProduto(idProduto);
+            compra.setIdComprador(idComprador);
+            compra.setQuantidadeCompra(quantidade);
+            compra.setValorCompra(valorCompra);
+
+            if (dao.gravar(compra))
+                mensagem = "Compra gravada com sucesso";
+            else 
+                mensagem = "Erro ao gravar compra";
+        }
+        
+        //Enviando relação de compras para compras.jsp
+        ArrayList<Compras> compras;
+        compras = dao.getCompras();
+        request.setAttribute("compras", compras);
+        request.setAttribute("mensagem", mensagem);
+        RequestDispatcher rd = request.getRequestDispatcher("/compras.jsp");
+        rd.forward(request, response);
+        
     }
 
 }

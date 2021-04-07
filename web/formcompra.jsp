@@ -42,14 +42,12 @@
             
             <form class="mt-4" id="form-compra" method="POST" action="ComprasController">
                 <input type="hidden" name="id" value="<%=compra.getId() %>" required="">
-                <input type="hidden" name="idProduto" value="<%=produto.getId() %>" required="">
-                <input type="hidden" name="idVendedor" value="<%=usuario.getId() %>" required="">
+                <input type="hidden" name="idComprador" value="<%=usuario.getId() %>" required="">
                 <input type="hidden" name="dataCompra" id="dataCompra" value="" required="">
                 <div class="col-md mb-4">
                     <div class="col-md mb-4">
-                        <label for="nomeProduto" class="form-label">Nome produto</label>
-<!--                        <input type="text" class="form-control" placeholder="Nome produto" aria-label="Nome produto" name="nomeProduto" value="<%=produto.getNomeProduto() %>" id="nomeProduto" required disabled>-->
-                        <select class="form-select" aria-label="Nome produto" name="nomeProduto" id="nomeProduto" required="">
+                        <label for="idProduto" class="form-label">Nome produto</label>
+                        <select class="form-select" aria-label="Id produto" name="idProduto" id="idProduto" required="">
                             <%
                             Boolean atualizacao = false;
                             for (int i = 0; i < produtos.size(); i++) {

@@ -30,6 +30,10 @@
         <%@include file="navbarcomprador.jsp" %>
         
         <div class="container">
+            <!-- Mensagens  -->
+            <div id="container-alert">
+                <p hidden id="mensagem"><%= request.getAttribute("mensagem")%></p>
+            </div>
             
             <div class="row header">
                 <div class="col-sm">
@@ -107,5 +111,13 @@
         </div>
         
         <%@include file="scripts.html" %>
+        <script>            
+            $(document).ready(function(){                
+                //Exibir mensagem
+                if ($('#mensagem').text().trim() != "null") {
+                    $('#container-alert').append("<%@include file="mensagem.jsp" %>");
+                }
+            });
+        </script>
     </body>
 </html>

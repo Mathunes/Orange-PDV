@@ -105,4 +105,71 @@ public class ComprasDAO extends HttpServlet {
         return compra;
     }
     
+    public boolean gravar(Compras compra) {
+        
+        try {
+            String sql, sqlAtualizarProduto;
+            
+            if (compra.getId() == 0) {
+                //String para inserir compra
+                sql = "INSERT INTO compras "
+                        + "(quantidade_compra, data_compra, valor_compra, id_fornecedor, id_produto, id_comprador) "
+                        + "VALUES (?, ?, ?, ?, ?, ?)";
+            } else {
+                //String para atualizar compra
+                sql = "UPDATE compras SET "
+                        + "quantidade_compra=?, data_compra=?, valor_compra=?, id_fornecedor=?, id_produto=?, id_comprador=? "
+                        + "WHERE id=?";
+            }
+            
+            //Preparando string de inserção/atualização
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, compra.getQuantidadeCompra());
+            ps.setString(2, compra.getDataCompra());
+            ps.setDouble(3, compra.getValorCompra());
+            ps.setInt(4, compra.getIdFornecedor());
+            ps.setInt(5, compra.getIdProduto());
+            ps.setInt(6, compra.getIdComprador());
+            
+            //Se for atualização, inserir o sétimo parâmetro
+            if (compra.getId() > 0)
+                ps.setInt(7, compra.getId());
+            
+            //Executando inserção/atualização
+            ps.execute();
+            
+            //Atualizar a quantidade/preço do produto
+            //String para pegar quantidade disponível do produto
+            String sqlQuantidadeDisponivel = "SELECT quantidade_disponível FROM produtos WHERE id=?";
+            PreparedStatement psQuantidadeDisponivel = conexao.prepareStatement(sqlQuantidadeDisponivel);  
+            psQuantidadeDisponivel.setInt(1, compra.getIdProduto());
+            ResultSet rs = psQuantidadeDisponivel.executeQuery();
+
+            //String para atualizar quantidade disponível do produto
+            sqlAtualizarProduto = "UPDATE produtos SET "
+                    +"quantidade_disponível=?, "
+                    +"preco_compra=? "
+                    +"WHERE id=?";
+
+            if (rs.next()) {
+                int quantidadeDisponivel = rs.getInt("quantidade_disponível");
+                PreparedStatement psAtualizarProduto = conexao.prepareStatement(sqlAtualizarProduto);
+
+                //Atualizando quantidade disponivel com a quantidade disponivel atual mais a quantidade comprada
+                psAtualizarProduto.setInt(1, quantidadeDisponivel + compra.getQuantidadeCompra());
+                psAtualizarProduto.setDouble(2, (compra.getValorCompra() / compra.getQuantidadeCompra()));
+                psAtualizarProduto.setInt(3, compra.getIdProduto());
+                psAtualizarProduto.execute();
+            }
+            
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+            
+            return false;
+        }
+        
+    }
+    
 }
