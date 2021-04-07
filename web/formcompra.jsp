@@ -99,7 +99,7 @@
                 <div class="row">
                     <div class="col-md mb-4">
                         <label for="valorProduto" class="form-label">Valor unitário</label>
-                        <input type="number" class="form-control" placeholder="Valor unitário" aria-label="Valor unitário" name="valorProduto" value="<%=produto.getPrecoCompra()%>" id="valorProduto" min="0" required>
+                        <input type="number" class="form-control" placeholder="Valor unitário" aria-label="Valor unitário" name="valorProduto" value="" id="valorProduto" min="0" step="0.01" required>
                     </div>
                     <div class="col-md mb-4">
                         <label for="valorTotal" class="form-label">Valor total</label>
@@ -125,6 +125,8 @@
             $(document).ready(function(){
                 
                 $('#dataCompra').val(new Date().toISOString().slice(0, 10));
+                
+                $('#valorProduto').val(($('#valorTotal').val() / $('#quantidade').val()).toFixed(2));
                 
                 $('#quantidade').change(() => {
                     atualizaTotal();

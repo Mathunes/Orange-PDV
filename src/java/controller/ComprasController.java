@@ -53,6 +53,23 @@ public class ComprasController extends HttpServlet {
                 mostrarCompra.forward(request, response);
                 break;
                 
+            //Requisição para editar a compra pelo id
+            case "editar_compra":
+                id = Integer.parseInt(request.getParameter("id"));
+                compra = daoCompras.getCompraId(id);
+                
+                Produtos produtoComprado = daoProdutos.getProdutoID(compra.getIdProduto());;
+                fornecedores = daoFornecedores.getFornecedores();
+                produtos = daoProdutos.getProdutos();
+
+                request.setAttribute("compra", compra);
+                request.setAttribute("produto", produtoComprado);
+                request.setAttribute("fornecedores", fornecedores);
+                request.setAttribute("produtos", produtos);
+                RequestDispatcher editarCompra = getServletContext().getRequestDispatcher("/formcompra.jsp");
+                editarCompra.forward(request, response);
+                break;
+                
             //Requisição para excluir a compra pelo id
             case "excluir_compra":
                 id = Integer.parseInt(request.getParameter("id"));
