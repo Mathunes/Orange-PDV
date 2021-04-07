@@ -43,7 +43,7 @@
                 <div class="col-sm">
                     <form method="GET" action="">
                     
-                        <input type="hidden" name="acao" value="" required>
+                        <input type="hidden" name="acao" value="mostrar_compra_busca" required>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="busca" placeholder="Buscar compra pelo nome do fornecedor..." >
                             <button class="btn" type="submit">

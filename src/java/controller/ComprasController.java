@@ -53,6 +53,15 @@ public class ComprasController extends HttpServlet {
                 mostrarCompra.forward(request, response);
                 break;
                 
+            //Requisição para exibir a compra pelo nome do cliente - usado no campo de busca
+            case "mostrar_compra_busca":
+                String busca = request.getParameter("busca");
+                compras = daoCompras.getCompraPesquisa(busca);
+                request.setAttribute("compras", compras);
+                RequestDispatcher mostrarComprasBusca = getServletContext().getRequestDispatcher("/compras.jsp");
+                mostrarComprasBusca.forward(request, response);
+                break;
+                
             //Requisição para editar a compra pelo id
             case "editar_compra":
                 id = Integer.parseInt(request.getParameter("id"));
