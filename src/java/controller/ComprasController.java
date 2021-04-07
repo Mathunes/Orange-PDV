@@ -53,6 +53,22 @@ public class ComprasController extends HttpServlet {
                 mostrarCompra.forward(request, response);
                 break;
                 
+            //Requisição para excluir a compra pelo id
+            case "excluir_compra":
+                id = Integer.parseInt(request.getParameter("id"));
+                if (daoCompras.excluir(id))
+                    request.setAttribute("mensagem", "Compra excluída");
+                else
+                    request.setAttribute("mensagem", "Erro ao excluir compra");
+                
+                //Enviando relação de compras para evitar o reload e perder a mensagem
+                compras = daoCompras.getCompras();
+                request.setAttribute("compras", compras);
+                    
+                RequestDispatcher excluirCompra = getServletContext().getRequestDispatcher("/compras.jsp");
+                excluirCompra.forward(request, response);
+                break;
+                
             case "cadastrar_compra":
                 int idProduto = Integer.parseInt(request.getParameter("produto"));
                 if (!(idProduto > 0))

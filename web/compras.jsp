@@ -109,10 +109,38 @@
             </div>
             
         </div>
-        
+        <!--Modal para confirmar exclusão da compra-->
+        <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Excluir compra</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modal-mensagem"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                        <a href="" id="link-delete">
+                            <button type="button" class="btn btn-primary">Sim</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>           
+                        
         <%@include file="scripts.html" %>
         <script>            
-            $(document).ready(function(){                
+            $(document).ready(function(){      
+                //Excluir compra
+                $(".info-compra").find("button[class='btn-excluir']").click(function(){
+                    var id = $(this).attr("value");
+                    
+                    $('#modal-mensagem').text("Deseja realmente excluir a compra " + id + "?");
+                    $('#link-delete').attr("href", "ComprasController?acao=excluir_compra&id=" + id);
+                });
+                
                 //Exibir mensagem
                 if ($('#mensagem').text().trim() != "null") {
                     $('#container-alert').append("<%@include file="mensagem.jsp" %>");

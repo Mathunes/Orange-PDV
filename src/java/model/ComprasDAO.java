@@ -105,6 +105,20 @@ public class ComprasDAO extends HttpServlet {
         return compra;
     }
     
+    public boolean excluir(int id) {
+        try {
+            String sql = "DELETE FROM compras WHERE id = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+            return false;
+        }
+    }
+    
     public boolean gravar(Compras compra) {
         
         try {
