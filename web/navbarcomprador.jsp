@@ -21,7 +21,7 @@
                     <a class="nav-link text-dark" href="">Categorias</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-dark" href="">Produtos</a>
+                    <a class="nav-link text-dark" href="produtoscomprador.jsp">Produtos</a>
                 </li>
                 <li class="nav-item ms-2">
                     <form method="POST" action="UsuariosController">

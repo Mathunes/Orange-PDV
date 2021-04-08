@@ -26,7 +26,7 @@
         <%@include file="head.html" %>
     </head>
     <body>
-        <%@include file="navbarvendedor.jsp" %>
+        <%@include file="navbarcomprador.jsp" %>
         <div class="container">
             <h2>Área restrita - Visualizar compra</h2>
             

@@ -10,6 +10,7 @@ public class Produtos {
     private int quantidadeDisponivel;
     private String liberadoVenda;
     private int idCategoria;
+    private String nomeCategoria;
     
     public int getId() {
         return id;
@@ -75,6 +76,12 @@ public class Produtos {
         this.idCategoria = idCategoria;
     }
 
+    public String getNomeCategoria() {
+        return nomeCategoria;
+    }
 
+    public void setNomeCategoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
+    }
     
 }
