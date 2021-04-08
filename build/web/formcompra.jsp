@@ -49,12 +49,10 @@
                         <label for="idProduto" class="form-label">Nome produto</label>
                         <select class="form-select" aria-label="Id produto" name="idProduto" id="idProduto" required="">
                             <%
-                            Boolean atualizacao = false;
                             for (int i = 0; i < produtos.size(); i++) {
                                 Produtos produtoAux = produtos.get(i);
                                 //Se for atualização, exibir opção do produto
                                 if (compra.getIdProduto()== produtoAux.getId()) {
-                                    atualizacao = true;
                             %>
                                         <option value="<%=produtoAux.getId() %>" selected><%=produtoAux.getNomeProduto()%></option>
                             <%
@@ -72,12 +70,10 @@
                     <label for="nomeFornecedor" class="form-label">Razão social do fornecedor</label>
                     <select class="form-select" aria-label="Nome fornecedor" name="idFornecedor" id="nomeFornecedor" required="">
                         <%
-                            atualizacao = false;
                             for (int i = 0; i < fornecedores.size(); i++) {
                                 Fornecedores fornecedor = fornecedores.get(i);
                                 //Se for atualização, exibir opção do fornecedor
                                 if (compra.getIdFornecedor()== fornecedor.getId()) {
-                                    atualizacao = true;
                         %>
                                     <option value="<%=fornecedor.getId() %>" selected><%=fornecedor.getRazaoSocial() %> - <%=fornecedor.getCnpj() %></option>
                         <%

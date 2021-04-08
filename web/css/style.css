@@ -26,7 +26,7 @@ body, .modal-content {
     border-top: 0 none;
 }
 
-.btn-excluir {
+.btn-excluir, .btn-liberar {
     margin: 0;
     padding: 0;
     border: 0;

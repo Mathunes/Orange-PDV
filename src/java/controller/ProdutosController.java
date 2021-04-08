@@ -63,6 +63,19 @@ public class ProdutosController extends HttpServlet {
                 mostrarNomeProduto.forward(request, response);
                 break;
                 
+            //Requisição para editar o produto pelo id
+            case "editar_produto":
+                id = Integer.parseInt(request.getParameter("id"));
+                produto = dao.getProdutoID(id);
+                
+                categorias = daoCategorias.getCategorias();
+
+                request.setAttribute("produto", produto);
+                request.setAttribute("categorias", categorias);
+                RequestDispatcher editarCompra = getServletContext().getRequestDispatcher("/formproduto.jsp");
+                editarCompra.forward(request, response);
+                break;
+                
             //Requisição para excluir o produto pelo id
             case "excluir_produto":
                 id = Integer.parseInt(request.getParameter("id"));
@@ -100,6 +113,22 @@ public class ProdutosController extends HttpServlet {
                 
                 RequestDispatcher cadastrarProduto = getServletContext().getRequestDispatcher("/formproduto.jsp");
                 cadastrarProduto.forward(request, response);
+                break;
+            
+            case "liberar_produto":
+                id = Integer.parseInt(request.getParameter("id"));
+                String bloquear = request.getParameter("bloquear");
+                if (dao.liberar(id, bloquear))
+                    request.setAttribute("mensagem", "Produto " + ((bloquear.equals("S")) ? "bloqueado" : "liberado") + " para venda");
+                else
+                    request.setAttribute("mensagem", "Erro ao liberar produto");
+                
+                //Enviando relação de produtos para evitar o reload e perder a mensagem
+                produtos = dao.getProdutos();
+                request.setAttribute("produtos", produtos);
+                    
+                RequestDispatcher liberarProduto = getServletContext().getRequestDispatcher("/produtoscomprador.jsp");
+                liberarProduto.forward(request, response);
                 break;
                 
             }

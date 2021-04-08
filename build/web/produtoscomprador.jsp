@@ -77,7 +77,6 @@
                             else
                                 for (int i = 0; i < produtos.size(); i++) {
                                     Produtos produto = produtos.get(i);
-                                    String linkLiberarProduto = "";
                                     String linkExibirProduto = "ProdutosController?acaoRestrito=mostrar_produto&id="+produto.getId();
                                     String linkEditarProduto = "ProdutosController?acaoRestrito=editar_produto&id="+produto.getId();
                             
@@ -87,7 +86,7 @@
                             <td><%=produto.getNomeProduto() %></td>
                             <td><%=produto.getLiberadoVenda().equals("S") ? "Liberada" : "Bloqueada" %></td>
                             <td>
-                                <a href="<%=linkLiberarProduto%>"><img src="assets/imagens/padlock-fill.svg" class="btn-icon" alt="Liberar/bloquear produto"></a>
+                                <button class="btn-liberar" name="<%=produto.getId()%>-<%=produto.getLiberadoVenda()%>" value="<%=produto.getNomeProduto()%>"><img src="assets/imagens/padlock-fill.svg" class="btn-icon" alt="Liberar produto" data-bs-toggle="modal" data-bs-target="#modalLiberar"></button>
                             </td>
                             <td>
                                 <a href="<%=linkExibirProduto%>"><img src="assets/imagens/eye-fill.svg" class="btn-icon" alt="Exibir produto"></a>
@@ -108,6 +107,7 @@
             </div>
             
         </div>
+        
         <!--Modal para confirmar exclusão do produto-->
         <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -128,7 +128,28 @@
                 </div>
             </div>
         </div>           
-                        
+        
+        <!--Modal para confirmar liberação do produto-->
+        <div class="modal fade" id="modalLiberar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Liberar produto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modal-mensagem-liberar"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                        <a href="" id="link-liberar">
+                            <button type="button" class="btn btn-primary">Sim</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>           
+        
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){      
@@ -139,6 +160,17 @@
                     
                     $('#modal-mensagem').text("Deseja realmente excluir o produto " + nomeProduto + "?");
                     $('#link-delete').attr("href", "ProdutosController?acaoRestrito=excluir_produto&id=" + id);
+                });
+                
+                //Liberar produto
+                $(".info-produto").find("button[class='btn-liberar']").click(function(){
+                    var nomeProduto = $(this).attr("value");
+                    var name = $(this).attr("name").split("-");
+                    var id = name[0];
+                    var acao = (name[1] == "S") ? "bloquear" : "liberar";
+                    
+                    $('#modal-mensagem-liberar').text("Deseja realmente " + acao + " o produto " + nomeProduto + " para venda?");
+                    $('#link-liberar').attr("href", "ProdutosController?acaoRestrito=liberar_produto&id=" + id + "&bloquear=" + name[1]);
                 });
                 
                 //Exibir mensagem

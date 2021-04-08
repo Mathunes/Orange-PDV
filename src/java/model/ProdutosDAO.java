@@ -177,5 +177,20 @@ public class ProdutosDAO extends HttpServlet {
             return false;
         }
     }
+    
+    public boolean liberar(int id, String bloquear) {
+        try {
+            String sql = "UPDATE produtos SET liberado_venda = ? WHERE id = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, ((bloquear.equals("S")) ? "N" : "S"));
+            ps.setInt(2, id);
+            ps.execute();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+            return false;
+        }
+    }
 
 }
