@@ -41,7 +41,7 @@
                 <div class="col-sm">
                     <form method="GET" action="ProdutosController">
                     
-                        <input type="hidden" name="acaoRestrito" value="" required>
+                        <input type="hidden" name="acaoRestrito" value="mostrar_produto_busca" required>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="busca" placeholder="Buscar produto..." >
                             <button class="btn" type="submit">

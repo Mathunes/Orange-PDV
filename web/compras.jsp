@@ -41,7 +41,7 @@
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
-                    <form method="GET" action="">
+                    <form method="GET" action="ComprasController">
                     
                         <input type="hidden" name="acao" value="mostrar_compra_busca" required>
                         <div class="input-group mb-3">

@@ -34,7 +34,15 @@ public class ProdutosController extends HttpServlet {
         String acaoRestrito = (String)request.getParameter("acaoRestrito");
         
         switch(acaoRestrito){
-                
+            
+            case "mostrar_produto_busca":
+                String busca = request.getParameter("busca");
+                produtos = dao.getProdutoPesquisa(busca);
+                request.setAttribute("produtos", produtos);
+                RequestDispatcher mostrarComprasBusca = getServletContext().getRequestDispatcher("/produtoscomprador.jsp");
+                mostrarComprasBusca.forward(request, response);
+                break;
+            
             case "mostrar_produto":
                 id = Integer.parseInt(request.getParameter("id"));
                 produto = dao.getProdutoID(id);

@@ -121,6 +121,43 @@ public class ProdutosDAO extends HttpServlet {
         return produto;
     }
     
+    public ArrayList<Produtos> getProdutoPesquisa(String nomeProduto) {
+        ArrayList<Produtos> produtos = new ArrayList<>();
+        
+        try {
+            String sql = "SELECT * FROM "
+                    + "produtos WHERE nome_produto "
+                    + "LIKE ? ORDER BY nome_produto";
+            
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, '%' + nomeProduto + '%');
+            
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Produtos produto = new Produtos();
+
+                produto.setId(rs.getInt("id"));
+                produto.setNomeProduto(rs.getString("nome_produto"));
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setPrecoCompra(rs.getDouble("preco_compra"));
+                produto.setPrecoVenda(rs.getDouble("preco_venda"));
+                produto.setQuantidadeDisponivel(rs.getInt("quantidade_disponível"));
+                produto.setLiberadoVenda(rs.getString("liberado_venda"));
+                produto.setIdCategoria(rs.getInt("id_categoria"));
+
+                produtos.add(produto);   
+            }
+
+
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+        }
+            
+        return produtos;
+    }
+    
     public boolean excluir(int id) {
         try {
             String sql = "DELETE FROM produtos WHERE id = ?";
