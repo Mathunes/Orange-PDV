@@ -68,5 +68,78 @@ public class CategoriasDAO extends HttpServlet {
         
         return categoria;
     }
+public ArrayList<Categorias> getClienteNome(String nome_categoria) {
+        ArrayList<Categorias> categorias = new ArrayList<>();
+        
+        try {
+            String sql = "SELECT * FROM categorias WHERE nome_categoria LIKE ? ORDER BY nome_categoria";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, '%' + nome_categoria + '%');
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+                Categorias categoria = new Categorias();
+                
+                categoria.setId(rs.getInt("id"));
+                categoria.setNomeCategoria(rs.getString("nome_categoria"));
 
+                
+                categorias.add(categoria);
+            }
+                    
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+        }
+        
+        return categorias;
+    }
+    
+    public boolean excluir(int id) {
+        try {
+            String sql = "DELETE FROM categorias WHERE id = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean gravar(Categorias categoria) {
+        
+        try {
+            String sql;
+            
+            if (categoria.getId() == 0) {
+                sql = "INSERT INTO categorias "
+                        + "(nome_categoria)"
+                        + "VALUES (?)";
+            } else {
+                sql = "UPDATE categorias SET "
+                        + "nome_categoria=?"
+                        + "WHERE id=?";
+            }
+            
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, categoria.getNomeCategoria());
+            
+            if (categoria.getId() > 0)
+                ps.setInt(2, categoria.getId());
+            
+            ps.execute();
+            
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+            
+            return false;
+        }
+            
+    }
 }
