@@ -67,7 +67,7 @@ public class CategoriasController extends HttpServlet {
                 if (dao.excluir(id))
                     request.setAttribute("mensagem", "Categoria excluído");
                 else
-                    request.setAttribute("mensagem", "Erro ao excluir categoria");
+                    request.setAttribute("mensagem", "Categoria não pode ser excluída, pois está sendo referenciada em algum produto. Por favor, retire a referência e tente excluir novamente.");
                 
                 //Enviando relação de categorias para evitar o reload e perder a mensagem
                 categorias = dao.getCategorias();
@@ -123,5 +123,11 @@ public class CategoriasController extends HttpServlet {
             else 
                 mensagem = "Erro ao gravar categoria";
         }
+        ArrayList<Categorias> categorias;       
+        categorias = dao.getCategorias();
+        request.setAttribute("categorias", categorias);
+        request.setAttribute("mensagem", mensagem);
+        RequestDispatcher rd = request.getRequestDispatcher("/categorias.jsp");
+        rd.forward(request, response);
     }
 }

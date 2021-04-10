@@ -12,16 +12,13 @@
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto d-flex mb-2 mb-lg-0">
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-dark" href="compras.jsp">Compras</a>
+                    <a class="nav-link text-dark" href="ProdutosController?acaoRestrito=mostrar_produtos">Produtos</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-dark" href="">Fornecedores</a>
+                    <a class="nav-link text-dark" href="CategoriasController?acao=mostrar_categorias">Categorias</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-dark" href="">Categorias</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link text-dark" href="produtoscomprador.jsp">Produtos</a>
+                    <a class="nav-link text-dark" href="FornecedoresController?acao=mostrar_fornecedores">Fornecedores</a>
                 </li>
                 <li class="nav-item ms-2">
                     <form method="POST" action="UsuariosController">
