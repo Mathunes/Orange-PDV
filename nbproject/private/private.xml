@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ProdutosDAO.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ProdutosControllerClientes.java</file>
@@ -11,6 +12,7 @@
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ClientesDAO.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/CategoriasDAO.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/Conexao.java</file>
+
         </group>
     </open-files>
 </project-private>

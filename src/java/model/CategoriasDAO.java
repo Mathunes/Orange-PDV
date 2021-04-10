@@ -2,6 +2,7 @@ package model;
 
 import aplicacao.Categorias;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -44,6 +45,28 @@ public class CategoriasDAO extends HttpServlet {
         }
         
         return categorias;
+    }
+    
+    public Categorias getCategoriaID (int id) {
+        Categorias categoria = new Categorias();
+        
+        try {
+            String sql = "SELECT * FROM categorias WHERE id = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                categoria.setId(rs.getInt("id"));
+                categoria.setNomeCategoria(rs.getString("nome_categoria"));
+            }
+                    
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+        }
+        
+        return categoria;
     }
 
 }

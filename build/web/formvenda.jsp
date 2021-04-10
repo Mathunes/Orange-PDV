@@ -19,7 +19,7 @@
             response.sendRedirect("administrador.jsp");
             break;
         case '2':
-            response.sendRedirect("comprador.jsp");
+            response.sendRedirect("compras.jsp");
             break;
     }
     
@@ -39,7 +39,7 @@
             
             <h2>Área restrita - Venda</h2>
             
-            <form class="mt-4" id="form-cliente" method="POST" action="VendasController">
+            <form class="mt-4" id="form-venda" method="POST" action="VendasController">
                 <input type="hidden" name="id" value="<%=venda.getId() %>" required="">
                 <input type="hidden" name="idProduto" value="<%=produto.getId() %>" required="">
                 <input type="hidden" name="idVendedor" value="<%=usuario.getId() %>" required="">
@@ -104,7 +104,7 @@
                 //Ao carregar a página, e o valor total for maior do que zero, é atualização de uma venda
                 if ($('#valorTotal').val() > 0) {
                     //O desconto não é armazenado no banco, o cálculo a seguir é feito para descobrir o desconto da venda
-                     $('#desconto').val(($('#quantidade').val() * $('#valorProduto').val()) - $('#valorTotal').val());
+                    $('#desconto').val(Math.round(($('#quantidade').val() * $('#valorProduto').val()) - $('#valorTotal').val()));
                     
                     $('#desconto').attr("max", ($('#quantidade').val() * $('#valorProduto').val()) - ((<%= produto.getPrecoCompra() + (produto.getPrecoCompra() * 0.1)%>) * $('#quantidade').val()));
                 }
