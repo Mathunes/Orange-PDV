@@ -29,7 +29,6 @@
         <%@include file="navbarvendedor.jsp" %>
         
         <div class="container">
-            Toast para ser exibido caso o CNPJ informado seja inválido
             <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center w-100 position-absolute top-0 end-0 mt-2">
                 <div class="toast-container">
                     <div class="toast text-white bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
@@ -54,7 +53,7 @@
                         <input type="text" class="form-control" placeholder="Razão Social do fornecedor" aria-label="Razão Social do fornecedor" name="razao_social" maxlength="50" value="<%=fornecedor.getRazaoSocial()%>" required>
                     </div>
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control cpf" placeholder="CNPJ do fornecedor" aria-label="CNPJ do fornecedor" name="cnpj" maxlength="14" value="<%=fornecedor.getCnpj()%>" required>
+                        <input type="text" class="form-control cnpj" placeholder="CNPJ do fornecedor" aria-label="CNPJ do fornecedor" name="cnpj" maxlength="14" value="<%=fornecedor.getCnpj()%>" required>
                     </div>
                 </div>
                 <div class="row">

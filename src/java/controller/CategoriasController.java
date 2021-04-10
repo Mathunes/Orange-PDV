@@ -42,7 +42,7 @@ public class CategoriasController extends HttpServlet {
                 break;
             
             //Requisição para exibir o categoria pelo nome - usado no campo de busca
-            case "mostrar_categorias_nome":
+            case "buscar_categorias":
                 String nome_categoria = request.getParameter("nome_categoria");
                 categorias = dao.getNomeCategoria(nome_categoria);
                 request.setAttribute("categorias", categorias);

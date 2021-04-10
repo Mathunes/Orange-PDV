@@ -42,9 +42,9 @@
                 <div class="col-sm">
                     <form method="GET" action="CategoriasController">
                         
-                        <input type="hidden" name="acao" value="mostrar_categorias_nome" required>
+                        <input type="hidden" name="acao" value="buscar_categorias" required>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="nome" placeholder="Buscar categoria..." >
+                            <input type="text" class="form-control" name="nome_categoria" placeholder="Buscar categoria..." >
                             <button class="btn " type="submit">
                                 <img src="assets/imagens/search.svg" alt="Lupa">
                             </button>

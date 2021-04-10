@@ -42,10 +42,10 @@ public class FornecedoresController extends HttpServlet {
                 mostrarFornecedor.forward(request, response);
                 break;
             
-            //Requisição para exibir o fornecedor pelo nome - usado no campo de busca
-            case "mostrar_fornecedores_nome":
-                String nome = request.getParameter("nome");
-                fornecedores = dao.getRazaoSocialFornecedor(nome);
+            //Requisição para exibir o fornecedor pelo razao_social - usado no campo de busca
+            case "mostrar_fornecedores_razao_social":
+                String razao_social = request.getParameter("razao_social");
+                fornecedores = dao.getRazaoSocialFornecedor(razao_social);
                 request.setAttribute("fornecedores", fornecedores);
                 RequestDispatcher mostrarFornecedoresNome = getServletContext().getRequestDispatcher("/fornecedores.jsp");
                 mostrarFornecedoresNome.forward(request, response);
