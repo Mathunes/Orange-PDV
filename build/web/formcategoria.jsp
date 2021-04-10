@@ -42,25 +42,5 @@
         </div>
         
         <%@include file="scripts.html" %>
-        <script src="js/mascaras.js"></script>
-        <script>
-            $( dacument ).ready(function() {
-                //Ouvinda evento de envio da formulário
-                $('#form-categoria').submit(() => {
-                    //Interrompenda o envio
-                    event.preventDefault();
-                    //Verificanda se o CPF é válida
-                    if (validaCPF($('.cpf').val())) {
-                        //Envianda o formulário
-                        $('#form-categoria').unbind('submit').submit();
-                    } else {
-                        //Exibinda a mensagem de erro
-                        $('.toast').toast('show');
-                    }
-                       
-                });
-                
-            });
-        </script>
     </body>
 </html>

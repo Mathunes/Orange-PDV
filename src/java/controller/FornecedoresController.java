@@ -43,7 +43,7 @@ public class FornecedoresController extends HttpServlet {
                 break;
             
             //Requisição para exibir o fornecedor pelo razao_social - usado no campo de busca
-            case "mostrar_fornecedores_razao_social":
+            case "buscar_fornecedor":
                 String razao_social = request.getParameter("razao_social");
                 fornecedores = dao.getRazaoSocialFornecedor(razao_social);
                 request.setAttribute("fornecedores", fornecedores);
@@ -129,8 +129,8 @@ public class FornecedoresController extends HttpServlet {
             mensagem = "Preencha todos os campos";
         else if (razao_social.length() > 50)
             mensagem = "Razao Social deve conter no máximo 50 caracteres";
-        else if (cnpj.length() > 14) 
-            mensagem = "CNPJ deve conter no máximo 14 caracteres";
+        else if (cnpj.length() > 18) 
+            mensagem = "CNPJ deve conter no máximo 18 caracteres";
         else if (endereco.length() > 50)
             mensagem = "Estado deve conter no máximo 50 caracteres";
         else if (bairro.length() > 50)
@@ -145,8 +145,6 @@ public class FornecedoresController extends HttpServlet {
             mensagem = "Telefone deve conter no máximo 20 caracteres";
         else if (email.length() > 50)
             mensagem = "Email deve conter no máximo 50 caracteres";
-        else if (!validaCNPJ(cnpj))
-            mensagem = "CNPJ inválido";
         else {
             
             fornecedor.setId(id);
@@ -174,40 +172,4 @@ public class FornecedoresController extends HttpServlet {
         rd.forward(request, response);
         
     }
-    
-    public static boolean validaCNPJ(String cnpj) {
-        double soma = 0;
-        double resto;
-        
-        cnpj = cnpj.replaceAll("\\.", "");
-        cnpj = cnpj.replaceAll("\\-", "");
-        
-        if ((cnpj.equals("00000000000")) || (cnpj.equals("11111111111")) || (cnpj.equals("22222222222")) 
-            || (cnpj.equals("33333333333")) || (cnpj.equals("44444444444")) || (cnpj.equals("55555555555")) 
-            || (cnpj.equals("66666666666")) || (cnpj.equals("77777777777")) || (cnpj.equals("88888888888")) 
-            || (cnpj.equals("99999999999")))
-            return false;
-        
-        for (int i=1; i<=9; i++)
-            soma += (Integer.parseInt(cnpj.substring(i-1, i)) * (11 - i));
-        resto = (soma * 10) % 11;
-        
-        if ((resto == 10) || (resto == 11))
-            resto = 0;
-        if (resto != Integer.parseInt(cnpj.substring(9,10))) 
-            return false;
-        
-        soma = 0;
-        for (int i = 1; i <= 10; i++)
-            soma += (Integer.parseInt(cnpj.substring(i-1, i)) * (12 - i));
-        resto = (soma * 10) % 11;
-
-        if ((resto == 10) || (resto == 11))
-            resto = 0;
-        if (resto != Integer.parseInt(cnpj.substring(10,11))) 
-            return false;
-        return true;
-
-    }
-
 }

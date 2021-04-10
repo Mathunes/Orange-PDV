@@ -42,10 +42,10 @@
                 <div class="col-sm">
                     <form method="GET" action="FornecedoresController">
                         
-                        <input type="hidden" name="acao" value="mostrar_fornecedors_nome" required>
+                        <input type="hidden" name="acao" value="buscar_fornecedor" required>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="nome" placeholder="Buscar fornecedor..." >
-                            <button class="btn " type="submit">
+                            <input type="text" class="form-control" name="razao_social" placeholder="Buscar fornecedor..." >
+                            <button class="btn" type="submit">
                                 <img src="assets/imagens/search.svg" alt="Lupa">
                             </button>
                         </div>
