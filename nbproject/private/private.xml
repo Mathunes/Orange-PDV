@@ -3,32 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ProdutosDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Produtos.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/aenavbar.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ClientesController.java</file>
+            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ProdutosControllerClientes.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/head.html</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/aeprodutos.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/css/bootstrap.min.css</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/VerificaSessao.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/toastmensagem.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ClientesDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/Conexao.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/css/style.css</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Categorias.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/CategoriasController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/index.jsp</file>
-
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/UsuariosDAO.java</file>
-
-
+            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/VendasDAO.java</file>
+            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ClientesDAO.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/CategoriasDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/VendasController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ProdutosController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/UsuariosController.java</file>
-
+            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/Conexao.java</file>
         </group>
     </open-files>
 </project-private>

@@ -19,7 +19,7 @@ public class Conexao extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
                 System.out.println("Driver carregado!");
                 
-                conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/orangepdv", "root", "");
+                conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/estoque", "root", "");
                 
                 System.out.println("Conexão realizada com sucesso!");
                 
