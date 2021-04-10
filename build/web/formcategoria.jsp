@@ -29,11 +29,11 @@
         <%@include file="navbarcomprador.jsp" %>
         
                               
-            <h2>Área restrita - Categorias</h2>
             
+        <div class="container">
+            <h2>Área restrita - Categorias</h2>
             <form class="mt-4" id="form-categoria" method="POST" action="CategoriasController">
-                <input type="hidden" name="id" value="<%=categoria.getId()%>" required="">
-                <div class="row">
+                <input class= "form-control" type="hidden" name="id" value="<%=categoria.getId()%>" required="">
                     <div class="col-md mb-4">
                         <input type="text" class="form-control" placeholder="Nome da categoria" aria-label="Nome da categoria" name="nome_categoria" maxlength="50" value="<%=categoria.getNomeCategoria()%>" required>
                     </div>                    

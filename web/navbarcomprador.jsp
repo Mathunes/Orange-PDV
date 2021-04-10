@@ -20,6 +20,9 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link text-dark" href="FornecedoresController?acao=mostrar_fornecedores">Fornecedores</a>
                 </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-dark" href="ComprasController?acao=mostrar_compras">Compras</a>
+                </li>
                 <li class="nav-item ms-2">
                     <form method="POST" action="UsuariosController">
                         <input type="hidden" name="acao" value="logout" required>
