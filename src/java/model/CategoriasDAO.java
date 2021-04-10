@@ -68,7 +68,7 @@ public class CategoriasDAO extends HttpServlet {
         
         return categoria;
     }
-public ArrayList<Categorias> getClienteNome(String nome_categoria) {
+public ArrayList<Categorias> getNomeCategoria(String nome_categoria) {
         ArrayList<Categorias> categorias = new ArrayList<>();
         
         try {
