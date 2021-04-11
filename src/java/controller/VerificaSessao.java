@@ -19,7 +19,9 @@ import javax.servlet.http.HttpSession;
     "/formcliente.jsp", "/venda.jsp", "/formvenda.jsp", "/VendasController", 
     "/ProdutosController", "/administrador.jsp", "/compras.jsp", "/compra.jsp", 
     "/formcompra.jsp", "/ComprasController", "/produtoscomprador.jsp", 
-    "/formproduto.jsp", "/produto.jsp"})
+    "/formproduto.jsp", "/produto.jsp", "/CategoriasController", "/FornecedoresController", 
+    "/formfornecedor.jsp", "/formcategoria.jsp", "/categorias.jsp", "/fornecedores.jsp",
+    "/categoria.jsp", "/fornecedor.jsp"})
 public class VerificaSessao implements Filter {
     
     public void doFilter(ServletRequest request, ServletResponse response,

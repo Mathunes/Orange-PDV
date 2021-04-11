@@ -119,7 +119,7 @@ public class ClientesController extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String cidade = request.getParameter("cidade");
         String uf = request.getParameter("uf");
-        String cep = request.getParameter("cep");
+        String cep = request.getParameter("cep").replaceAll("-", "");
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
         
@@ -209,5 +209,5 @@ public class ClientesController extends HttpServlet {
         return true;
 
     }
-
+    
 }
