@@ -1,6 +1,4 @@
 function validaCNPJ(cnpj) {
-    cnpj = cnpj.replaceAll(".", "");
-    cnpj = cnpj.replaceAll("-", "");
 
     if ((cnpj == "00000000000") || (cnpj == "11111111111") || (cnpj == "22222222222") 
         || (cnpj == "33333333333") || (cnpj == "44444444444") || (cnpj == "55555555555") 
@@ -8,6 +6,5 @@ function validaCNPJ(cnpj) {
         || (cnpj == "99999999999"))
         return false;
     
-    console.log(cnpj);
     return true;
 }

@@ -86,7 +86,7 @@
                     //Interrompendo o envio
                     event.preventDefault();
                     //Verificando se o CEP é válido
-                    if (validaCEP($('.cep').val()) && validaCNPJ($('.cnpj').val())) {
+                    if (validaCNPJ($('.cnpj').val())) {
                         //Enviando o formulário
                         $('#form-fornecedor').unbind('submit').submit();     
                     } else {

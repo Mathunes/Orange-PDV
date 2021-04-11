@@ -133,8 +133,8 @@ public class FornecedoresController extends HttpServlet {
             mensagem = "Preencha todos os campos";
         else if (razaoSocial.length() > 50)
             mensagem = "Razao Social deve conter no máximo 50 caracteres";
-        else if (!(validaCNPJ(cnpj))) 
-            mensagem = "CNPJ deve conter no máximo 14 caracteres";
+        else if (validaCNPJ(cnpj)) 
+            mensagem = "CNPJ incorreto!";
         else if (endereco.length() > 50)
             mensagem = "Estado deve conter no máximo 50 caracteres";
         else if (bairro.length() > 50)
@@ -143,8 +143,8 @@ public class FornecedoresController extends HttpServlet {
             mensagem = "Cidade deve conter no máximo 50 caracteres";
         else if (uf.length() > 2)
             mensagem = "UF deve conter no máximo 2 caracteres";
-        else if (!(validaCEP(cep)))
-            mensagem = "CEP deve conter no máximo 8 caracteres";
+        else if (validaCEP(cep))
+            mensagem = "CEP incorreto!";
         else if (telefone.length() > 20)
             mensagem = "Telefone deve conter no máximo 20 caracteres";
         else if (email.length() > 50)
@@ -177,27 +177,22 @@ public class FornecedoresController extends HttpServlet {
     }      
 
         public static boolean validaCEP(String cep) {
-
-            cep = cep.replaceAll("\\.", "");
-            cep = cep.replaceAll("\\-", "");
             
-            if (cep.length() > 8)
+            if (cep.length() > 9)
                 return false;
             
             return true;
         }
         
         public static boolean validaCNPJ(String cnpj) {
-            cnpj = cnpj.replaceAll("\\.", "");
-            cnpj = cnpj.replaceAll("\\-", "");
             
-            if (cnpj.length() > 14)
+            if (cnpj.length() > 18)
                 return false;
             
-            if ((cnpj == "00000000000") || (cnpj == "11111111111") || (cnpj == "22222222222") 
-                || (cnpj == "33333333333") || (cnpj == "44444444444") || (cnpj == "55555555555") 
-                || (cnpj == "66666666666") || (cnpj == "77777777777") || (cnpj == "88888888888") 
-                || (cnpj == "99999999999"))
+            if ((cnpj == "00.000.000/000-00") || (cnpj == "11.111.111/111-11") || (cnpj == "22.222.222/222-22") 
+                || (cnpj == "33.333.333/333-33") || (cnpj == "44.444.444/444-44") || (cnpj == "55.555.555/555-55") 
+                || (cnpj == "66.666.666/666-66") || (cnpj == "77.777.777/777-77") || (cnpj == "88.888.888/888-88") 
+                || (cnpj == "99.999.999/999-99"))
                 return false;
             return true;
         }
