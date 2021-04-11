@@ -42,7 +42,7 @@
                 <div class="col-sm">
                     <form method="GET" action="FornecedoresController">
                         
-                        <input type="hidden" name="acao" value="buscar_fornecedor" required>
+                        <input type="hidden" name="acao" value="buscar_fornecedores" required>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="razao_social" placeholder="Buscar fornecedor..." >
                             <button class="btn" type="submit">
