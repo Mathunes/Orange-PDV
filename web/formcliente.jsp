@@ -46,7 +46,9 @@
             </div>
                                 
             <h2>Área restrita - Clientes</h2>
-            
+            <a href="ClientesController?acao=mostrar_clientes">
+                <button class="btn btn-voltar">Voltar</button>
+            </a>
             <form class="mt-4" id="form-cliente" method="POST" action="ClientesController">
                 <input type="hidden" name="id" value="<%=cliente.getId()%>" required="">
                 <div class="row">
@@ -75,7 +77,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control cep" placeholder="CEP do cliente" aria-label="CEP do cliente" name="cep" maxlength="8" value="<%=cliente.getCep()%>" required>
+                        <input type="text" class="form-control cep" placeholder="CEP do cliente" aria-label="CEP do cliente" name="cep" id="cep" maxlength="8" value="<%=cliente.getCep()%>" required>
                     </div>
                     <div class="col-md mb-4">
                         <input type="text" class="form-control telefone" placeholder="Telefone do cliente" aria-label="Telefone do cliente" name="telefone" maxlength="20" value="<%=cliente.getTelefone()%>" required>

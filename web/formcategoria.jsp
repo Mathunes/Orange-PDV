@@ -32,6 +32,9 @@
             
         <div class="container">
             <h2>Área restrita - Categorias</h2>
+            <a href="CategoriasController?acao=mostrar_categorias">
+                    <button class="btn btn-voltar">Voltar</button>
+            </a>
             <form class="mt-4" id="form-categoria" method="POST" action="CategoriasController">
                 <input class= "form-control" type="hidden" name="id" value="<%=categoria.getId()%>" required="">
                     <div class="col-md mb-4">

@@ -42,13 +42,13 @@ public class FornecedoresController extends HttpServlet {
                 mostrarFornecedor.forward(request, response);
                 break;
             
-            //Requisição para exibir o fornecedor pelo razao_social - usado no campo de busca
-            case "buscar_fornecedor":
-                String razao_social = request.getParameter("razao_social");
-                fornecedores = dao.getRazaoSocialFornecedor(razao_social);
+            //Requisição para exibir o fornecedor pelo razaoSocial - usado no campo de busca
+            case "buscar_fornecedores":
+                String razaoSocial = request.getParameter("razao_social");
+                fornecedores = dao.getRazaoSocialFornecedor(razaoSocial);
                 request.setAttribute("fornecedores", fornecedores);
-                RequestDispatcher mostrarFornecedoresNome = getServletContext().getRequestDispatcher("/fornecedores.jsp");
-                mostrarFornecedoresNome.forward(request, response);
+                RequestDispatcher mostrarFornecedoresRazaoSocial = getServletContext().getRequestDispatcher("/fornecedores.jsp");
+                mostrarFornecedoresRazaoSocial.forward(request, response);
                 break;
                 
             //Requisição para editar o fornecedor pelo id
@@ -113,7 +113,7 @@ public class FornecedoresController extends HttpServlet {
         FornecedoresDAO dao = new FornecedoresDAO();
         
         int id = Integer.parseInt(request.getParameter("id"));
-        String razao_social = request.getParameter("razao_social");
+        String razaoSocial = request.getParameter("razao_social");
         String cnpj = request.getParameter("cnpj");
         String endereco = request.getParameter("endereco");
         String bairro = request.getParameter("bairro");
@@ -123,14 +123,14 @@ public class FornecedoresController extends HttpServlet {
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
         
-        if (razao_social.isEmpty() || cnpj.isEmpty() || endereco.isEmpty() || bairro.isEmpty() || 
+        if (razaoSocial.isEmpty() || cnpj.isEmpty() || endereco.isEmpty() || bairro.isEmpty() || 
                 cidade.isEmpty() || uf.isEmpty() || cep.isEmpty() || telefone.isEmpty() || 
                 email.isEmpty())    
             mensagem = "Preencha todos os campos";
-        else if (razao_social.length() > 50)
-            mensagem = "Razao Social deve conter no máximo 50 caracteres";
-        else if (cnpj.length() > 18) 
-            mensagem = "CNPJ deve conter no máximo 18 caracteres";
+        else if (razaoSocial.length() > 50)
+            mensagem = "RazaoSocial deve conter no máximo 50 caracteres";
+        else if (cnpj.length() > 14) 
+            mensagem = "CNPJ deve conter no máximo 14 caracteres";
         else if (endereco.length() > 50)
             mensagem = "Estado deve conter no máximo 50 caracteres";
         else if (bairro.length() > 50)
@@ -148,7 +148,7 @@ public class FornecedoresController extends HttpServlet {
         else {
             
             fornecedor.setId(id);
-            fornecedor.setRazaoSocial(razao_social);
+            fornecedor.setRazaoSocial(razaoSocial);
             fornecedor.setCnpj(cnpj);
             fornecedor.setEndereco(endereco);
             fornecedor.setBairro(bairro);
@@ -172,4 +172,7 @@ public class FornecedoresController extends HttpServlet {
         rd.forward(request, response);
         
     }
+    
+    
+
 }

@@ -39,7 +39,9 @@
         <div class="container">
             
             <h2>Área restrita - Compra</h2>
-            
+            <a href="ComprasController?acao=mostrar_compras">
+                    <button class="btn btn-voltar">Voltar</button>
+            </a>
             <form class="mt-4" id="form-compra" method="POST" action="ComprasController">
                 <input type="hidden" name="id" value="<%=compra.getId() %>" required="">
                 <input type="hidden" name="idComprador" value="<%=usuario.getId() %>" required="">

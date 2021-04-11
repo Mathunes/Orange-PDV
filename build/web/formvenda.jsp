@@ -38,7 +38,9 @@
         <div class="container">
             
             <h2>Área restrita - Venda</h2>
-            
+            <a href="ProdutosController?acaoRestrito=mostrar_produtos_restrito">
+                    <button class="btn btn-voltar">Voltar</button>
+            </a>
             <form class="mt-4" id="form-venda" method="POST" action="VendasController">
                 <input type="hidden" name="id" value="<%=venda.getId() %>" required="">
                 <input type="hidden" name="idProduto" value="<%=produto.getId() %>" required="">
