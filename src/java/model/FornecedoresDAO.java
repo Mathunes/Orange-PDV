@@ -163,7 +163,6 @@ public class FornecedoresDAO extends HttpServlet {
             
             if (fornecedor.getId() > 0)
                 ps.setInt(10, fornecedor.getId());
-            
             ps.execute();
             
             return true;

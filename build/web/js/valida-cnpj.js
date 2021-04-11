@@ -7,5 +7,7 @@ function validaCNPJ(cnpj) {
         || (cnpj == "66666666666") || (cnpj == "77777777777") || (cnpj == "88888888888") 
         || (cnpj == "99999999999"))
         return false;
+    
+    console.log(cnpj);
     return true;
 }

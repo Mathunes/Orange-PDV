@@ -86,34 +86,17 @@
                     //Interrompendo o envio
                     event.preventDefault();
                     //Verificando se o CEP é válido
-                    if (validaCEP($('.cep').val())) {
+                    if (validaCEP($('.cep').val()) && validaCNPJ($('.cnpj').val())) {
                         //Enviando o formulário
-                        $('#form-fornecedor').unbind('submit').submit();
+                        $('#form-fornecedor').unbind('submit').submit();     
                     } else {
                         //Exibindo a mensagem de erro
                         $('.toast').toast('show');
-                    }
-                       
+                    }                       
                 });
                 
             });
-            $( document ).ready(function() {
-                //Ouvindo evento de envio do formulário
-                $('#form-fornecedor').submit(() => {
-                    //Interrompendo o envio
-                    event.preventDefault();
-                    //Verificando se o CEP é válido
-                    if (validaCNPJ($('.cnpj').val())) {
-                        //Enviando o formulário
-                        $('#form-fornecedor').unbind('submit').submit();
-                    } else {
-                        //Exibindo a mensagem de erro
-                        $('.toast').toast('show');
-                    }
-                       
-                });
-                
-            });
+
         </script>
     </body>
 </html>

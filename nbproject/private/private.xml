@@ -9,6 +9,7 @@
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/fornecedores.jsp</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/mascaras.js</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/navbarvendedor.jsp</file>
+            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/jquery-3.4.1.min.js</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/cliente.jsp</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/fornecedor.jsp</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formcategoria.jsp</file>
@@ -18,9 +19,11 @@
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/produtoscomprador.jsp</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/categorias.jsp</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formvenda.jsp</file>
+            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/valida-cep.js</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/VendasController.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/navbarcomprador.jsp</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formcompra.jsp</file>
+            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/jquery.mask.min.js</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ClientesController.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ProdutosControllerClientes.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ClientesDAO.java</file>
@@ -30,6 +33,7 @@
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/valida-cpf.js</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Categorias.java</file>
+            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/valida-cnpj.js</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Fornecedores.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/VendasDAO.java</file>
             <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/CategoriasController.java</file>

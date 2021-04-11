@@ -123,13 +123,17 @@ public class FornecedoresController extends HttpServlet {
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
         
+        
+        
+        System.out.println("CNPJ: " + cnpj);
+
         if (razaoSocial.isEmpty() || cnpj.isEmpty() || endereco.isEmpty() || bairro.isEmpty() || 
                 cidade.isEmpty() || uf.isEmpty() || cep.isEmpty() || telefone.isEmpty() || 
                 email.isEmpty())    
             mensagem = "Preencha todos os campos";
         else if (razaoSocial.length() > 50)
             mensagem = "Razao Social deve conter no máximo 50 caracteres";
-        else if (cnpj.length() > 14) 
+        else if (!(validaCNPJ(cnpj))) 
             mensagem = "CNPJ deve conter no máximo 14 caracteres";
         else if (endereco.length() > 50)
             mensagem = "Estado deve conter no máximo 50 caracteres";
@@ -139,7 +143,7 @@ public class FornecedoresController extends HttpServlet {
             mensagem = "Cidade deve conter no máximo 50 caracteres";
         else if (uf.length() > 2)
             mensagem = "UF deve conter no máximo 2 caracteres";
-        else if (cep.length() > 8)
+        else if (!(validaCEP(cep)))
             mensagem = "CEP deve conter no máximo 8 caracteres";
         else if (telefone.length() > 20)
             mensagem = "Telefone deve conter no máximo 20 caracteres";
@@ -176,14 +180,20 @@ public class FornecedoresController extends HttpServlet {
 
             cep = cep.replaceAll("\\.", "");
             cep = cep.replaceAll("\\-", "");
-
+            
+            if (cep.length() > 8)
+                return false;
+            
             return true;
         }
         
         public static boolean validaCNPJ(String cnpj) {
             cnpj = cnpj.replaceAll("\\.", "");
             cnpj = cnpj.replaceAll("\\-", "");
-
+            
+            if (cnpj.length() > 14)
+                return false;
+            
             if ((cnpj == "00000000000") || (cnpj == "11111111111") || (cnpj == "22222222222") 
                 || (cnpj == "33333333333") || (cnpj == "44444444444") || (cnpj == "55555555555") 
                 || (cnpj == "66666666666") || (cnpj == "77777777777") || (cnpj == "88888888888") 
