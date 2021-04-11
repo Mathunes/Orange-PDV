@@ -101,6 +101,8 @@
                 $('#form-cliente').submit(() => {
                     //Interrompendo o envio
                     event.preventDefault();
+                    
+                    $('.cep').val = $('.cep').val().replaceAll("-", "");
                     //Verificando se o CPF é válido
                     if (validaCPF($('.cpf').val())) {
                         //Enviando o formulário
