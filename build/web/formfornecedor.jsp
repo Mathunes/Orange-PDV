@@ -36,10 +36,10 @@
                 <input type="hidden" name="id" value="<%=fornecedor.getId()%>" required="">
                 <div class="row">
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control" placeholder="Razão Social do fornecedor" aria-label="Razão Social do fornecedor" name="nome" maxlength="50" value="<%=fornecedor.getRazaoSocial()%>" required>
+                        <input type="text" class="form-control" placeholder="Razão Social do fornecedor" aria-label="Razão Social do fornecedor" name="razao_social" maxlength="50" value="<%=fornecedor.getRazaoSocial()%>" required>
                     </div>
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control" placeholder="CNPJ do fornecedor" aria-label="CNPJ do fornecedor" name="cnpj" maxlength="14" value="<%=fornecedor.getCnpj()%>" required>
+                        <input type="text" class="form-control cnpj" placeholder="CNPJ do fornecedor" aria-label="CNPJ do fornecedor" name="cnpj" maxlength="14" value="<%=fornecedor.getCnpj()%>" required>
                     </div>
                 </div>
                 <div class="row">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="row">
                     <div class="col mb-4">
-                        <input type="email" class="form-control" placeholder="Email do fornecedor" aria-label="Email do fornecedor" name="email" maxlength="50" value="<%=fornecedor.getEmail()%>" required>
+                        <input type="email" class="form-control" placeholder="Email do fornecedor" aria-label="Email do fornecedor" name="email" id="cep" maxlength="50" value="<%=fornecedor.getEmail()%>" required>
                     </div>
                 </div>
                 <input type="submit" class="btn btn-registrar" value="Registrar fornecedor">
@@ -77,5 +77,43 @@
         
         <%@include file="scripts.html" %>
         <script src="js/mascaras.js"></script>
+        <script src="js/valida-cep.js"></script>
+        <script src="js/valida-cnpj.js"></script>
+        <script>
+            $( document ).ready(function() {
+                //Ouvindo evento de envio do formulário
+                $('#form-fornecedor').submit(() => {
+                    //Interrompendo o envio
+                    event.preventDefault();
+                    //Verificando se o CEP é válido
+                    if (validaCEP($('.cep').val())) {
+                        //Enviando o formulário
+                        $('#form-fornecedor').unbind('submit').submit();
+                    } else {
+                        //Exibindo a mensagem de erro
+                        $('.toast').toast('show');
+                    }
+                       
+                });
+                
+            });
+            $( document ).ready(function() {
+                //Ouvindo evento de envio do formulário
+                $('#form-fornecedor').submit(() => {
+                    //Interrompendo o envio
+                    event.preventDefault();
+                    //Verificando se o CEP é válido
+                    if (validaCNPJ($('.cnpj').val())) {
+                        //Enviando o formulário
+                        $('#form-fornecedor').unbind('submit').submit();
+                    } else {
+                        //Exibindo a mensagem de erro
+                        $('.toast').toast('show');
+                    }
+                       
+                });
+                
+            });
+        </script>
     </body>
 </html>

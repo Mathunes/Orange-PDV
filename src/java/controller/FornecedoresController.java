@@ -68,7 +68,7 @@ public class FornecedoresController extends HttpServlet {
                 if (dao.excluir(id))
                     request.setAttribute("mensagem", "Fornecedor excluído");
                 else
-                    request.setAttribute("mensagem", "Erro ao excluir fornecedor");
+                    request.setAttribute("mensagem", "Esse fornecedor está sendo referenciado em alguma compra. Por favor, retire a referência e tente excluí-lo novamente.");
                 
                 //Enviando relação de fornecedores para evitar o reload e perder a mensagem
                 fornecedores = dao.getFornecedores();
@@ -128,7 +128,7 @@ public class FornecedoresController extends HttpServlet {
                 email.isEmpty())    
             mensagem = "Preencha todos os campos";
         else if (razaoSocial.length() > 50)
-            mensagem = "RazaoSocial deve conter no máximo 50 caracteres";
+            mensagem = "Razao Social deve conter no máximo 50 caracteres";
         else if (cnpj.length() > 14) 
             mensagem = "CNPJ deve conter no máximo 14 caracteres";
         else if (endereco.length() > 50)
@@ -170,9 +170,27 @@ public class FornecedoresController extends HttpServlet {
         request.setAttribute("mensagem", mensagem);
         RequestDispatcher rd = request.getRequestDispatcher("/fornecedores.jsp");
         rd.forward(request, response);
+    }      
+
+        public static boolean validaCEP(String cep) {
+
+            cep = cep.replaceAll("\\.", "");
+            cep = cep.replaceAll("\\-", "");
+
+            return true;
+        }
         
-    }
-    
-    
+        public static boolean validaCNPJ(String cnpj) {
+            cnpj = cnpj.replaceAll("\\.", "");
+            cnpj = cnpj.replaceAll("\\-", "");
+
+            if ((cnpj == "00000000000") || (cnpj == "11111111111") || (cnpj == "22222222222") 
+                || (cnpj == "33333333333") || (cnpj == "44444444444") || (cnpj == "55555555555") 
+                || (cnpj == "66666666666") || (cnpj == "77777777777") || (cnpj == "88888888888") 
+                || (cnpj == "99999999999"))
+                return false;
+            return true;
+        }
+     
 
 }

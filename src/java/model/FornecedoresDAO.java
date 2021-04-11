@@ -86,13 +86,13 @@ public class FornecedoresDAO extends HttpServlet {
         return fornecedor;
     }
     
-    public ArrayList<Fornecedores> getRazaoSocialFornecedor(String razao_social) {
+    public ArrayList<Fornecedores> getRazaoSocialFornecedor(String razaoSocial) {
         ArrayList<Fornecedores> fornecedores = new ArrayList<>();
         
         try {
             String sql = "SELECT * FROM fornecedores WHERE razao_social LIKE ? ORDER BY razao_social";
             PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setString(1, '%' + razao_social + '%');
+            ps.setString(1, '%' + razaoSocial + '%');
             
             ResultSet rs = ps.executeQuery();
             
