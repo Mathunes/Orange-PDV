@@ -122,10 +122,6 @@ public class FornecedoresController extends HttpServlet {
         String cep = request.getParameter("cep");
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
-        
-        
-        
-        System.out.println("CNPJ: " + cnpj);
 
         if (razaoSocial.isEmpty() || cnpj.isEmpty() || endereco.isEmpty() || bairro.isEmpty() || 
                 cidade.isEmpty() || uf.isEmpty() || cep.isEmpty() || telefone.isEmpty() || 
@@ -133,7 +129,7 @@ public class FornecedoresController extends HttpServlet {
             mensagem = "Preencha todos os campos";
         else if (razaoSocial.length() > 50)
             mensagem = "Razao Social deve conter no máximo 50 caracteres";
-        else if (validaCNPJ(cnpj)) 
+        else if (!validaCNPJ(cnpj)) 
             mensagem = "CNPJ incorreto!";
         else if (endereco.length() > 50)
             mensagem = "Estado deve conter no máximo 50 caracteres";
@@ -143,7 +139,7 @@ public class FornecedoresController extends HttpServlet {
             mensagem = "Cidade deve conter no máximo 50 caracteres";
         else if (uf.length() > 2)
             mensagem = "UF deve conter no máximo 2 caracteres";
-        else if (validaCEP(cep))
+        else if (!validaCEP(cep))
             mensagem = "CEP incorreto!";
         else if (telefone.length() > 20)
             mensagem = "Telefone deve conter no máximo 20 caracteres";
@@ -189,10 +185,10 @@ public class FornecedoresController extends HttpServlet {
             if (cnpj.length() > 18)
                 return false;
             
-            if ((cnpj == "00.000.000/000-00") || (cnpj == "11.111.111/111-11") || (cnpj == "22.222.222/222-22") 
-                || (cnpj == "33.333.333/333-33") || (cnpj == "44.444.444/444-44") || (cnpj == "55.555.555/555-55") 
-                || (cnpj == "66.666.666/666-66") || (cnpj == "77.777.777/777-77") || (cnpj == "88.888.888/888-88") 
-                || (cnpj == "99.999.999/999-99"))
+            if ((cnpj == "00.000.000/0000-00") || (cnpj == "11.111.111/1111-11") || (cnpj == "22.222.222/2222-22") 
+                || (cnpj == "33.333.333/3333-33") || (cnpj == "44.444.444/4444-44") || (cnpj == "55.555.555/5555-55") 
+                || (cnpj == "66.666.666/6666-66") || (cnpj == "77.777.777/7777-77") || (cnpj == "88.888.888/8888-88") 
+                || (cnpj == "99.999.999/9999-99"))
                 return false;
             return true;
         }

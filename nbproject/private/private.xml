@@ -3,53 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/js/valida-cpf.js</file>
-            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/src/java/model/ProdutosDAO.java</file>
             <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/src/java/controller/ProdutosController.java</file>
-            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/js/mascaras.js</file>
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/navbarcomprador.jsp</file>
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/js/valida-cpf.js</file>
             <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/css/style.css</file>
-=======
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ProdutosDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ComprasController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/categoria.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/fornecedores.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/mascaras.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/navbarvendedor.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/jquery-3.4.1.min.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/cliente.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/fornecedor.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formcategoria.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/Conexao.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/compra.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formcliente.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/produtoscomprador.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/categorias.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formvenda.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/vendas.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/VendasController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/navbarcomprador.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formcompra.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/jquery.mask.min.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ClientesController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ProdutosControllerClientes.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/VerificaSessao.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ClientesDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/FornecedoresDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formfornecedor.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/produtos.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/valida-cpf.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Categorias.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/valida-cnpj.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Fornecedores.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/VendasDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/CategoriasController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/FornecedoresController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formproduto.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/CategoriasDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/clientes.jsp</file>
->>>>>>> 0e9645469258ceb853659d248b4d0e051fd50ec1
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/js/mascaras.js</file>
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/src/java/model/ProdutosDAO.java</file>
         </group>
     </open-files>
 </project-private>

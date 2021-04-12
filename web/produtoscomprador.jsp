@@ -86,7 +86,7 @@
                             <td><%=produto.getNomeProduto() %></td>
                             <td><%=produto.getLiberadoVenda().equals("S") ? "Liberada" : "Bloqueada" %></td>
                             <td>
-                                <button class="btn-liberar" name="<%=produto.getId()%>-<%=produto.getLiberadoVenda()%>" value="<%=produto.getNomeProduto()%>"><img src="assets/imagens/padlock-fill.svg" class="btn-icon" alt="Liberar produto" data-bs-toggle="modal" data-bs-target="#modalLiberar"></button>
+                                <button class="btn-liberar" name="<%=produto.getId()%>-<%=produto.getLiberadoVenda()%>" value="<%=produto.getNomeProduto()%>"><img src="assets/imagens/padlock-fill.svg" class="btn-icon" style="width: 15px; height: 15px;" alt="Liberar produto" data-bs-toggle="modal" data-bs-target="#modalLiberar"></button>
                             </td>
                             <td>
                                 <a href="<%=linkExibirProduto%>"><img src="assets/imagens/eye-fill.svg" class="btn-icon" alt="Exibir produto"></a>

@@ -90,7 +90,7 @@ public class ProdutosController extends HttpServlet {
                 if (dao.excluir(id))
                     request.setAttribute("mensagem", "Produto excluído");
                 else
-                    request.setAttribute("mensagem", "Erro ao excluir produto");
+                    request.setAttribute("mensagem", "Esse produto está sendo referenciado em alguma compra/venda. Por favor, retire a referência e tente excluí-lo novamente.");
                 
                 //Enviando relação de produtos para evitar o reload e perder a mensagem
                 produtos = dao.getProdutos();
