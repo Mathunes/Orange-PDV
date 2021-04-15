@@ -6,7 +6,7 @@ public class Usuarios {
     private String nome;
     private String cpf;
     private String senha;
-    private int tipo;
+    private String tipo;
 
 
 
@@ -15,7 +15,7 @@ public class Usuarios {
         this.senha = senha;
     }
 
-    public Usuarios(int id, String nome, String cpf, String senha, int tipo) {
+    public Usuarios(int id, String nome, String cpf, String senha, String tipo) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -59,11 +59,11 @@ public class Usuarios {
         this.senha = senha;
     }
 
-    public char getTipo() {
-        return (char) tipo;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
     
