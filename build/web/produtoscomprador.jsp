@@ -9,10 +9,10 @@
     response.setHeader("Expires", "0"); // Proxies.
     
     switch (usuario.getTipo()) {
-        case '0':
-            response.sendRedirect("administrador.jsp");
+        case "0":
+            response.sendRedirect("usuarios.jsp");
             break;
-        case '1':
+        case "1":
             response.sendRedirect("produtos.jsp");
             break;
     }

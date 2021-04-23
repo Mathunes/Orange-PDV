@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="aplicacao.Fornecedores"%>
+<%@page import="aplicacao.Usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="infousuario.jsp" %>
 <% 
@@ -10,23 +10,23 @@
     
     //Verificação do tipo de usuário logado
     switch (usuario.getTipo()) {
-        case "0":
-            response.sendRedirect("usuarios.jsp");
-            break;
         case "1":
             response.sendRedirect("vendas.jsp");
+            break;
+        case "2":
+            response.sendRedirect("compras.jsp");
             break;
     }
 %>
 
 <!DOCTYPE html>
-<!--Página de exibição dos fornecedors-->
+<!--Página de exibição dos usuarios-->
 <html>
     <head>
         <%@include file="head.html" %>
     </head>
     <body>
-        <%@include file="navbarcomprador.jsp" %>
+        <%@include file="navbaradministrador.jsp" %>
         
         <div class="container">
             <!-- Mensagens  -->
@@ -36,16 +36,16 @@
             
             <div class="row header">
                 <div class="col-sm">
-                    <h2>Área restrita - Fornecedores</h2>
+                    <h2>Área restrita - Administrador</h2>
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
-                    <form method="GET" action="FornecedoresController">
+                    <form method="GET" action="UsuariosController">
                         
-                        <input type="hidden" name="acao" value="buscar_fornecedores" required>
+                        <input type="hidden" name="acao" value="mostrar_usuario_nome" required>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="razao_social" placeholder="Buscar fornecedor..." >
-                            <button class="btn" type="submit">
+                            <input type="text" class="form-control" name="nome" placeholder="Buscar usuário..." >
+                            <button class="btn " type="submit">
                                 <img src="assets/imagens/search.svg" alt="Lupa">
                             </button>
                         </div>
@@ -54,14 +54,15 @@
             </div>
             
             <div class="container-table mb-4">
-                <a href="FornecedoresController?acao=cadastrar_fornecedor">
-                    <button class="btn btn-novo">Novo fornecedor</button>
+                <a href="UsuariosController?acao=cadastrar_usuario">
+                    <button class="btn btn-novo">Novo usuario</button>
                 </a>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Razao Social</th>
-                            <th scope="col">CNPJ</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">Tipo</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                             <th scope="col"></th>
@@ -69,45 +70,65 @@
                     </thead>
                     <tbody>
                         <%
-                            ArrayList<Fornecedores> fornecedors = (ArrayList<Fornecedores>) request.getAttribute("fornecedores");
-                            //Se não houver fornecedors, pedir para o servidor enviar
-                            if (fornecedors == null)
-                                response.sendRedirect("FornecedoresController?acao=mostrar_fornecedors");
+                            ArrayList<Usuarios> usuarios = (ArrayList<Usuarios>) request.getAttribute("usuarios");
+                            //Se não houver usuarios, pedir para o servidor enviar
+                            if (usuarios == null)
+                                response.sendRedirect("UsuariosController?acao=mostrar_usuarios");
                             else
-                                for (int i = 0; i < fornecedors.size(); i++) {
-                                    Fornecedores aux = fornecedors.get(i);
-                                    String linkExibirCliente = "FornecedoresController?acao=mostrar_fornecedor&id="+aux.getId();
-                                    String linkEditarCliente = "FornecedoresController?acao=editar_fornecedor&id="+aux.getId();
+                                for (int i = 0; i < usuarios.size(); i++) {
+                                    Usuarios aux = usuarios.get(i);                             
+                                    String linkExibirUsuario = "UsuariosController?acao=mostrar_usuario&id="+aux.getId();
+                                    String linkEditarUsuario = "UsuariosController?acao=editar_usuario&id="+aux.getId();
                                     
                         %>
                         
-                        <tr class="info-fornecedor">
-                            <td><%=aux.getRazaoSocial()%></td>
-                            <td><%=aux.getCnpj()%></td>
-                            <td>
-                                <a href="<%=linkExibirCliente%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir fornecedor"></a>
+                        <tr class="info-usuario">
+                            <td><%=aux.getNome()%></td>
+                            <td><%=aux.getCpf()%></td>
+                            <td><%
+                                    switch(aux.getTipo()){
+                                        case "0":
+                                    %>
+                                            Administrador
+                                    <%
+                                            break;
+                                        case "1":
+                                    %>
+                                            Vendedor
+                                    <%
+                                            break;
+                                        case "2":
+                                    %>
+                                            Comprador
+                                    <%
+                                            break;
+                                    }
+                                %>
                             </td>
                             <td>
-                                <a href="<%=linkEditarCliente%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar fornecedor"></a>
+                                <a href="<%=linkExibirUsuario%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir usuario"></a>
                             </td>
                             <td>
-                                <button class="btn-excluir" name="<%=aux.getRazaoSocial()%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir fornecedor" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                                <a href="<%=linkEditarUsuario%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuario"></a>
+                            </td>
+                            <td>
+                                <button class="btn-excluir" name="<%=aux.getNome()%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
                             </td>
                         </tr>
                         <%
-                            }
+                            }       
                         %>
                     </tbody>
                 </table>
             </div>
             
         </div>
-        <!--Modal para confirmar exclusão do fornecedor-->
+        <!--Modal para confirmar exclusão do usuario-->
         <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Excluir fornecedor</h5>
+                        <h5 class="modal-title">Excluir usuario</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -126,13 +147,13 @@
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
-                //Excluir fornecedor
-                $(".info-fornecedor").find("button[class='btn-excluir']").click(function(){
-                    var razao_social = $(this).attr("razao_social");
+                //Excluir usuario
+                $(".info-usuario").find("button[class='btn-excluir']").click(function(){
+                    var nome = $(this).attr("name");
                     var id = $(this).attr("value");
                     
-                    $('#modal-mensagem').text("Deseja realmente excluir o(a) fornecedor " + razao_social + "?");
-                    $('#link-delete').attr("href", "FornecedoresController?acao=excluir_fornecedor&id=" + id);
+                    $('#modal-mensagem').text("Deseja realmente excluir o(a) usuario " + nome + "?");
+                    $('#link-delete').attr("href", "UsuariosController?acao=excluir_usuario&id=" + id);
                 });
                 
                 //Exibir mensagem

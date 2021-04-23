@@ -80,6 +80,7 @@ public class UsuariosDAO extends HttpServlet {
     }
 
     public Usuarios getUsuarioId(int id) {
+        
         Usuarios usuario = new Usuarios();
         
         try {

@@ -9,10 +9,10 @@
     
     //Verificação do tipo de usuário logado
     switch (usuario.getTipo()) {
-        case '0':
-            response.sendRedirect("administrador.jsp");
+        case "0":
+            response.sendRedirect("usuarios.jsp");
             break;
-        case '2':
+        case "2":
             response.sendRedirect("compras.jsp");
             break;
     }

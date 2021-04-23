@@ -18,22 +18,21 @@ import model.UsuariosDAO;
 
 @WebServlet(name = "UsuariosController", urlPatterns = {"/UsuariosController"})
 public class UsuariosController extends HttpServlet {
-    
     private UsuariosDAO dao = new UsuariosDAO();
     private Usuarios usuario;
+
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        UsuariosDAO dao = new UsuariosDAO();
         String acao = (String) request.getParameter("acao");
         ArrayList<Usuarios> usuarios;
         int id;
-        Usuarios usuario;
+
         
         switch (acao) {
-            //Requisição para exibir todos os usuarios
+            //Requisição para exibir todos os usuários
             case "mostrar_usuarios":
                 usuarios = dao.getUsuarios();
                 request.setAttribute("usuarios", usuarios);
@@ -45,13 +44,13 @@ public class UsuariosController extends HttpServlet {
             case "mostrar_usuario":
                 id = Integer.parseInt(request.getParameter("id"));
                 usuario = dao.getUsuarioId(id);
-                request.setAttribute("usuario", usuario);
+                request.setAttribute("usuario", usuario);      
                 RequestDispatcher mostrarUsuario = getServletContext().getRequestDispatcher("/usuario.jsp");
                 mostrarUsuario.forward(request, response);
                 break;
             
             //Requisição para exibir o usuario pelo nome - usado no campo de busca
-            case "mostrar_usuarios_nome":
+            case "mostrar_usuario_nome":
                 String nome = request.getParameter("nome");
                 usuarios = dao.getUsuarioNome(nome);
                 request.setAttribute("usuarios", usuarios);
@@ -63,11 +62,9 @@ public class UsuariosController extends HttpServlet {
             case "editar_usuario":
                 id = Integer.parseInt(request.getParameter("id"));
                 usuario = dao.getUsuarioId(id);
-                
                 request.setAttribute("usuario", usuario);
                 RequestDispatcher editarUsuario = request.getRequestDispatcher("/formusuario.jsp");
                 editarUsuario.forward(request, response);
-                
                 break;
                 
             //Requisição para excluir o usuario pelo id
@@ -112,20 +109,16 @@ public class UsuariosController extends HttpServlet {
         
         //Identificador da acao no método POST
         String acao = request.getParameter("acao");
-        String cpf = "";
-        String senha = "";
-        
+        String cpf = request.getParameter("cpf");
+        String senha = request.getParameter("senha");
         switch (acao) {
             case "login":
-                cpf = request.getParameter("cpf");
-                senha = request.getParameter("senha");
-                
-                //Verificando se há campos vazios
+                 //Verificando se há campos vazios
                 if (cpf.isEmpty() || senha.isEmpty()) {
 
                     //Enviando produtos/categorias para o index.jsp para evitar reload e perder mensagem de erro
-                    ProdutosDAO dao = new ProdutosDAO();
-                    ArrayList<Produtos> produtos = dao.getProdutos();
+                    ProdutosDAO daoProdutos = new ProdutosDAO();
+                    ArrayList<Produtos> produtos = daoProdutos.getProdutos();
                     request.setAttribute("produtos", produtos);
                     CategoriasDAO daoCategorias = new CategoriasDAO();
                     ArrayList<Categorias> categorias = daoCategorias.getCategorias();
@@ -144,53 +137,52 @@ public class UsuariosController extends HttpServlet {
             case "logout":
                 logout(request, response);
                 break;
+            case "cadastrar_usuario":
+                String mensagem;
+
+                int id = Integer.parseInt(request.getParameter("id"));
+                String nome = request.getParameter("nome");
+                String tipo = request.getParameter("tipo");
+
+                if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty() || tipo.isEmpty()){
+                    mensagem = "Preencha todos os campos";
+                }else if (nome.length() > 50)
+                    mensagem = "Nome deve conter no máximo 50 caracteres";
+                else if (cpf.length() > 14) 
+                    mensagem = "CPF deve conter no máximo 14 caracteres";
+                else if (senha.length() > 50)
+                    mensagem = "Senha deve conter no máximo 50 caracteres";
+                else if (tipo.length() > 1)
+                    mensagem = "Tipo deve conter no máximo 1 caractere";
+                else if (!validaCPF(cpf))
+                    mensagem = "CPF inválido";
+                else {
+
+                    usuario.setId(id);
+                    usuario.setNome(nome);
+                    usuario.setCpf(cpf);
+                    usuario.setSenha(senha);
+                    usuario.setTipo(tipo);
+
+                    if (dao.gravar(usuario))
+                        mensagem = "Usuario gravado com sucesso";
+                    else 
+                        mensagem = "Erro ao gravar usuario";
+                }
+                //Enviando relação de usuarios para usuarios.jsp
+                ArrayList<Usuarios> usuarios;       
+                usuarios = dao.getUsuarios();
+                request.setAttribute("usuarios", usuarios);
+                request.setAttribute("mensagem", mensagem);
+                RequestDispatcher rd = request.getRequestDispatcher("/usuarios.jsp");
+                rd.forward(request, response);
+                break;
             
         }
                        
-        String mensagem;
         
-        Usuarios usuario = new Usuarios();
-        UsuariosDAO dao = new UsuariosDAO();
-        
-        int id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("nome");
-        String tipo = request.getParameter("tipo");
-         
-        if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty() || tipo.isEmpty())
-            mensagem = "Preencha todos os campos";
-        else if (nome.length() > 50)
-            mensagem = "Nome deve conter no máximo 50 caracteres";
-        else if (cpf.length() > 14) 
-            mensagem = "CPF deve conter no máximo 14 caracteres";
-        else if (senha.length() > 50)
-            mensagem = "Senha deve conter no máximo 50 caracteres";
-        else if (tipo.length() > 1)
-            mensagem = "Tipo deve conter no máximo 1 caractere";
-        else if (!validaCPF(cpf))
-            mensagem = "CPF inválido";
-        else {
-            
-            usuario.setId(id);
-            usuario.setNome(nome);
-            usuario.setCpf(cpf);
-            usuario.setSenha(senha);
-            usuario.setTipo(tipo);
-            
-            if (dao.gravar(usuario))
-                mensagem = "Usuario gravado com sucesso";
-            else 
-                mensagem = "Erro ao gravar usuario";
-        }
-        //Enviando relação de usuarios para usuarios.jsp
-        ArrayList<Usuarios> usuarios;       
-        usuarios = dao.getUsuarios();
-        request.setAttribute("usuarios", usuarios);
-        request.setAttribute("mensagem", mensagem);
-        RequestDispatcher rd = request.getRequestDispatcher("/usuarios.jsp");
-        rd.forward(request, response);
             
     }
-    
     public static boolean validaCPF(String cpf) {
         double soma = 0;
         double resto;
@@ -242,8 +234,8 @@ public class UsuariosController extends HttpServlet {
             
         } else {
             //Enviando produtos/categorias para o index.jsp para evitar reload e perder mensagem de erro
-            ProdutosDAO dao = new ProdutosDAO();
-            ArrayList<Produtos> produtos = dao.getProdutos();
+            ProdutosDAO daoProdutos = new ProdutosDAO();
+            ArrayList<Produtos> produtos = daoProdutos.getProdutos();
             request.setAttribute("produtos", produtos);
             CategoriasDAO daoCategorias = new CategoriasDAO();
             ArrayList<Categorias> categorias = daoCategorias.getCategorias();

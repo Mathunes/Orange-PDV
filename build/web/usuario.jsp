@@ -1,17 +1,68 @@
-<%-- 
-    Document   : usuarios
-    Created on : 15/04/2021, 10:43:26
-    Author     : Silva
---%>
+<%@page import="aplicacao.Usuarios"%>
+<%@include file="infousuario.jsp" %>
+<% 
+    //Impedir que a página seja armazenada em cache, impedindo a função "voltar" do navegador
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+    response.setHeader("Expires", "0"); // Proxies.
+    Usuarios usuarioChamado = (Usuarios)request.getAttribute("usuario");
+    //Verificação do tipo de usuário logado
+    switch (usuario.getTipo()) {
+        case "1":
+            response.sendRedirect("vendas.jsp");
+            break;
+        case "2":
+            response.sendRedirect("compras.jsp");
+            break;
+    }
+    System.out.println("Usuario: " + usuario.getNome());
+
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--Página de exibição do usuario por ID-->
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@include file="head.html" %>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="navbaradministrador.jsp" %>
+        
+        <div class="container">
+            <h2>Área restrita - Visualizar usuario</h2>
+            
+            <div class="container-info">
+                <a href="UsuariosController?acao=mostrar_usuarios">
+                    <button class="btn btn-voltar">Voltar</button>
+                </a>
+                    <table class="table mt-2">
+                        <tbody>
+                            <tr>
+                                <td><b>Id</b></td>
+                                <td><%= usuarioChamado.getId() %></td>
+                            </tr>
+                            <tr>
+                                <td><b>Nome</b></td>
+                                <td><%= usuarioChamado.getNome() %></td>
+                            </tr>
+                            <tr>
+                                <td><b>CPF</b></td>
+                                <td><%= usuarioChamado.getCpf() %></td>
+                            </tr>
+                            <tr>
+                                <td><b>Senha</b></td>
+                                <td><%= usuarioChamado.getSenha() %></td>
+                            </tr>
+                            <tr>
+                                <td><b>Tipo</b></td>
+                                <td><%= usuarioChamado.getTipo() %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        
+        <%@include file="scripts.html" %>
     </body>
 </html>
