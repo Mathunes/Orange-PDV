@@ -63,6 +63,12 @@ public class ProdutosController extends HttpServlet {
                 rdRestrito.forward(request, response);
                 break;
 
+            //Enviar para usuário Administrador
+            case "mostrar_produtos_restrito_adm":
+                RequestDispatcher rdRestritoAdm = request.getRequestDispatcher("/relatorioestoque.jsp");
+                rdRestritoAdm.forward(request, response);
+                break;
+                
             case "pesquisar_produtos_restrito":
                 String nomeProduto = request.getParameter("nomeProduto");
                 produtos = dao.getNomeProduto(nomeProduto);
