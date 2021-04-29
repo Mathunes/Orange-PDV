@@ -43,12 +43,22 @@ public class ProdutosController extends HttpServlet {
                 mostrarComprasBusca.forward(request, response);
                 break;
             
+            //Enviar para usuário Comprador
             case "mostrar_produto":
                 id = Integer.parseInt(request.getParameter("id"));
                 produto = dao.getProdutoID(id);
                 request.setAttribute("produto", produto);
                 RequestDispatcher mostrarProduto = getServletContext().getRequestDispatcher("/produto.jsp");
                 mostrarProduto.forward(request, response);
+                break;
+                
+            //Enviar para usuário Administrador
+            case "mostrar_produto_adm":
+                id = Integer.parseInt(request.getParameter("id"));
+                produto = dao.getProdutoID(id);
+                request.setAttribute("produto", produto);
+                RequestDispatcher mostrarProdutoAdm = getServletContext().getRequestDispatcher("/produtoadm.jsp");
+                mostrarProdutoAdm.forward(request, response);
                 break;
                 
             //Enviar para usuário Comprador
@@ -143,6 +153,22 @@ public class ProdutosController extends HttpServlet {
                     
                 RequestDispatcher liberarProduto = getServletContext().getRequestDispatcher("/produtoscomprador.jsp");
                 liberarProduto.forward(request, response);
+                break;
+            
+            case "liberar_produto_adm":
+                id = Integer.parseInt(request.getParameter("id"));
+                String admBloquear = request.getParameter("bloquear");
+                if (dao.liberar(id, admBloquear))
+                    request.setAttribute("mensagem", "Produto " + ((admBloquear.equals("S")) ? "bloqueado" : "liberado") + " para venda");
+                else
+                    request.setAttribute("mensagem", "Erro ao liberar produto");
+                
+                //Enviando relação de produtos para evitar o reload e perder a mensagem
+                produtos = dao.getProdutos();
+                request.setAttribute("produtos", produtos);
+                    
+                RequestDispatcher liberarProdutoAdm = getServletContext().getRequestDispatcher("/relatorioestoque.jsp");
+                liberarProdutoAdm.forward(request, response);
                 break;
                 
             }
