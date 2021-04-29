@@ -36,10 +36,10 @@
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
-                    <form method = "GET" action = "ProdutosController"> 
-                        <input type = "hidden" name = "acaoRestrito" value = "pesquisar_produtos_restrito" required>
+                    <form method="GET" action="ProdutosController"> 
+                        <input type = "hidden" name="acaoRestrito" value="mostrar_produto_busca_adm" required>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name = "nomeProduto" placeholder="Buscar produto..." >
+                            <input type="text" class="form-control" name="busca" placeholder="Buscar produto..." >
                             <button class="btn" type="submit">
                                 <img src="assets/imagens/search.svg" alt="Lupa">
                             </button>

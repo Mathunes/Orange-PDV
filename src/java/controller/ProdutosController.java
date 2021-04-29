@@ -35,12 +35,22 @@ public class ProdutosController extends HttpServlet {
         
         switch(acaoRestrito){
             
+            //Enviar para usuário Comprador
             case "mostrar_produto_busca":
                 String busca = request.getParameter("busca");
                 produtos = dao.getProdutoPesquisa(busca);
                 request.setAttribute("produtos", produtos);
-                RequestDispatcher mostrarComprasBusca = getServletContext().getRequestDispatcher("/produtoscomprador.jsp");
-                mostrarComprasBusca.forward(request, response);
+                RequestDispatcher mostrarProdutosBusca = getServletContext().getRequestDispatcher("/produtoscomprador.jsp");
+                mostrarProdutosBusca.forward(request, response);
+                break;
+                
+            //Enviar para usuário Administrador
+            case "mostrar_produto_busca_adm":
+                String admBusca = request.getParameter("busca");
+                produtos = dao.getProdutoPesquisa(admBusca);
+                request.setAttribute("produtos", produtos);
+                RequestDispatcher mostrarProdutosBuscaAdm = getServletContext().getRequestDispatcher("/relatorioestoque.jsp");
+                mostrarProdutosBuscaAdm.forward(request, response);
                 break;
             
             //Enviar para usuário Comprador
@@ -139,6 +149,7 @@ public class ProdutosController extends HttpServlet {
                 cadastrarProduto.forward(request, response);
                 break;
             
+            //Enviar para usuário Comprador
             case "liberar_produto":
                 id = Integer.parseInt(request.getParameter("id"));
                 String bloquear = request.getParameter("bloquear");
@@ -155,6 +166,7 @@ public class ProdutosController extends HttpServlet {
                 liberarProduto.forward(request, response);
                 break;
             
+            //Enviar para usuário Administrador
             case "liberar_produto_adm":
                 id = Integer.parseInt(request.getParameter("id"));
                 String admBloquear = request.getParameter("bloquear");
