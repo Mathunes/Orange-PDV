@@ -18,7 +18,7 @@
                     <a class="nav-link text-dark" href="ProdutosController?acaoRestrito=mostrar_produtos_restrito_adm">Relatório de estoque</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-dark" href="">Relatório de vendas</a>
+                    <a class="nav-link text-dark" href="VendasController?acao=mostrar_vendas_adm">Relatório de vendas</a>
                 </li>
                 <li class="nav-item ms-2">
                     <form method="POST" action="UsuariosController">

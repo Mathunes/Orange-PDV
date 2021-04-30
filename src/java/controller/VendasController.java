@@ -42,6 +42,14 @@ public class VendasController extends HttpServlet {
                 mostrarVendas.forward(request, response);
                 break;
                 
+            //Requisição para exibir todas as vendas e retornar para o administrador
+            case "mostrar_vendas_adm":
+                vendas = daoVendas.getVendas();
+                request.setAttribute("vendas", vendas);
+                RequestDispatcher admMostrarVendas = getServletContext().getRequestDispatcher("/relatoriovendas.jsp");
+                admMostrarVendas.forward(request, response);
+                break;
+                
             //Requisição para exibir a venda pelo id
             case "mostrar_venda":
                 id = Integer.parseInt(request.getParameter("id"));
@@ -49,6 +57,15 @@ public class VendasController extends HttpServlet {
                 request.setAttribute("venda", venda);
                 RequestDispatcher mostrarVenda = getServletContext().getRequestDispatcher("/venda.jsp");
                 mostrarVenda.forward(request, response);
+                break;
+            
+            //Requisição para exibir a venda pelo id e retornar para o administrador
+            case "mostrar_venda_adm":
+                id = Integer.parseInt(request.getParameter("id"));
+                venda = daoVendas.getVendaId(id);
+                request.setAttribute("venda", venda);
+                RequestDispatcher admMostrarVenda = getServletContext().getRequestDispatcher("/vendaadm.jsp");
+                admMostrarVenda.forward(request, response);
                 break;
                 
             //Requisição para exibir a venda pelo nome do cliente - usado no campo de busca

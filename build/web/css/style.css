@@ -45,6 +45,10 @@ body, .modal-content {
     height: 16px;
 }
 
+.total-venda {
+    font-weight: bold;
+}
+
 @media (max-width: 576px) { 
     .container .header .col-sm h2 {
         text-align: center;
