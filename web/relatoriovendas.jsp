@@ -79,7 +79,7 @@
                         <tr class="info-venda">
                             <td><%=venda.getId()%></td>
                             <td><%=venda.getNomeProduto()%></td>
-                            <td>R$ <%=Double.toString(venda.getValorVenda()).replace(".", ",")%></td>
+                            <td class="total-venda">R$ <%=Double.toString(venda.getValorVenda()).replace(".", ",")%></td>
                             
                             <td>
                                 <a href="<%=linkExibirVenda%>"><img src="assets/imagens/eye-fill.svg" alt="Exibir venda"></a>
@@ -96,7 +96,7 @@
                     
         <nav class="navbar fixed-bottom navbar-light bg-light">
             <div class="container d-flex flex-row-reverse">
-                <span class="navbar-brand total-venda">Fixed bottom</span>
+                <span class="navbar-brand" id="total-vendas">Total: </span>
             </div>
         </nav>
                     
@@ -122,7 +122,19 @@
         </div>            
 
         <%@include file="scripts.html" %>
-        <script>            
+        <script>
+            
+            function exibirTotal() {
+                var total = 0;
+                
+                for (var i = 0; i < $('td.total-venda').length; i++) {
+                    total += parseFloat($('td.total-venda')[i]
+                            .innerHTML.replace("R$ ", "")
+                            .replace(",", "."));
+                }
+                $("#total-vendas").html("Total: R$ " + String(total.toFixed(2)).replace(".", ","));
+            }
+            
             $(document).ready(function(){
                 //Excluir venda
                 $(".info-venda").find("button[class='btn-excluir']").click(function(){
@@ -136,6 +148,9 @@
                 if ($('#mensagem').text().trim() != "null") {
                     $('#container-alert').append("<%@include file="mensagem.jsp" %>");
                 }
+                
+                //Exibindo total venda
+                exibirTotal();
             });
         </script>
     </body>

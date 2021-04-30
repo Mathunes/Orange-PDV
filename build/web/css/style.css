@@ -45,7 +45,7 @@ body, .modal-content {
     height: 16px;
 }
 
-.total-venda {
+#total-vendas {
     font-weight: bold;
 }
 
