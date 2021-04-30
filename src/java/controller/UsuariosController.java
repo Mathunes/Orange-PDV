@@ -143,7 +143,8 @@ public class UsuariosController extends HttpServlet {
                 int id = Integer.parseInt(request.getParameter("id"));
                 String nome = request.getParameter("nome");
                 String tipo = request.getParameter("tipo");
-
+                
+                System.out.println("Tipo: " + tipo);
                 if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty() || tipo.isEmpty()){
                     mensagem = "Preencha todos os campos";
                 }else if (nome.length() > 50)
@@ -153,7 +154,7 @@ public class UsuariosController extends HttpServlet {
                 else if (senha.length() > 50)
                     mensagem = "Senha deve conter no máximo 50 caracteres";
                 else if (tipo.length() > 1)
-                    mensagem = "Tipo deve conter no máximo 1 caractere";
+                    mensagem = "Tipo deve conter no máximo 1 caractere";                
                 else if (!validaCPF(cpf))
                     mensagem = "CPF inválido";
                 else {

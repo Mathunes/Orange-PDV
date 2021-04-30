@@ -52,18 +52,26 @@
                 <input type="hidden" name="id" value="<%=usuarioChamado.getId()%>" required="">
                 <div class="row">
                     <div class="col-md mb-4">
+                        <label for="nome" class="form-label">Nome do Usuário</label>
                         <input type="text" class="form-control" placeholder="Nome do usuario" aria-label="Nome do usuario" name="nome" maxlength="50" value="<%=usuarioChamado.getNome()%>" required>
                     </div>
                     <div class="col-md mb-4">
+                        <label for="cpf" class="form-label">CPF do Usuário</label>
                         <input type="text" class="form-control cpf" placeholder="CPF do usuario" aria-label="CPF do usuario" name="cpf" maxlength="14" value="<%=usuarioChamado.getCpf()%>" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md mb-4">
+                        <label for="senha" class="form-label">Senha do Usuário</label>
                         <input type="text" class="form-control" placeholder="Senha do usuario" aria-label="Senha do usuario" name="senha" maxlength="50" value="<%=usuarioChamado.getSenha()%>" required>
                     </div>
                     <div class="col-md mb-4">
-                        <input type="text" class="form-control" placeholder="Tipo do usuario" aria-label="Tipo do usuario" name="tipo" maxlength="50" value="<%=usuarioChamado.getTipo()%>" required>
+                        <label for="tipo" class="form-label">Tipo do Usuário</label>
+                        <select class="form-select" aria-label="Tipo Usuário" name="tipo" required="">
+                            <option value="0">Administrador</option>
+                            <option value="1">Vendedor</option>
+                            <option value="2">Comprador</option>
+                        </select>
                     </div>
                 </div>               
                 <input type="submit" class="btn btn-registrar" value="Registrar usuario">
