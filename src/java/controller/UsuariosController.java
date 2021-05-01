@@ -1,7 +1,5 @@
 package controller;
 
-import aplicacao.Categorias;
-import aplicacao.Produtos;
 import aplicacao.Usuarios;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.CategoriasDAO;
-import model.ProdutosDAO;
 import model.UsuariosDAO;
 
 @WebServlet(name = "UsuariosController", urlPatterns = {"/UsuariosController"})
@@ -29,7 +25,6 @@ public class UsuariosController extends HttpServlet {
         String acao = (String) request.getParameter("acao");
         ArrayList<Usuarios> usuarios;
         int id;
-
         
         switch (acao) {
             //Requisição para exibir todos os usuários
@@ -112,28 +107,6 @@ public class UsuariosController extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
         switch (acao) {
-            case "login":
-                 //Verificando se há campos vazios
-                if (cpf.isEmpty() || senha.isEmpty()) {
-
-                    //Enviando produtos/categorias para o index.jsp para evitar reload e perder mensagem de erro
-                    ProdutosDAO daoProdutos = new ProdutosDAO();
-                    ArrayList<Produtos> produtos = daoProdutos.getProdutos();
-                    request.setAttribute("produtos", produtos);
-                    CategoriasDAO daoCategorias = new CategoriasDAO();
-                    ArrayList<Categorias> categorias = daoCategorias.getCategorias();
-                    request.setAttribute("categorias", categorias);
-            
-                    request.setAttribute("mensagem", "Preencha todos os campos para efetuar o login");
-                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-                    rd.forward(request, response);
-
-                } else {
-                    usuario = new Usuarios(cpf, senha);
-                    login(request, response);
-                }
-                break;
-                
             case "logout":
                 logout(request, response);
                 break;
@@ -144,7 +117,6 @@ public class UsuariosController extends HttpServlet {
                 String nome = request.getParameter("nome");
                 String tipo = request.getParameter("tipo");
                 
-                System.out.println("Tipo: " + tipo);
                 if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty() || tipo.isEmpty()){
                     mensagem = "Preencha todos os campos";
                 }else if (nome.length() > 50)
@@ -180,10 +152,9 @@ public class UsuariosController extends HttpServlet {
                 break;
             
         }
-                       
-        
             
     }
+    
     public static boolean validaCPF(String cpf) {
         double soma = 0;
         double resto;
@@ -217,37 +188,6 @@ public class UsuariosController extends HttpServlet {
             return false;
         return true;
 
-    }
-
-    private void login(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-  
-        usuario = dao.Login(usuario);
-        
-        if (usuario.getId() > 0) {
-            
-            HttpSession session = request.getSession();
-            session.setAttribute("logado", "ok");
-            session.setAttribute("usuario", usuario);
-
-            response.sendRedirect("ProdutosController?acaoRestrito=mostrar_produtos_restrito");
-            
-        } else {
-            //Enviando produtos/categorias para o index.jsp para evitar reload e perder mensagem de erro
-            ProdutosDAO daoProdutos = new ProdutosDAO();
-            ArrayList<Produtos> produtos = daoProdutos.getProdutos();
-            request.setAttribute("produtos", produtos);
-            CategoriasDAO daoCategorias = new CategoriasDAO();
-            ArrayList<Categorias> categorias = daoCategorias.getCategorias();
-            request.setAttribute("categorias", categorias);
-            
-            request.setAttribute("mensagem", "Usuário não encontrado");
-            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");        
-            rd.forward(request, response);
-                
-        }
-        
     }
 
     private void logout(HttpServletRequest request, HttpServletResponse response) 

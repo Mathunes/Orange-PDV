@@ -31,7 +31,7 @@
             <!--Toast para ser exibido caso o CPF informado seja inválido-->
             <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center w-100 position-absolute top-0 end-0 mt-2">
                 <div class="toast-container">
-                    <div class="toast text-white bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast text-white bg-warning hide" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="d-flex">
                             <div class="toast-body">
                                 <span id="mensagem">
@@ -95,8 +95,9 @@
                         //Exibindo a mensagem de erro
                         $('.toast').toast('show');
                     }
-                       
-                });                
+                    
+                }); 
+                $('.toast').toast('hide');
             });
         </script>
     </body>

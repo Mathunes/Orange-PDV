@@ -15,7 +15,6 @@
             response.sendRedirect("compras.jsp");
             break;
     }
-    System.out.println("Usuario: " + usuario.getNome());
 
 %>
 
