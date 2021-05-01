@@ -1,3 +1,4 @@
+<%@page import="aplicacao.Utilitario"%>
 <%@page import="aplicacao.Vendas"%>
 <%@include file="infousuario.jsp" %>
 <% 
@@ -46,7 +47,7 @@
                             </tr>
                             <tr>
                                 <td><b>Data da venda</b></td>
-                                <td><%=venda.getDataVenda()%></td>
+                                <td><%=Utilitario.formataData(venda.getDataVenda())%></td>
                             </tr>
                             <tr>
                                 <td><b>Valor da venda</b></td>
