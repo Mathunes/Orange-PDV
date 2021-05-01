@@ -229,4 +229,75 @@ public class VendasDAO extends HttpServlet {
         
     }
     
+    public ArrayList<String> getDatasVendas() {
+        ArrayList<String> datas = new ArrayList<>();
+        
+        try {
+            Statement stmt = conexao.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT data_venda FROM vendas");
+            
+            while (rs.next()) {
+                String data = rs.getString("data_venda");
+                
+                datas.add(data);
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+        }
+        
+        return datas;
+    }
+    
+            
+    public ArrayList<Vendas> getVendaData(String dataVenda) {
+        ArrayList<Vendas> vendas = new ArrayList<>();
+        
+        try {
+            String sql = "SELECT * FROM "
+                    + "vendas as v, "
+                    + "clientes as c, "
+                    + "produtos as p, "
+                    + "usuarios as u"
+                + " WHERE "
+                    + "v.id_cliente = c.id AND "
+                    + "v.id_produto = p.id AND "
+                    + "v.id_vendedor = u.id ";
+            
+            PreparedStatement ps;
+            
+            if (!dataVenda.equals("Escolher data")) {
+                ps = conexao.prepareStatement(sql + " AND v.data_venda = ?");
+                ps.setString(1, dataVenda);
+            } else {
+                ps = conexao.prepareStatement(sql);
+            }
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Vendas venda = new Vendas();
+                
+                venda.setDataVenda(rs.getString("v.data_venda"));
+                venda.setId(rs.getInt("v.id"));
+                venda.setIdCliente(rs.getInt("v.id_cliente"));
+                venda.setIdProduto(rs.getInt("v.id_produto"));
+                venda.setIdVendedor(rs.getInt("v.id_vendedor"));
+                venda.setNomeCliente(rs.getString("c.nome"));
+                venda.setNomeProduto(rs.getString("p.nome_produto"));
+                venda.setNomeVendedor(rs.getString("u.nome"));
+                venda.setQuantidadeVenda(rs.getInt("v.quantidade_venda"));
+                venda.setValorVenda(rs.getDouble("v.valor_venda"));
+                
+                vendas.add(venda);
+            }
+                    
+        } catch (SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
+        }
+        
+        return vendas;
+    }
+    
 }

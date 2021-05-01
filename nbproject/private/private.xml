@@ -3,64 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ProdutosDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/fornecedores.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/navbarvendedor.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/jquery-3.4.1.min.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/cliente.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/Conexao.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/navbaradministrador.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/compra.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Usuarios.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/produtoscomprador.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/usuarios.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/categorias.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/UsuariosDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/VendasController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formcompra.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/mensagem.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ProdutosControllerClientes.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formusuario.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/FornecedoresDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formfornecedor.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/valida-cpf.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Categorias.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/VendasDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Compras.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formproduto.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/CategoriasDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ComprasController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Produtos.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/categoria.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/head.html</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/mascaras.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/fornecedor.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Clientes.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/compras.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formcategoria.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formcliente.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/scripts.html</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/formvenda.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/vendas.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ProdutosController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/navbarcomprador.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/jquery.mask.min.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/produto.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/ClientesController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/venda.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/VerificaSessao.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/model/ClientesDAO.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/produtos.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/js/valida-cnpj.js</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/aplicacao/Fornecedores.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/usuario.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/CategoriasController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/FornecedoresController.java</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/index.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/infousuario.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/web/clientes.jsp</file>
-            <file>file:/C:/Users/Silva/OneDrive/Esther/Documentos/Desenvolvimento%20Web%20Códigos/OrangePDV/src/java/controller/UsuariosController.java</file>
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/src/java/controller/VendasController.java</file>
+            <file>file:/C:/Users/Felip/Desktop/Estudos/UFF/Desenvolvimento%20Web/Trabalho/OrangePDV/web/relatoriovendas.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -35,20 +35,40 @@ public class ProdutosController extends HttpServlet {
         
         switch(acaoRestrito){
             
+            //Enviar para usuário Comprador
             case "mostrar_produto_busca":
                 String busca = request.getParameter("busca");
                 produtos = dao.getProdutoPesquisa(busca);
                 request.setAttribute("produtos", produtos);
-                RequestDispatcher mostrarComprasBusca = getServletContext().getRequestDispatcher("/produtoscomprador.jsp");
-                mostrarComprasBusca.forward(request, response);
+                RequestDispatcher mostrarProdutosBusca = getServletContext().getRequestDispatcher("/produtoscomprador.jsp");
+                mostrarProdutosBusca.forward(request, response);
+                break;
+                
+            //Enviar para usuário Administrador
+            case "mostrar_produto_busca_adm":
+                String admBusca = request.getParameter("busca");
+                produtos = dao.getProdutoPesquisa(admBusca);
+                request.setAttribute("produtos", produtos);
+                RequestDispatcher mostrarProdutosBuscaAdm = getServletContext().getRequestDispatcher("/relatorioestoque.jsp");
+                mostrarProdutosBuscaAdm.forward(request, response);
                 break;
             
+            //Enviar para usuário Comprador
             case "mostrar_produto":
                 id = Integer.parseInt(request.getParameter("id"));
                 produto = dao.getProdutoID(id);
                 request.setAttribute("produto", produto);
                 RequestDispatcher mostrarProduto = getServletContext().getRequestDispatcher("/produto.jsp");
                 mostrarProduto.forward(request, response);
+                break;
+                
+            //Enviar para usuário Administrador
+            case "mostrar_produto_adm":
+                id = Integer.parseInt(request.getParameter("id"));
+                produto = dao.getProdutoID(id);
+                request.setAttribute("produto", produto);
+                RequestDispatcher mostrarProdutoAdm = getServletContext().getRequestDispatcher("/produtoadm.jsp");
+                mostrarProdutoAdm.forward(request, response);
                 break;
                 
             //Enviar para usuário Comprador
@@ -63,6 +83,12 @@ public class ProdutosController extends HttpServlet {
                 rdRestrito.forward(request, response);
                 break;
 
+            //Enviar para usuário Administrador
+            case "mostrar_produtos_restrito_adm":
+                RequestDispatcher rdRestritoAdm = request.getRequestDispatcher("/relatorioestoque.jsp");
+                rdRestritoAdm.forward(request, response);
+                break;
+                
             case "pesquisar_produtos_restrito":
                 String nomeProduto = request.getParameter("nomeProduto");
                 produtos = dao.getNomeProduto(nomeProduto);
@@ -123,6 +149,7 @@ public class ProdutosController extends HttpServlet {
                 cadastrarProduto.forward(request, response);
                 break;
             
+            //Enviar para usuário Comprador
             case "liberar_produto":
                 id = Integer.parseInt(request.getParameter("id"));
                 String bloquear = request.getParameter("bloquear");
@@ -137,6 +164,23 @@ public class ProdutosController extends HttpServlet {
                     
                 RequestDispatcher liberarProduto = getServletContext().getRequestDispatcher("/produtoscomprador.jsp");
                 liberarProduto.forward(request, response);
+                break;
+            
+            //Enviar para usuário Administrador
+            case "liberar_produto_adm":
+                id = Integer.parseInt(request.getParameter("id"));
+                String admBloquear = request.getParameter("bloquear");
+                if (dao.liberar(id, admBloquear))
+                    request.setAttribute("mensagem", "Produto " + ((admBloquear.equals("S")) ? "bloqueado" : "liberado") + " para venda");
+                else
+                    request.setAttribute("mensagem", "Erro ao liberar produto");
+                
+                //Enviando relação de produtos para evitar o reload e perder a mensagem
+                produtos = dao.getProdutos();
+                request.setAttribute("produtos", produtos);
+                    
+                RequestDispatcher liberarProdutoAdm = getServletContext().getRequestDispatcher("/relatorioestoque.jsp");
+                liberarProdutoAdm.forward(request, response);
                 break;
                 
             }

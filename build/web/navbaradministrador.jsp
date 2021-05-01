@@ -15,10 +15,10 @@
                     <a class="nav-link text-dark" href="UsuariosController?acao=mostrar_usuarios">Usuarios</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-dark" href="">A definir</a>
+                    <a class="nav-link text-dark" href="ProdutosController?acaoRestrito=mostrar_produtos_restrito_adm">Relatório de estoque</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-dark" href="">A definir</a>
+                    <a class="nav-link text-dark" href="VendasController?acao=mostrar_vendas_adm">Relatório de vendas</a>
                 </li>
                 <li class="nav-item ms-2">
                     <form method="POST" action="UsuariosController">

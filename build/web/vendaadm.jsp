@@ -10,11 +10,11 @@
     
     //Verificação do tipo de usuário logado
     switch (usuario.getTipo()) {
-        case "0":
-            response.sendRedirect("usuarios.jsp");
+        case "1":
+            response.sendRedirect("produtos.jsp");
             break;
         case "2":
-            response.sendRedirect("compras.jsp");
+            response.sendRedirect("produtoscomprador.jsp");
             break;
     }
 %>
@@ -32,7 +32,7 @@
             <h2>Área restrita - Visualizar venda</h2>
             
             <div class="container-info">
-                <a href="vendas.jsp">
+                <a href="VendasController?acao=mostrar_vendas_adm">
                     <button class="btn btn-voltar">Voltar</button>
                 </a>
                     <table class="table mt-2">
