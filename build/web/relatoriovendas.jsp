@@ -1,3 +1,4 @@
+<%@page import="aplicacao.Utilitario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="aplicacao.Vendas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -40,15 +41,36 @@
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
-                    <form method="GET" action="VendasController">
-                    
-                        <input type="hidden" name="acao" value="mostrar_venda_busca" required>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="busca" placeholder="Buscar venda pelo nome do cliente..." >
-                            <button class="btn " type="submit">
-                                <img src="assets/imagens/search.svg" alt="Lupa">
-                            </button>
-                        </div>
+                    <form method="GET" action="VendasController" id="form-data-venda">
+                        
+                        <input type="hidden" name="acao" value="mostrar_venda_data" required>
+                        <select class="form-select mb-3" id="select-data-venda" aria-label="Data venda" name="dataVenda" required="">
+                            
+                            <option value="Escolher data" selected>Escolher data</option>
+                        <%
+                            String dataEscolhida = (String) request.getAttribute("data");
+                            
+                            if (dataEscolhida == null) dataEscolhida = "Escolher data";
+                            
+                            ArrayList<String> datas = (ArrayList<String>) request.getAttribute("datas");
+                            //Se não houver vendas, pedir para o servidor enviar
+                            if (datas == null)
+                                response.sendRedirect("VendasController?acao=mostrar_vendas_adm");
+                            else
+                                for (int i = 0; i < datas.size(); i++) {
+                                    String data = datas.get(i);
+                                    if (data.equals(dataEscolhida)) {
+                        %>
+                            <option value="<%=data%>" selected><%=Utilitario.formataData(data)%></option>
+                        <%
+                                    } else {
+                        %>
+                            <option value="<%=data%>"><%=Utilitario.formataData(data)%></option>
+                        <%
+                                    }
+                                }
+                        %>
+                        </select>
                     </form>
                 </div>
             </div>
@@ -70,8 +92,8 @@
                             if (vendas == null)
                                 response.sendRedirect("VendasController?acao=mostrar_vendas_adm");
                             else
-                                for (int i = 0; i < vendas.size(); i++) {
-                                    Vendas venda = vendas.get(i);
+                                for (int j = 0; j < vendas.size(); j++) {
+                                    Vendas venda = vendas.get(j);
                                     String linkExibirVenda = "VendasController?acao=mostrar_venda_adm&id="+venda.getId();
                             
                         %>                        
@@ -149,8 +171,14 @@
                     $('#container-alert').append("<%@include file="mensagem.jsp" %>");
                 }
                 
+                $("#select-data-venda").change(() => {
+                    //console.log($("#select-data-venda option:selected").text());
+                    $('#form-data-venda').submit();
+                });
+                
                 //Exibindo total venda
                 exibirTotal();
+                
             });
         </script>
     </body>

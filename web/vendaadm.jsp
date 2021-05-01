@@ -31,7 +31,7 @@
             <h2>Área restrita - Visualizar venda</h2>
             
             <div class="container-info">
-                <a href="relatoriovendas.jsp">
+                <a href="VendasController?acao=mostrar_vendas_adm">
                     <button class="btn btn-voltar">Voltar</button>
                 </a>
                     <table class="table mt-2">

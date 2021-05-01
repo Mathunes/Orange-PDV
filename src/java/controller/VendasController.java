@@ -28,6 +28,7 @@ public class VendasController extends HttpServlet {
         
         String acao = (String) request.getParameter("acao");
         ArrayList<Vendas> vendas;
+        ArrayList<String> datas;
         int id;
         Vendas venda;
         
@@ -46,6 +47,9 @@ public class VendasController extends HttpServlet {
             case "mostrar_vendas_adm":
                 vendas = daoVendas.getVendas();
                 request.setAttribute("vendas", vendas);
+                
+                datas = daoVendas.getDatasVendas();
+                request.setAttribute("datas", datas);
                 RequestDispatcher admMostrarVendas = getServletContext().getRequestDispatcher("/relatoriovendas.jsp");
                 admMostrarVendas.forward(request, response);
                 break;
@@ -75,6 +79,18 @@ public class VendasController extends HttpServlet {
                 request.setAttribute("vendas", vendas);
                 RequestDispatcher mostrarVendasBusca = getServletContext().getRequestDispatcher("/vendas.jsp");
                 mostrarVendasBusca.forward(request, response);
+                break;
+            
+            case "mostrar_venda_data":
+                vendas = daoVendas.getVendaData(request.getParameter("dataVenda"));
+                datas = daoVendas.getDatasVendas();
+                
+                request.setAttribute("vendas", vendas);
+                request.setAttribute("data", request.getParameter("dataVenda"));
+                request.setAttribute("datas", datas);
+                
+                RequestDispatcher admMostrarVendasData = getServletContext().getRequestDispatcher("/relatoriovendas.jsp");
+                admMostrarVendasData.forward(request, response);
                 break;
                 
             //Requisição para editar a venda pelo id
