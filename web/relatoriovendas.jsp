@@ -37,7 +37,7 @@
             
             <div class="row header">
                 <div class="col-sm">
-                    <h2>Área restrita - Relatório vendas</h2>
+                    <h2>Área restrita - Relatório de vendas</h2>
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">

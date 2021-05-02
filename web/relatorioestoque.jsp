@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row header">
                 <div class="col-sm">
-                    <h2>Área restrita - Relatório estoque</h2>
+                    <h2>Área restrita - Relatório de estoque</h2>
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">

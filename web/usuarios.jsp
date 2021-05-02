@@ -36,7 +36,7 @@
             
             <div class="row header">
                 <div class="col-sm">
-                    <h2>Área restrita - Administrador</h2>
+                    <h2>Área restrita - Usuários</h2>
                 </div>
                 <!-- Input de pesquisa -->
                 <div class="col-sm">
@@ -55,7 +55,7 @@
             
             <div class="container-table mb-4">
                 <a href="UsuariosController?acao=cadastrar_usuario">
-                    <button class="btn btn-novo">Novo usuario</button>
+                    <button class="btn btn-novo">Novo usuário</button>
                 </a>
                 <table class="table">
                     <thead>

@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto d-flex mb-2 mb-lg-0">
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-dark" href="UsuariosController?acao=mostrar_usuarios">Usuarios</a>
+                    <a class="nav-link text-dark" href="UsuariosController?acao=mostrar_usuarios">Usuários</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link text-dark" href="ProdutosController?acaoRestrito=mostrar_produtos_restrito_adm">Relatório de estoque</a>

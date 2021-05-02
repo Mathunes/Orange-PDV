@@ -67,10 +67,10 @@
                     </div>
                     <div class="col-md mb-4">
                         <label for="tipo" class="form-label">Tipo do Usuário</label>
-                        <select class="form-select" aria-label="Tipo Usuário" name="tipo" required="">
-                            <option value="0">Administrador</option>
-                            <option value="1">Vendedor</option>
-                            <option value="2">Comprador</option>
+                        <select class="form-select" aria-label="Tipo Usuário" name="tipo" required="" <%=(usuarioChamado.getTipo().equals(usuario.getTipo()) ? "disabled" : "")%>>
+                            <option value="0" <%=(usuarioChamado.getTipo().equals("0") ? "selected" : "")%>>Administrador</option>
+                            <option value="1" <%=(usuarioChamado.getTipo().equals("1") ? "selected" : "")%>>Vendedor</option>
+                            <option value="2" <%=(usuarioChamado.getTipo().equals("2") ? "selected" : "")%>>Comprador</option>
                         </select>
                     </div>
                 </div>               

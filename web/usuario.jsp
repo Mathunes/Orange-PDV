@@ -29,7 +29,7 @@
         <%@include file="navbaradministrador.jsp" %>
         
         <div class="container">
-            <h2>Área restrita - Visualizar usuario</h2>
+            <h2>Área restrita - Visualizar usuário</h2>
             
             <div class="container-info">
                 <a href="UsuariosController?acao=mostrar_usuarios">
