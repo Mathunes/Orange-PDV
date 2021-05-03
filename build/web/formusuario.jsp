@@ -44,7 +44,7 @@
                 </div>
             </div>
                                 
-            <h2>Área restrita - Usuarios</h2>
+            <h2>Área restrita - Usuários</h2>
             <a href="UsuariosController?acao=mostrar_usuarios">
                 <button class="btn btn-voltar">Voltar</button>
             </a>

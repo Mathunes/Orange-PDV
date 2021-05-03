@@ -112,7 +112,7 @@
                                 <a href="<%=linkEditarUsuario%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuario"></a>
                             </td>
                             <td>
-                                <button class="btn-excluir" name="<%=aux.getNome()%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                                <button class="btn-excluir" name="<%=aux.getNome()%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir" <%=(aux.getId() == usuario.getId() ? "style = \"opacity: 0.3\" " : "bananas") %>></button>
                             </td>
                         </tr>
                         <%
@@ -128,7 +128,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Excluir usuario</h5>
+                        <h5 class="modal-title">Excluir usuário</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
