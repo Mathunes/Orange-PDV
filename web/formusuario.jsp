@@ -63,11 +63,11 @@
                 <div class="row">
                     <div class="col-md mb-4">
                         <label for="senha" class="form-label">Senha do Usuário</label>
-                        <input type="text" class="form-control" placeholder="Senha do usuario" aria-label="Senha do usuario" name="senha" maxlength="50" value="<%=usuarioChamado.getSenha()%>" required>
+                        <input type="password" class="form-control" placeholder="Senha do usuario" aria-label="Senha do usuario" name="senha" maxlength="10" value="<%=usuarioChamado.getSenha()%>" required>
                     </div>
                     <div class="col-md mb-4">
                         <label for="tipo" class="form-label">Tipo do Usuário</label>
-                        <select class="form-select" aria-label="Tipo Usuário" name="tipo" required="" <%=(usuarioChamado.getTipo().equals(usuario.getTipo()) ? "disabled" : "")%>>
+                        <select class="form-select" aria-label="Tipo Usuário" name="tipo" required="" <%=(usuarioChamado.getId() == usuario.getId() ? "disabled" : "")%>>
                             <option value="0" <%=(usuarioChamado.getTipo().equals("0") ? "selected" : "")%>>Administrador</option>
                             <option value="1" <%=(usuarioChamado.getTipo().equals("1") ? "selected" : "")%>>Vendedor</option>
                             <option value="2" <%=(usuarioChamado.getTipo().equals("2") ? "selected" : "")%>>Comprador</option>

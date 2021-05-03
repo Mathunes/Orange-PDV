@@ -123,8 +123,8 @@ public class UsuariosController extends HttpServlet {
                     mensagem = "Nome deve conter no máximo 50 caracteres";
                 else if (cpf.length() > 14) 
                     mensagem = "CPF deve conter no máximo 14 caracteres";
-                else if (senha.length() > 50)
-                    mensagem = "Senha deve conter no máximo 50 caracteres";
+                else if (senha.length() > 10)
+                    mensagem = "Senha deve conter no máximo 10 caracteres";
                 else if (tipo.length() > 1)
                     mensagem = "Tipo deve conter no máximo 1 caractere";                
                 else if (!validaCPF(cpf))

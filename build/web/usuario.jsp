@@ -50,12 +50,27 @@
                                 <td><%= usuarioChamado.getCpf() %></td>
                             </tr>
                             <tr>
-                                <td><b>Senha</b></td>
-                                <td><%= usuarioChamado.getSenha() %></td>
-                            </tr>
-                            <tr>
                                 <td><b>Tipo</b></td>
-                                <td><%= usuarioChamado.getTipo() %></td>
+                                <td><%
+                                    switch(usuarioChamado.getTipo()){
+                                        case "0":
+                                    %>
+                                            Administrador
+                                    <%
+                                            break;
+                                        case "1":
+                                    %>
+                                            Vendedor
+                                    <%
+                                            break;
+                                        case "2":
+                                    %>
+                                            Comprador
+                                    <%
+                                            break;
+                                    }
+                                %>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
