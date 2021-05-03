@@ -156,12 +156,12 @@
                     
                         $('#modal-mensagem').text("Deseja realmente excluir esse usuário?");
                         $('#link-delete').attr("href", "UsuariosController?acao=excluir_usuario&id=" + id);
-                        document.getElementById("simButton").style.visibility = "visible";
-                        document.getElementById("naoButton").style.visibility = "visible";
+                        document.getElementById("simButton").style.display = "block";
+                        document.getElementById("naoButton").style.display = "block";
                     }else{
                         $('#modal-mensagem').text("Esse usuário não pode ser excluído no momento. Mude de conta para excluí-lo.");
-                        document.getElementById("simButton").style.visibility = "hidden";
-                        document.getElementById("naoButton").style.visibility = "hidden";
+                        document.getElementById("simButton").style.display = "none";
+                        document.getElementById("naoButton").style.display = "none";
                     }
                 });
                 
