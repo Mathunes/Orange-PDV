@@ -54,3 +54,7 @@ body, .modal-content {
         text-align: center;
     }
 }
+
+#invalido_excluir{
+    opacity : 0.5;
+}

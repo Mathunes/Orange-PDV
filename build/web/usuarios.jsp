@@ -25,7 +25,7 @@
     <head>
         <%@include file="head.html" %>
     </head>
-    <body>
+    
         <%@include file="navbaradministrador.jsp" %>
         
         <div class="container">
@@ -112,7 +112,13 @@
                                 <a href="<%=linkEditarUsuario%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuario"></a>
                             </td>
                             <td>
-                                <button class="btn-excluir" name="<%=aux.getId() == usuario.getId() ? "Rejeitado" : "Aprovado"%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                                <button class="btn-excluir" name="<%=aux.getId() == usuario.getId() ? "Rejeitado" : "Aprovado"%>" value="<%=aux.getId()%>">
+                                    <%String nome = request.getParameter(""); 
+                                      if (nome == "Aprovado"){%>
+                                        <img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                                    <%}else{%>
+                                        <img src="assets/imagens/trash-fill.svg" alt="Inválido excluir" id="invalido_excluir"></button>
+                                    <%}%>
                             </td>                          
                         </tr>
                         <%
@@ -123,6 +129,11 @@
             </div>
             
         </div>
+                    
+         <%
+             String nome = request.getParameter("");
+             if (nome == "Aprovado"){
+         %>
         <!--Modal para confirmar exclusão do usuario-->
         <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -143,7 +154,7 @@
                 </div>
             </div>
         </div>            
-                    
+               <%}%>     
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
@@ -168,5 +179,5 @@
                 }
             });
         </script>
-    </body>
+    
 </html>
