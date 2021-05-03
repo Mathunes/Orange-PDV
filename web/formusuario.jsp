@@ -13,7 +13,7 @@
             break;
         case "2":
             response.sendRedirect("compras.jsp");
-            break;
+            break;        
     }
 %>
 

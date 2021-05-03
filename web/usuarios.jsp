@@ -112,8 +112,8 @@
                                 <a href="<%=linkEditarUsuario%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuario"></a>
                             </td>
                             <td>
-                                <button class="btn-excluir" name="<%=aux.getNome()%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
-                            </td>
+                                <button class="btn-excluir" name="<%=aux.getId() == usuario.getId() ? "Rejeitado" : "Aprovado"%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                            </td>                          
                         </tr>
                         <%
                             }       
@@ -151,14 +151,20 @@
                 $(".info-usuario").find("button[class='btn-excluir']").click(function(){
                     var nome = $(this).attr("name");
                     var id = $(this).attr("value");
-                    
-                    $('#modal-mensagem').text("Deseja realmente excluir o(a) usuario " + nome + "?");
-                    $('#link-delete').attr("href", "UsuariosController?acao=excluir_usuario&id=" + id);
+                    console.log(nome);
+                    if (nome == "Aprovado"){                       
+
+                        $('#modal-mensagem').text("Deseja realmente excluir o(a) usuario " + nome + "?");
+                        $('#link-delete').attr("href", "UsuariosController?acao=excluir_usuario&id=" + id);
+                    }else{
+                        $('.alert').alert("Esse usuário não pode ser excluído no momento, mude a conta para poder excluí-lo.");
+                    }
                 });
                 
                 //Exibir mensagem
                 if ($('#mensagem').text().trim() != "null") {
                     $('#container-alert').append("<%@include file="mensagem.jsp" %>");
+                
                 }
             });
         </script>

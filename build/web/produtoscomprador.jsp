@@ -94,6 +94,7 @@
                             <td>
                                 <a href="<%=linkEditarProduto%>"><img src="assets/imagens/pencil-fill.svg" class="btn-icon" alt="Editar produto"></a>
                             </td>
+                            
                             <td>
                                 <button class="btn-excluir" name="<%=produto.getId()%>" value="<%=produto.getNomeProduto()%>"><img src="assets/imagens/trash-fill.svg" class="btn-icon" alt="Excluir produto" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
                             </td>
