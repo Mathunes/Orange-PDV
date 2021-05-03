@@ -1,3 +1,4 @@
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="aplicacao.Usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,7 +26,7 @@
     <head>
         <%@include file="head.html" %>
     </head>
-    
+    <body>
         <%@include file="navbaradministrador.jsp" %>
         
         <div class="container">
@@ -112,14 +113,8 @@
                                 <a href="<%=linkEditarUsuario%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuario"></a>
                             </td>
                             <td>
-                                <button class="btn-excluir" name="<%=aux.getId() == usuario.getId() ? "Rejeitado" : "Aprovado"%>" value="<%=aux.getId()%>">
-                                    <%String nome = request.getParameter(""); 
-                                      if (nome == "Aprovado"){%>
-                                        <img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
-                                    <%}else{%>
-                                        <img src="assets/imagens/trash-fill.svg" alt="Inválido excluir" id="invalido_excluir"></button>
-                                    <%}%>
-                            </td>                          
+                                <button class="btn-excluir" name="<%=aux.getId() == usuario.getId() ? "Rejeitado" : "Aprovado"%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir"></button>
+                            </td>
                         </tr>
                         <%
                             }       
@@ -129,11 +124,6 @@
             </div>
             
         </div>
-                    
-         <%
-             String nome = request.getParameter("");
-             if (nome == "Aprovado"){
-         %>
         <!--Modal para confirmar exclusão do usuario-->
         <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -146,15 +136,15 @@
                         <p id="modal-mensagem"></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="naoButton">Não</button>
                         <a href="" id="link-delete">
-                            <button type="button" class="btn btn-primary">Sim</button>
+                            <button type="button" class="btn btn-primary" id="simButton">Sim</button>
                         </a>
                     </div>
                 </div>
             </div>
         </div>            
-               <%}%>     
+                    
         <%@include file="scripts.html" %>
         <script>            
             $(document).ready(function(){
@@ -162,22 +152,22 @@
                 $(".info-usuario").find("button[class='btn-excluir']").click(function(){
                     var nome = $(this).attr("name");
                     var id = $(this).attr("value");
-                    console.log(nome);
-                    if (nome == "Aprovado"){                       
-
+                    if(nome == "Aprovado"){
+                    
                         $('#modal-mensagem').text("Deseja realmente excluir o(a) usuario " + nome + "?");
                         $('#link-delete').attr("href", "UsuariosController?acao=excluir_usuario&id=" + id);
                     }else{
-                        $('.alert').alert("Esse usuário não pode ser excluído no momento, mude a conta para poder excluí-lo.");
+                        $('#modal-mensagem').text("Esse usuário não pode ser excluído no momento. Mude de conta para excluí-lo.");
+                        document.getElementById("simButton").style.visibility = "hidden";
+                        document.getElementById("naoButton").style.visibility = "hidden";
                     }
                 });
                 
                 //Exibir mensagem
                 if ($('#mensagem').text().trim() != "null") {
                     $('#container-alert').append("<%@include file="mensagem.jsp" %>");
-                
                 }
             });
         </script>
-    
+    </body>
 </html>
