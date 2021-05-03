@@ -1,3 +1,4 @@
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="aplicacao.Usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -112,7 +113,7 @@
                                 <a href="<%=linkEditarUsuario%>"><img src="assets/imagens/pencil-fill.svg" alt="Editar usuario"></a>
                             </td>
                             <td>
-                                <button class="btn-excluir" name="<%=aux.getNome()%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir" <%=(aux.getId() == usuario.getId() ? "style = \"opacity: 0.3\" " : "bananas") %>></button>
+                                <button class="btn-excluir" name="<%=aux.getId() == usuario.getId() ? "Rejeitado" : "Aprovado"%>" value="<%=aux.getId()%>"><img src="assets/imagens/trash-fill.svg" alt="Excluir usuario" data-bs-toggle="modal" data-bs-target="#modalExcluir" <%=(aux.getId() == usuario.getId() ? "style = \"opacity: 0.3\" " : "bananas") %>></button>
                             </td>
                         </tr>
                         <%
@@ -135,9 +136,9 @@
                         <p id="modal-mensagem"></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="naoButton">Não</button>
                         <a href="" id="link-delete">
-                            <button type="button" class="btn btn-primary">Sim</button>
+                            <button type="button" class="btn btn-primary" id="simButton">Sim</button>
                         </a>
                     </div>
                 </div>
@@ -151,9 +152,17 @@
                 $(".info-usuario").find("button[class='btn-excluir']").click(function(){
                     var nome = $(this).attr("name");
                     var id = $(this).attr("value");
+                    if(nome == "Aprovado"){
                     
-                    $('#modal-mensagem').text("Deseja realmente excluir o(a) usuario " + nome + "?");
-                    $('#link-delete').attr("href", "UsuariosController?acao=excluir_usuario&id=" + id);
+                        $('#modal-mensagem').text("Deseja realmente excluir esse usuário?");
+                        $('#link-delete').attr("href", "UsuariosController?acao=excluir_usuario&id=" + id);
+                        document.getElementById("simButton").style.visibility = "visible";
+                        document.getElementById("naoButton").style.visibility = "visible";
+                    }else{
+                        $('#modal-mensagem').text("Esse usuário não pode ser excluído no momento. Mude de conta para excluí-lo.");
+                        document.getElementById("simButton").style.visibility = "hidden";
+                        document.getElementById("naoButton").style.visibility = "hidden";
+                    }
                 });
                 
                 //Exibir mensagem
